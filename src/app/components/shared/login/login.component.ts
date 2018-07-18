@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Http } from '@angular/http';
+import { User } from '../../../shared/user interface/user';
+import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,23 @@ export class LoginComponent implements OnInit {
   @ViewChild('reset') resetForm: NgForm;
   @ViewChild('create') createForm: NgForm;
 
-  constructor() { }
+  private users: User[];
+  
+  private myUserData: User = {
+    active: 1,
+    name: '',
+    last_name: '',
+    email: '',
+    password: ''
+  };
+  constructor(private dataService: ApiConnectionService) { }
 
   public loginContent = true;
   public resetContent = false;
   public registerContent = false;
 
   ngOnInit() {
+    this.getAllUsers();
   }
 
   onSignin( ){
@@ -27,34 +38,28 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
     
   }
-  onReset(){
-    console.log(this.resetForm);
+
+  getAllUsers() {
+    this.dataService.getAllUsers().subscribe(res => {
+      this.users = res;
+      console.log('Users ', this.users);
+    });
+  }
+
+  manageForms(login:boolean, register: boolean, reset: boolean ): void {
+    this.loginContent = login;
+    this.registerContent = register;
+    this.resetContent = reset;
     
-  }
+  };
 
-  onRegister(){
-
-    const email = this.createForm.value.email_log;
-    const first_name = this.createForm.value.first_name;
-    const last_name = this.createForm.value.last_name;
-    const active = 2;
-    const user = [{
-      email: email,
-      name: first_name,
-      last_name: last_name,
-      active: active
-    }];
-
-    console.log(this.createForm);
-    console.log(user);
-  }
-  changeSignup(){
-    this.registerContent = true;
-    this.loginContent = false;
-  }
-  onResetPage(){
-    this.resetContent = true;
-    this.loginContent = false;
-    this.registerContent = false;
+  registerUser() {
+    this.myUserData.email = this.createForm.value.email_register;
+    this.myUserData.password = this.createForm.value.password_register;
+    this.myUserData.name = this.createForm.value.first_name;
+    this.myUserData.last_name = this.createForm.value.last_name;
+    this.dataService
+      .registerUser(this.myUserData)
+      .subscribe(res => this.manageForms(true,false,false));
   }
 }
