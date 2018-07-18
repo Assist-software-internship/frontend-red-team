@@ -33,7 +33,7 @@ const routes: Routes = [
     path: 'courses/:courseId/:chapterId',
     component: ChapterQuestionsComponent
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

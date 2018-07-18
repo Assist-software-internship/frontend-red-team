@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit {
-
-  constructor() { }
+  onFileSelected(event) {
+    console.log(event);
+  }
 
   ngOnInit() {
   }
-
 }
