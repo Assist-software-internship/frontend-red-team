@@ -16,6 +16,7 @@ import { ChapterListComponent } from './components/shared/chapter-list/chapter-l
 import { MyAccountComponent } from './components/shared/my-account/my-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -48,7 +49,9 @@ const routes: Routes = [
     ChapterListComponent,
     MyAccountComponent,
     DashboardComponent,
-    ChapterQuestionsComponent
+    ChapterQuestionsComponent,
+    FooterComponent,
+   
   ],
   imports: [
     BrowserModule,
