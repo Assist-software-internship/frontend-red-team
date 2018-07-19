@@ -15,9 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit {
-  public course: Course[];
+  public courses: Course[];
   @Output()
   public user: User = new User();
+  public showPassword = false;
 
   constructor(private dataService: ApiConnectionService, private router: Router) {
   }
@@ -25,6 +26,7 @@ export class MyAccountComponent implements OnInit {
   
     ngOnInit() {
      this.getAllCourses();
+    //  this.showPassword = false;
     }
 
     ngAfterViewInit() {
@@ -47,9 +49,14 @@ export class MyAccountComponent implements OnInit {
 
     getAllCourses() {
       this.dataService.getAllCourse().subscribe(res => {
-        this.course = res;
-        console.log('Course ', this.course);
+        this.courses = res;
+        console.log('Course ', this.courses);
       });
+    }
+    toggleShowPassword(){
+      console.log('aaa');
+        // this.showPassword = true;
+        this.showPassword === false ? this.showPassword = true : this.showPassword = false;
     }
 }
 

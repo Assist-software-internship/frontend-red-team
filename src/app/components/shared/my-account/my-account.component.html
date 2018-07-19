@@ -35,8 +35,9 @@
         </div>
      <!--Change  password-->
         <div class="password">
-           <input type="password" name="password" id="password" [(ngModel)]="user.password">
-           <div ng-click="toggleShowPassword()" ng-class="{'fa fa-eye': showPassword,'fa fa-eye-slash': !showPassword}" style="cursor: pointer;"></div>
+           <input *ngIf="!showPassword" type="password" name="password" id="password" [(ngModel)]="user.password">
+           <input *ngIf="showPassword" type="text" name="password" id="password" [(ngModel)]="user.password">
+           <button (click)="toggleShowPassword()" class="showPassword"><i class="fa" class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}}"></i> </button>
         </div>
       <!--Change email-->
         <div class="email">
@@ -59,7 +60,7 @@
 
 
 
-  <div class="info-container" *ngFor="let item of course;let i = index">
+  <div class="info-container" *ngFor="let item of courses;let i = index">
     <button type="button" name="cancel-cours" class="cancel-cours">X</button>
       <div class="redirect" routerLink="/courses">
             <img src={{item.images}} alt="" width="100" height="100" class="edit-Image">
