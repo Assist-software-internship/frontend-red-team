@@ -7,7 +7,7 @@
     <p>Here you can edit your account`s informations, courses you started and the progress for each one.Contact us at contact@alexteachme.com, if you need any help.</p>
 
     <!--<input type="submit" name="logout" id="logout" value="Log Out">-->
-    <button type="button" id="logout" routerLink="/login">Log out</button>
+    <button type="button" onclick="onLogOut()" id="logout">Log out</button>
 
     <p></p>
 </div>
@@ -18,9 +18,20 @@
         <img src="assets/default.jpg" alt="" width="140" height="140" class="img-profile">
 
         <p class="to-quickly-change-yo">To quickly change your profile picture, just drag&drop an image or upload a file. Image selected, should have maximum 15 MB size.</p>
-        <input type="file" (change)="onFileSelected($event)" name="upload-file" id="upload-file" value="Upload file">
-        <div class="username">
-            <input type="text" name="username" id="username" value="username">
+        <input
+          style="display: none;"
+          type="file"
+          (change)="onFileSelected($event)"
+          name="upload-file"
+          class="upload-file"
+          #fileInput>
+        <button type="button" (click)='fileInput.click()' class="upload-file">Upload file</button>
+        <div class="username" ng-app="app">
+              <div ng-controller = 'MyController as c'>
+                  <input type="text" name="username" id="username" value="" name="name" [(ngModel)]="name">
+
+              </div>
+            <!--<input type="text" name="username" id="username" value="{{username.value()}}">-->
         </div>
         <div class="password">
            <input type="text" name="password" id="password" value="*********">

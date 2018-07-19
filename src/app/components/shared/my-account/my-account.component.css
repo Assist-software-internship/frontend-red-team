@@ -73,9 +73,10 @@ p {
   font-size: 14px;
   line-height: 23px;
 }
-#upload-file{
+.upload-file{
   margin-left: 340px;
   margin-top: 80px;
+  width: 120px;
   background-color: white;
   border-radius: 5px;
   border-color: lightskyblue;
@@ -83,10 +84,12 @@ p {
   font-size: 20px;
 
 }
-#upload-file:hover{
+.upload-file:hover{
+  border-radius: 5px;
   background-color: dodgerblue;
 }
-#upload-file:active{
+.upload-file:active{
+  border-radius: 5px;
   background-color: dodgerblue;
   box-shadow: 0 5px #666;
   transform: translateY(4px);

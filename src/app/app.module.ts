@@ -16,6 +16,7 @@ import { ChapterListComponent } from './components/shared/chapter-list/chapter-l
 import { MyAccountComponent } from './components/shared/my-account/my-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
+import { HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CourseListComponent },
+ // { path: 'logout', component: LogoutComponent},
   {
     path: 'courses/:id',
     component: ChapterListComponent
@@ -53,7 +55,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
