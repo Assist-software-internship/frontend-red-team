@@ -6,30 +6,33 @@
       <p class="login-to">Login to your account</p>
     </div>
     <div class="right-side">
-      <form (ngSubmit)="onSignin()" #login="ngForm" >
+      <form (ngSubmit)="loginUser()" #login="ngForm" >
         <div class="row">
           <div class="col-sm-10">
-            <input type="email"
-            name="email_log"
-            id="email_log"
-            class="rectangle form-control"
-            placeholder="email address"
-            ngModel
-            required
-            email
+
+            <input type="email" 
+            name="email_log" 
+            id="email_log" 
+            class="rectangle form-control" 
+            placeholder="email address" 
+            [(ngModel)]="logUser.email" 
+            required 
+            email 
             #email="ngModel">
-            <span class="help-block" *ngIf="!email.valid && email.touched " style="color: white">Please enter a valid email!</span>
+            <span class="help-block" *ngIf="!email.valid && email.touched " style="color: white">Please enter a valid email! {{message}}</span>
+            <span class="help-block"  style="color: white"> {{message}}</span>
           </div>
         </div>
        <div class="row">
         <div class="col-sm-10">
-          <input type="password"
-          name="password_log"
-          id="password_log"
-          class="rectangle sec-rectangle form-control space-between"
-          placeholder="••••••••••"
-          ngModel
-          required
+
+          <input type="password" 
+          name="password_log" 
+          id="password_log" 
+          class="rectangle sec-rectangle form-control space-between" 
+          placeholder="••••••••••" 
+          [(ngModel)]="logUser.password" 
+          required 
           #pass="ngModel" >
           <span class="help-block" *ngIf="! pass.valid &&  pass.touched " style="color: white">Please enter a valid password!</span>
         </div>

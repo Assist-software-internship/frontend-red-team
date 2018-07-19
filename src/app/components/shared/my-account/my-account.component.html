@@ -30,23 +30,21 @@
           #fileInput>
         <button type="button" (click)='fileInput.click()' class="upload-file">Upload file</button>
       <!--Change username-->
-        <div class="username" ng-app="app">
-              <div ng-controller = 'MyController as c'>
-                  <input type="text" name="username" id="username" value="" name="name">
-
-              </div>
-            <!--<input type="text" name="username" id="username" value="{{username.value()}}">-->
+        <div class="username">
+            <input type="text" name="username" id="username" [(ngModel)]="user.name">
         </div>
      <!--Change  password-->
         <div class="password">
-           <input type="text" name="password" id="password" value="*********">
+           <input type="password" name="password" id="password" [(ngModel)]="user.password">
+           <div ng-click="toggleShowPassword()" ng-class="{'fa fa-eye': showPassword,'fa fa-eye-slash': !showPassword}" style="cursor: pointer;"></div>
         </div>
       <!--Change email-->
         <div class="email">
-            <input type="text" name="email" id="email" value="email@assist.ro">
+            <input type="text" name="email" id="email" [(ngModel)]="user.email">
         </div>
       <!--Save changes-->
         <div class="save">
+            <button type="button" name="save" id="save" (click) = "updateUserProfile()">Save</button>
             <input type="submit" name="save" id="save" value="Save">
         </div>
       <!--Cancel changes-->

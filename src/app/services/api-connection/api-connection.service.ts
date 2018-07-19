@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {Course, User} from '../../shared/user interface/user';
-
+import { User} from '../../shared/user interface/user';
+import {Course} from '../../shared/course';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
 };
+
+const Api = {
+  base: 'http://localhost:3000/',
+  users: 'users',
+  course: 'course'
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -21,17 +27,33 @@ export class ApiConnectionService {
 
   registerUser(userData: User): Observable<User> {
     return this.http.post<User>(
-      'http://localhost:3000/users',
+      Api.base + Api.users,
       userData,
       httpOptions
     );
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:3000/users');
+    return this.http.get<User[]>(Api.base + Api.users);
+  }
+
+  fakeLogin(email: String, password: String): Observable<User[]> {
+    return this.http.get<User[]>(Api.base+ Api.users + `?email=${email}&password=${password}`);
+  }
+
+  loginUser(email: String, password: String): Observable<User> {
+    return this.http.get<User>(Api.base+ Api.users + `?email=${email}&password=${password}`);
+  }
+
+  getUserById(id: Number): Observable<User> {
+    return this.http.get<User>(Api.base+ Api.users + `?id=${id}`);
+  }
+
+  updateUser(id: Number, userData: User): Observable<User> {
+    return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
   }
 
   getAllCourse(): Observable<Course[]> {
-    return this.http.get<Course[]>('http://localhost:3000/course');
+    return this.http.get<Course[]>(Api.base + Api.course);
   }
 }
