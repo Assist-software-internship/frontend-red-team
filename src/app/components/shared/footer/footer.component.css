@@ -1,6 +1,6 @@
 .footer {	
     height: 59px;	
-    width: 1440px;	
+    max-width: 1440px;	
     background-color: #F7F7F7;
     margin:0 auto;
     border-color: #e7e7e7;
@@ -10,10 +10,9 @@
     right: 0;
     bottom: 0;
     left: 0;
-     
 }
 
-.alexa-teach-me-2018 {	
+.copy {	
     height: 14px;	
     width: 222px;	
     color: #AEB5BB;
@@ -37,3 +36,7 @@ li{
     font-weight: bold;
 }
 
+.footer a{
+    color: #AEB5BB;
+    text-decoration: none;
+}
