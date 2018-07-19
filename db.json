@@ -45,8 +45,16 @@
       "name": "ion",
       "last_name": "ion",
       "email": "ion@ion.com",
-      "password": "pul;al;uion",
+      "password": "passion",
       "id": 6
+    },
+    {
+      "active": 1,
+      "name": "test",
+      "last_name": "test2",
+      "email": "test@test.com",
+      "password": "test",
+      "id": 7
     }
   ],
   "course": [
