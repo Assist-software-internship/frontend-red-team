@@ -53,7 +53,7 @@ export class ApiConnectionService {
     return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
   }
 
-  getAllCourse(): Observable<Course[]> {
+  getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(Api.base + Api.course);
   }
 }

@@ -46,7 +46,7 @@ export class MyAccountComponent implements OnInit {
     }
 
     getAllCourses() {
-      this.dataService.getAllCourse().subscribe(res => {
+      this.dataService.getAllCourses().subscribe(res => {
         this.course = res;
         console.log('Course ', this.course);
       });

@@ -96,7 +96,7 @@
     margin-right: 239px;
 }
 
-@media only screen and (max-width: 1142px) {
+@media only screen and (max-width: 1159px) {
    .profile li:nth-child(2) {
     width: 134px;
    }

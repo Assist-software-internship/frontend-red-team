@@ -13,15 +13,23 @@
   margin: 0 auto;
 }
 .my-account{
-  width: 1440px;
+
   background-color: white;
   display: block;
   margin: auto;
   margin-top: -20px;
+  min-width: 1000px;
+  margin: 0 auto;
+  padding-left:20%;
+  border:1px solid red;
+}
+
+@media only screen and (max-width: 1142px) {
 
 }
+
 .account-info{
-  width: 1440px;
+  max-width: 1440px;
   height: 1400px;
   background-color: #F6FAFC;
   margin: auto;
@@ -29,17 +37,14 @@
 }
 h2 {
   margin-top: 50px;
-  margin-left: 330px;
   height: 38px;
   width: 774px;
   color: #06102B;
-  font-family: Roboto;
   font-size: 24px;
   font-weight: bold;
   line-height: 38px;
 }
 p {
-  margin-left: 330px;
   height: 46px;
   width: 699px;
   color: #AEB5BB;
@@ -48,12 +53,12 @@ p {
   line-height: 23px;
 }
 .logout{
-  margin-left: 330px;
+
 }
 #logout{
-  margin-left: 330px;
+	height: 29px;	width: 85px;
   margin-top: 20px;
-  padding: 10px 20px;
+
   font-size: 18px;
   text-align: center;
   cursor: pointer;
@@ -61,7 +66,7 @@ p {
   border: none;
   color: white;
   border-radius: 5px;
-  background-color: lightskyblue;
+  background-color: #006FFF;
   box-shadow: cornflowerblue;
 }
 #logout:hover{
