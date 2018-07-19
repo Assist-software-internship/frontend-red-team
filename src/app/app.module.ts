@@ -18,6 +18,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { ApiConnectionService } from './services/api-connection/api-connection.service';
+
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'account', component: MyAccountComponent },
@@ -25,6 +30,7 @@ const routes: Routes = [
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CourseListComponent },
+ // { path: 'logout', component: LogoutComponent},
   {
     path: 'courses/:id',
     component: ChapterListComponent
@@ -50,16 +56,16 @@ const routes: Routes = [
     MyAccountComponent,
     DashboardComponent,
     ChapterQuestionsComponent,
-    FooterComponent,
-   
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ApiConnectionService],
   bootstrap: [AppComponent]
 })
 

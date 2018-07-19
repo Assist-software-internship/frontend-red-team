@@ -10,81 +10,70 @@
     <p>Here you can edit your account`s informations, courses you started and the progress for each one.Contact us at contact@alexteachme.com, if you need any help.</p>
 
     <!--<input type="submit" name="logout" id="logout" value="Log Out">-->
-    <button type="button" id="logout" routerLink="/login">Log out</button>
+    <button type="button" onclick="onLogOut()" id="logout">Log out</button>
 
     <p></p>
 </div>
+<!--Account info-->
 <div class="account-info">
     <p></p>
     <h2>Account Informations</h2>
   <div>
         <img src="assets/default.jpg" alt="" width="140" height="140" class="img-profile">
-
         <p class="to-quickly-change-yo">To quickly change your profile picture, just drag&drop an image or upload a file. Image selected, should have maximum 15 MB size.</p>
-        <input type="file" (change)="onFileSelected($event)" name="upload-file" id="upload-file" value="Upload file">
+
+      <!--Change profile picture-->
+        <input
+          style="display: none;"
+          type="file"
+          (change)="onFileSelected($event)"
+          name="upload-file"
+          class="upload-file"
+          #fileInput>
+        <button type="button" (click)='fileInput.click()' class="upload-file">Upload file</button>
+      <!--Change username-->
         <div class="username">
-            <input type="text" name="username" id="username" value="username">
+            <input type="text" name="username" id="username" [(ngModel)]="user.name">
         </div>
+     <!--Change  password-->
         <div class="password">
-           <input type="text" name="password" id="password" value="*********">
+           <input type="password" name="password" id="password" [(ngModel)]="user.password">
+           <div ng-click="toggleShowPassword()" ng-class="{'fa fa-eye': showPassword,'fa fa-eye-slash': !showPassword}" style="cursor: pointer;"></div>
         </div>
+      <!--Change email-->
         <div class="email">
-            <input type="text" name="email" id="email" value="email@assist.ro">
+            <input type="text" name="email" id="email" [(ngModel)]="user.email">
         </div>
+      <!--Save changes-->
         <div class="save">
+            <button type="button" name="save" id="save" (click) = "updateUserProfile()">Save</button>
             <input type="submit" name="save" id="save" value="Save">
         </div>
+      <!--Cancel changes-->
         <div class="cancel">
             <input type="submit" name="cancel" id="cancel" value="Cancel">
         </div>
         <hr class="line">
+    <!--Courses started-->
   </div>
     <h2>Started Courses</h2>
-  <div class="info-1">
-      <input type="submit" name="cancel-cours" class="cancel-cours" value="X">
-      <a>
-        <img src="assets/advertising.png" alt="" width="100" height="100" class="img-cours">
-      </a>
-      <h4>Internet Banner Advertising Most Reliable Forms Of Web Advertising</h4>
-      <p class="info-cours-1">In order to discuss the general function of the logo, we must firstly identify and define the environment where this have to fulfill its function.</p>
-      <p class="points-1">120</p>
-      <p class="points-2">points</p>
-  </div>
-  <div class="progress">
-    <div class="progress-bar progress-bar-succes" role="progressbar"
-         aria-valuemin="0" aria-valuemax="150" style="width:80%">
-      <span class="sr-only">100% Complete</span>
-    </div>
-  </div>
-  <div class="info-1">
-    <input type="submit" name="cancel-cours" class="cancel-cours" value="X">
-      <img src="assets/images.jpeg" alt="" width="100" height="100" class="img-cours">
-      <h4>Internet Banner Advertising Most Reliable Forms Of Web Advertising</h4>
-      <p class="info-cours-1">In order to discuss the general function of the logo, we must firstly identify and define the environment where this have to fulfill its function.</p>
-      <p class="points-1">90</p>
-      <p class="points-2">points</p>
-  </div>
-  <div class="progress">
-    <div class="progress-bar progress-bar-warning" role="progressbar"
-         aria-valuemin="0" aria-valuemax="150" style="width:50%">
-      <span class="sr-only">100% Complete</span>
-    </div>
-  </div>
-  <div class="info-1">
-    <input type="submit" name="cancel-cours" class="cancel-cours" value="X">
-      <img src="assets/images.png" alt="" width="100" height="100" class="img-cours">
-      <h4>Internet Banner Advertising Most Reliable Forms Of Web Advertising</h4>
-      <p class="info-cours-1">In order to discuss the general function of the logo, we must firstly identify and define the environment where this have to fulfill its function.</p>
-      <p class="points-1">30</p>
-      <p class="points-2">points</p>
-  </div>
-  <div class="progress">
-    <div class="progress-bar progress-bar-danger" role="progressbar"
-         aria-valuemin="0" aria-valuemax="150" style="width:20%">
-      <span class="sr-only">100% Complete</span>
-    </div>
-  </div>
 
+
+
+
+  <div class="info-container" *ngFor="let item of course;let i = index">
+    <button type="button" name="cancel-cours" class="cancel-cours">X</button>
+      <div class="redirect" routerLink="/courses">
+            <img src={{item.images}} alt="" width="100" height="100" class="edit-Image">
+          <h4>{{item.small_description}}</h4>
+          <p class="info-cours">{{item.long_description}}</p>
+          <p class="points-1">120</p>
+          <p class="points-2">points</p>
+          <div class="progress-bar" role="progressbar "
+               aria-valuemin="0" aria-valuemax="150" style="width:80%" >
+          </div>
+      </div>
+  </div>
 </div>
 <app-footer></app-footer>
 
