@@ -9,6 +9,12 @@ const httpOptions = {
     'Content-Type': 'application/json'
   })
 };
+
+const Api = {
+  base: 'http://localhost:3000/',
+  users: 'users',
+  course: ''
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -21,13 +27,25 @@ export class ApiConnectionService {
 
   registerUser(userData: User): Observable<User> {
     return this.http.post<User>(
-      'http://localhost:3000/users',
+      Api.base + Api.users,
       userData,
       httpOptions
     );
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:3000/users');
+    return this.http.get<User[]>(Api.base + Api.users);
+  }
+
+  fakeLogin(email: String, password: String): Observable<User[]> {
+    return this.http.get<User[]>(Api.base+ Api.users + `?email=${email}&password=${password}`);
+  }
+
+  loginUser(email: String, password: String): Observable<User> {
+    return this.http.get<User>(Api.base+ Api.users + `?email=${email}&password=${password}`);
+  }
+
+  getUserById(id: Number): Observable<User> {
+    return this.http.get<User>(Api.base+ Api.users + `?id=${id}`);
   }
 }
