@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('create') createForm: NgForm;
 
   private users: User[];
-  
+
   private myUserData: User = {
     active: 1,
     name: '',
@@ -32,12 +32,9 @@ export class LoginComponent implements OnInit {
     this.getAllUsers();
   }
 
-  onSignin( ){
-    
+  onSignin( ) {
     console.log(this.loginForm.value);
-    this.loginForm.reset();
-    
-  }
+    this.loginForm.reset(); }
 
   getAllUsers() {
     this.dataService.getAllUsers().subscribe(res => {
@@ -46,12 +43,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  manageForms(login:boolean, register: boolean, reset: boolean ): void {
+  manageForms(login: boolean, register: boolean, reset: boolean ): void {
     this.loginContent = login;
     this.registerContent = register;
     this.resetContent = reset;
-    
-  };
+  }
 
   registerUser() {
     this.myUserData.email = this.createForm.value.email_register;
@@ -60,6 +56,6 @@ export class LoginComponent implements OnInit {
     this.myUserData.last_name = this.createForm.value.last_name;
     this.dataService
       .registerUser(this.myUserData)
-      .subscribe(res => this.manageForms(true,false,false));
+      .subscribe(res => this.manageForms(true, false, false));
   }
 }

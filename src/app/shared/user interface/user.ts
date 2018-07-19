@@ -6,3 +6,10 @@ export interface User {
   email: String;
   password: String;
 }
+export interface Course{
+  id?: Number;
+  small_description: String;
+  long_description: String;
+  tags: String;
+  images: String;
+}

@@ -1,3 +1,8 @@
+.container{
+    background-color: #F6FAFC;
+    padding: 27px 70px 18px 120px;
+    width: 1440px;
+}
 .my-account{
   width: 1440px;
   background-color: white;
@@ -190,13 +195,16 @@ p {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.info-1{
+.info-container{
   margin-top: 50px;
-  height: 200px;
+  height: 160px;
   margin-left: 330px;
   margin-right: 290px;
   background-color: white;
 
+}
+.redirect{
+  margin-right: 100px;
 }
 .img-cours{
   margin-top: 20px;
@@ -211,22 +219,27 @@ h4{
   width: 550px;
 }
 .points-1{
-  margin-top: -60px;
-  margin-left: 420px;
+  margin-top: -80px;
+  margin-left: 750px;
+  width: 50px;
+  height: 30px;
   text-align: center;
   color: dodgerblue;
   font-size: 25px;
 }
 .points-2{
-  margin-top: -35px;
-  margin-left: 420px;
+  margin-top: -20px;
+  margin-left: 745px;
+  width: 60px;
+  height: 30px;
   text-align: center;
   color: dodgerblue;
   font-size: 25px;
 }
-.progress{
+.progress-bar{
   height: 3px;
-  margin-left: 330px;
+  margin-top: 40px;
+  margin-left: 0px;
   margin-right: 290px;
 }
 .cancel-cours{
@@ -247,6 +260,3 @@ h4{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
-
-

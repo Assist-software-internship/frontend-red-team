@@ -1,0 +1,44 @@
+.container{
+    padding: 27px 0 18px 0;
+    padding: 27px 70px 0 120px;
+}
+
+.container li a {font-weight: 200;background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    height: 70px;
+    color: #00217A;
+    font-size: 16px;	
+    line-height: 19px;
+}
+
+.profilePic{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    height: 45px;
+    margin-top: -16px;
+    margin-right: -13px;
+}
+
+.logoPic{margin-top: -20px;}
+
+.navbar{
+     width: 1440px;
+     margin: 0 auto;
+     display: flex;
+     border-radius: 0px;
+     height: 8%;
+     
+}
+
+.navbar li :hover{
+    color: #00217A;
+}
+
+.navbar li .active{
+    border-bottom: 2px solid #006FFF;
+    color: #00217A;	
+    font-size: 16px;	
+    font-weight: bold;
+    line-height: 19px;
+}
