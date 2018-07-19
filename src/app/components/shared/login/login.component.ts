@@ -15,12 +15,12 @@ export class LoginComponent implements OnInit {
 
   private users: User[];
 
-  private myUserData: User = {
+  public myUserData: User = {
     active: 1,
     name: '',
     last_name: '',
     email: '',
-    password: ''
+    password: '',
   };
   constructor(private dataService: ApiConnectionService) { }
 
@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.getAllUsers();
   }
-
+  onReset() {
+  }
   onSignin( ) {
     console.log(this.loginForm.value);
     this.loginForm.reset(); }
@@ -50,10 +51,6 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser() {
-    this.myUserData.email = this.createForm.value.email_register;
-    this.myUserData.password = this.createForm.value.password_register;
-    this.myUserData.name = this.createForm.value.first_name;
-    this.myUserData.last_name = this.createForm.value.last_name;
     this.dataService
       .registerUser(this.myUserData)
       .subscribe(res => this.manageForms(true, false, false));

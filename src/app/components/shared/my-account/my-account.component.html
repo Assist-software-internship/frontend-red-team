@@ -57,50 +57,23 @@
     <!--Courses started-->
   </div>
     <h2>Started Courses</h2>
-  <div class="info-container">
-    <div>
+
+
+
+
+  <div class="info-container" *ngFor="let item of course;let i = index">
     <button type="button" name="cancel-cours" class="cancel-cours">X</button>
       <div class="redirect" routerLink="/courses">
-            <img src="assets/advertising.png" alt="" width="100" height="100" class="img-cours">
-
-          <h4>Internet Banner Advertising Most Reliable Forms Of Web Advertising</h4>
-          <p class="info-cours-1">In order to discuss the general function of the logo, we must firstly identify and define the environment where this have to fulfill its function.</p>
+            <img src={{item.images}} alt="" width="100" height="100" class="edit-Image">
+          <h4>{{item.small_description}}</h4>
+          <p class="info-cours">{{item.long_description}}</p>
           <p class="points-1">120</p>
           <p class="points-2">points</p>
-          <div class="progress-bar progress-bar-succes" role="progressbar "
+          <div class="progress-bar" role="progressbar "
                aria-valuemin="0" aria-valuemax="150" style="width:80%" >
           </div>
       </div>
-    </div>
   </div>
-  <div class="info-container">
-    <input type="submit" name="cancel-cours" class="cancel-cours" value="X">
-      <img src="assets/images.jpeg" alt="" width="100" height="100" class="img-cours">
-      <h4>Internet Banner Advertising Most Reliable Forms Of Web Advertising</h4>
-      <p class="info-cours-1">In order to discuss the general function of the logo, we must firstly identify and define the environment where this have to fulfill its function.</p>
-      <p class="points-1">90</p>
-      <p class="points-2">points</p>
-      <div class="progress-bar progress-bar-warning" role="progressbar"
-           aria-valuemin="0" aria-valuemax="150" style="width:50%">
-        <span class="sr-only">100% Complete</span>
-      </div>
-  </div>
-
-  <div class="info-container">
-    <input type="submit" name="cancel-cours" class="cancel-cours" value="X">
-      <img src="assets/images.png" alt="" width="100" height="100" class="img-cours">
-      <h4>Internet Banner Advertising Most Reliable Forms Of Web Advertising</h4>
-      <p class="info-cours-1">In order to discuss the general function of the logo, we must firstly identify and define the environment where this have to fulfill its function.</p>
-      <p class="points-1">30</p>
-      <p class="points-2">points</p>
-      <div class="progress-bar progress-bar-danger" role="progressbar"
-           aria-valuemin="0" aria-valuemax="150" style="width:20%">
-        <span class="sr-only">100% Complete</span>
-      </div>
-  </div>
-
-
-
 </div>
 <app-footer></app-footer>
 

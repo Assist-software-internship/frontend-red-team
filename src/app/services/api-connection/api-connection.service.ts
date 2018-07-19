@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { User } from '../../shared/user interface/user';
+import {Course, User} from '../../shared/user interface/user';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -29,5 +29,9 @@ export class ApiConnectionService {
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:3000/users');
+  }
+
+  getAllCourse(): Observable<Course[]> {
+    return this.http.get<Course[]>('http://localhost:3000/course');
   }
 }

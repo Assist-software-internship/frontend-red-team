@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <!-- login page -->
   <div class="container content" *ngIf="loginContent">
     <div class="left-side">
       <p class="banner-title" >Welcome back</p>
@@ -8,19 +9,34 @@
       <form (ngSubmit)="onSignin()" #login="ngForm" >
         <div class="row">
           <div class="col-sm-10">
-            <input type="email" name="email_log" id="email_log" class="rectangle form-control" placeholder="email address" ngModel required email #email="ngModel">
+            <input type="email"
+            name="email_log"
+            id="email_log"
+            class="rectangle form-control"
+            placeholder="email address"
+            ngModel
+            required
+            email
+            #email="ngModel">
             <span class="help-block" *ngIf="!email.valid && email.touched " style="color: white">Please enter a valid email!</span>
           </div>
         </div>
        <div class="row">
         <div class="col-sm-10">
-          <input type="password" name="password_log" id="password_log" class="rectangle sec-rectangle form-control space-between" placeholder="••••••••••" ngModel required #pass="ngModel" >
+          <input type="password"
+          name="password_log"
+          id="password_log"
+          class="rectangle sec-rectangle form-control space-between"
+          placeholder="••••••••••"
+          ngModel
+          required
+          #pass="ngModel" >
           <span class="help-block" *ngIf="! pass.valid &&  pass.touched " style="color: white">Please enter a valid password!</span>
         </div>
        </div>
        <div class="row">
         <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary form-control sign-btn">SIGN IN</button>
+          <button type="submit" class="btn btn-primary form-control sign-btn" [disabled]="!login.valid" >SIGN IN</button>
           <p class="forgot">Forgot password? <a (click)="manageForms(false, false, true)" >Reset it</a> </p>
         </div>
        </div>
@@ -34,7 +50,7 @@
 
   <!--  forget password -->
 
-  <div class="container content" *ngIf="resetContent" >
+  <div class="container content" *ngIf="resetContent">
       <div class="left-side">
         <p class="banner-title" >Your're sorry</p>
         <p class="login-to">Let's reset your password</p>
@@ -43,26 +59,49 @@
         <form (ngSubmit)="onReset()" #reset="ngForm" >
           <div class="row">
             <div class="col-sm-10">
-              <input type="password" name="new_password" id="new_password" class="rectangle form-control" placeholder="new password " ngModel required #new_pass="ngModel">
+              <input type="password"
+              name="new_password"
+              id="new_password"
+              class="rectangle form-control"
+              placeholder="new password "
+              ngModel
+              required
+              #new_pass="ngModel">
               <span class="help-block" *ngIf="!new_pass.valid && new_pass.touched " style="color: white">Please enter a new password!</span>
             </div>
           </div>
          <div class="row">
           <div class="col-sm-10">
-            <input type="password" name="confirm_password" id="confirm_password" class="rectangle sec-rectangle form-control space-between" placeholder="confirm_password" ngModel required #confirm_pass="ngModel" >
+            <input type="password"
+            name="confirm_password"
+            id="confirm_password"
+            class="rectangle sec-rectangle form-control space-between"
+            placeholder="confirm_password"
+            ngModel
+            required
+            #confirm_pass="ngModel" >
             <span class="help-block" *ngIf="! confirm_pass.valid &&  confirm_pass.touched " style="color: white">Please enter same password!</span>
           </div>
          </div>
          <div class="row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary form-control sign-btn">RESET PASSWORD</button>
+            <button type="submit" class="btn btn-primary form-control sign-btn" [disabled]="!reset.valid" >RESET PASSWORD</button>
           </div>
          </div>
          <div class="row">
-           <input type="checkbox" name="agree" id="agree" class="agree" ngModel >
+           <input type="checkbox"
+           name="agree"
+           id="agree"
+           class="agree"
+           ngModel
+           required >
            <label class="terms" >I agree with Terms & Conditions</label>
          </div>
         </form>
+      </div>
+      <div class="to-sign-up">
+        <p class="text-account">You don't want to reset password?</p>
+        <button type="submit" class="btn btn-primary  sign-up" (click)="manageForms(true,false,false)">Login</button>
       </div>
     </div>
 
@@ -77,38 +116,76 @@
           <form (ngSubmit)="registerUser()" #create="ngForm" >
             <div class="row">
               <div class="col-sm-10">
-                <input type="text" name="first_name" id="first_name" class="rectangle form-control" placeholder="first name " ngModel required #first_name="ngModel">
-                <span class="help-block" *ngIf="!first_name.valid && first_name.touched " style="color: white">Please enter first name!</span>
+                <input type="text"
+                name="first_name"
+                id="first_name"
+                class="rectangle form-control"
+                placeholder="first name "
+                [(ngModel)]="myUserData.name"
+                required
+                #first_name="ngModel"
+                pattern="[a-zA-Z ]*">
+                <span class="help-block" *ngIf="!first_name.valid && first_name.touched " style="color: white">First name must contains just caracters!</span>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-10">
-                <input type="text" name="last_name" id="last_name" class="rectangle form-control space-between " placeholder="last name" ngModel required #last_name="ngModel">
-                <span class="help-block" *ngIf="!last_name.valid && last_name.touched " style="color: white">Please enter last name!</span>
+                <input type="text"
+                name="last_name"
+                id="last_name"
+                class="rectangle form-control space-between "
+                placeholder="last name"
+                [(ngModel)]="myUserData.last_name"
+                required
+                #last_name="ngModel"
+                pattern="[a-zA-Z ]*">
+                <span class="help-block" *ngIf="!last_name.valid && last_name.touched " style="color: white">Last name must contains just caracters!!</span>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-10">changeSignup
-                <input type="email" name="email_register" id="email_register" class="rectangle form-control space-between " placeholder="email" ngModel required #email_register="ngModel" email>
+              <div class="col-sm-10">
+                <input type="email"
+                name="email_register"
+                id="email_register"
+                class="rectangle form-control space-between "
+                placeholder="email"
+                [(ngModel)]="myUserData.email"
+                required
+                #email_register="ngModel"
+                email>
                 <span class="help-block" *ngIf="!email_register.valid && email_register.touched " style="color: white">Please enter a valid email!</span>
               </div>
             </div>
            <div class="row">
             <div class="col-sm-10">
-              <input type="password" name="password_register" id="password_register" class="rectangle sec-rectangle form-control space-between " placeholder="••••••••••" ngModel required #password_register="ngModel" >
-              <span class="help-block" *ngIf="! password_register.valid &&  password_register.touched " style="color: white">Please enter a password!</span>
+              <input type="password"
+              name="password_register"
+              id="password_register"
+              class="rectangle sec-rectangle form-control space-between "
+              placeholder="••••••••••"
+              [(ngModel)]="myUserData.password"
+              required
+              minlength=8
+              #password_register="ngModel" >
+              <span class="help-block" *ngIf="! password_register.valid &&  password_register.touched " style="color: white">Please enter the required password!</span>
+
             </div>
            </div>
            <div class="row">
             <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary form-control sign-btn">CREATE ACCOUNT</button>
+              <button type="submit" class="btn btn-primary form-control sign-btn" [disabled]="!create.valid" >CREATE ACCOUNT</button>
             </div>
            </div>
            <div class="row">
-             <input type="checkbox" name="agree" id="agree_terms" class="agree" ngModel >
+             <input type="checkbox" name="agree" id="agree_terms" class="agree" ngModel required >
              <label class="terms" >I agree with Terms & Conditions</label>
            </div>
           </form>
+        </div>
+        <!-- text to login page -->
+        <div class="to-sign-up">
+          <p class="text-account">You have already an account?</p>
+          <button type="submit" class="btn btn-primary  sign-up" (click)="manageForms(true,false,false)" >Login</button>
         </div>
       </div>
 </div>
