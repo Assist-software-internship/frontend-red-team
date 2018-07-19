@@ -27,9 +27,9 @@ export class AppSettingService {
   }
 
   public getJSON(): Observable<any> {
-    return this.http.get('./frontend-red-team/db.json')
-      .name((res: any) => res.json())
-      .catch((error: any) => console.log(error));
+    return this.http.get('./frontend-red-team/db.json');
+      // .name((res: any) => res.json())
+      // .catch((error: any) => console.log(error));
   }
 }
 
