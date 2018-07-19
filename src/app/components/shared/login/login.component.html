@@ -7,8 +7,8 @@
     </div>
     <div class="right-side">
       <form (ngSubmit)="loginUser()" #login="ngForm" >
-        <div class="row">
-          <div class="col-sm-10">
+        <span class="help-block"  style="color: white"> {{message}}</span>
+        <div class="message_content"> 
             <input type="email" 
             name="email_log" 
             id="email_log" 
@@ -17,13 +17,11 @@
             [(ngModel)]="logUser.email" 
             required 
             email 
-            #email="ngModel">
-            <span class="help-block" *ngIf="!email.valid && email.touched " style="color: white">Please enter a valid email! {{message}}</span>
-            <span class="help-block"  style="color: white"> {{message}}</span>
-          </div>
+            #email="ngModel"
+            >
+            <span class="error_message" *ngIf="!email.valid && email.touched " style="color: white">Please enter a email address!</span>
         </div>
-       <div class="row">
-        <div class="col-sm-10">
+        <div class="message_content">
           <input type="password" 
           name="password_log" 
           id="password_log" 
@@ -31,10 +29,9 @@
           placeholder="••••••••••" 
           [(ngModel)]="logUser.password" 
           required 
-          #pass="ngModel" >
-          <span class="help-block" *ngIf="! pass.valid &&  pass.touched " style="color: white">Please enter a valid password!</span>
+          #pass="ngModel">
+          <span class="error_message" *ngIf="! pass.valid &&  pass.touched " style="color: white">Please enter a password!</span>
         </div>
-       </div>
        <div class="row">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-primary form-control sign-btn" [disabled]="!login.valid" >SIGN IN</button>
@@ -49,7 +46,7 @@
     </div>
   </div>
   
-  <!--  forget password -->
+  <!--  reset password -->
 
   <div class="container content" *ngIf="resetContent">
       <div class="left-side">
@@ -58,8 +55,7 @@
       </div>
       <div class="right-side">
         <form (ngSubmit)="onReset()" #reset="ngForm" >
-          <div class="row">
-            <div class="col-sm-10">
+            <div class="message_content">
               <input type="password" 
               name="new_password" 
               id="new_password" 
@@ -68,22 +64,19 @@
               ngModel 
               required 
               #new_pass="ngModel">
-              <span class="help-block" *ngIf="!new_pass.valid && new_pass.touched " style="color: white">Please enter a new password!</span>
+              <span class="error_message" *ngIf="!new_pass.valid && new_pass.touched " style="color: white">Enter a new password!</span>
             </div>
-          </div>
-         <div class="row">
-          <div class="col-sm-10">
+          <div class="message_content">
             <input type="password" 
             name="confirm_password" 
             id="confirm_password" 
             class="rectangle sec-rectangle form-control space-between" 
-            placeholder="confirm_password" 
+            placeholder="confirm password" 
             ngModel 
             required 
             #confirm_pass="ngModel" >
-            <span class="help-block" *ngIf="! confirm_pass.valid &&  confirm_pass.touched " style="color: white">Please enter same password!</span>
+            <span class="error_message" *ngIf="! confirm_pass.valid &&  confirm_pass.touched " style="color: white">Enter the confirm password!</span>
           </div>
-         </div>
          <div class="row">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary form-control sign-btn" [disabled]="!reset.valid" >RESET PASSWORD</button>
@@ -115,50 +108,43 @@
         </div>
         <div class="right-side">
           <form (ngSubmit)="registerUser()" #create="ngForm" >
-            <div class="row">
-              <div class="col-sm-10">
-                <input type="text" 
-                name="first_name" 
-                id="first_name" 
-                class="rectangle form-control" 
-                placeholder="first name " 
-                [(ngModel)]="myUserData.name" 
-                required 
-                #first_name="ngModel"
-                pattern="[a-zA-Z ]*">
-                <span class="help-block" *ngIf="!first_name.valid && first_name.touched " style="color: white">First name must contains just caracters!</span>
-              </div>
+            <div class="message_content">
+              <input type="text" 
+              name="first_name" 
+              id="first_name" 
+              class="rectangle form-control" 
+              placeholder="first name " 
+              [(ngModel)]="myUserData.name" 
+              required 
+              #first_name="ngModel"
+              pattern="[a-zA-Z ]*">
+              <span class="error_message" *ngIf="!first_name.valid && first_name.touched " style="color: white">Please enter just caracters!</span>
             </div>
-            <div class="row">
-              <div class="col-sm-10">
-                <input type="text" 
-                name="last_name" 
-                id="last_name" 
-                class="rectangle form-control space-between " 
-                placeholder="last name" 
-                [(ngModel)]="myUserData.last_name" 
-                required 
-                #last_name="ngModel"
-                pattern="[a-zA-Z ]*">
-                <span class="help-block" *ngIf="!last_name.valid && last_name.touched " style="color: white">Last name must contains just caracters!!</span>
-              </div>
+            <div class="message_content">
+              <input type="text" 
+              name="last_name" 
+              id="last_name" 
+              class="rectangle form-control space-between " 
+              placeholder="last name" 
+              [(ngModel)]="myUserData.last_name" 
+              required 
+              #last_name="ngModel"
+              pattern="[a-zA-Z ]*">
+              <span class="error_message" *ngIf="!last_name.valid && last_name.touched " style="color: white">Please enter just caracters!!</span>
             </div>
-            <div class="row">
-              <div class="col-sm-10">
-                <input type="email" 
-                name="email_register" 
-                id="email_register" 
-                class="rectangle form-control space-between " 
-                placeholder="email" 
-                [(ngModel)]="myUserData.email" 
-                required 
-                #email_register="ngModel" 
-                email>
-                <span class="help-block" *ngIf="!email_register.valid && email_register.touched " style="color: white">Please enter a valid email!</span>
-              </div>
+            <div class="message_content">
+              <input type="email" 
+              name="email_register" 
+              id="email_register" 
+              class="rectangle form-control space-between " 
+              placeholder="email" 
+              [(ngModel)]="myUserData.email" 
+              required 
+              #email_register="ngModel" 
+              email>
+              <span class="error_message" *ngIf="!email_register.valid && email_register.touched " style="color: white">Please enter a email address!</span>
             </div>
-           <div class="row">
-            <div class="col-sm-10">
+            <div class="message_content">
               <input type="password" 
               name="password_register" 
               id="password_register" 
@@ -166,12 +152,10 @@
               placeholder="••••••••••" 
               [(ngModel)]="myUserData.password" 
               required
-              minlength=8 
+              pattern="[/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[_!@#\$%\^&\*])(?=.{8,})/]"
               #password_register="ngModel" >
-              <span class="help-block" *ngIf="! password_register.valid &&  password_register.touched " style="color: white">Please enter the required password!</span>
-              
+              <span class="error_message" *ngIf="! password_register.valid &&  password_register.touched " style="color: white">Please enter a password!</span>
             </div>
-           </div>
            <div class="row">
             <div class="col-sm-10">
               <button type="submit" class="btn btn-primary form-control sign-btn" [disabled]="!create.valid" >CREATE ACCOUNT</button>

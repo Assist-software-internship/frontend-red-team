@@ -13,7 +13,7 @@ const httpOptions = {
 const Api = {
   base: 'http://localhost:3000/',
   users: 'users',
-  course: ''
+  course: 'course'
 }
 @Injectable({
   providedIn: 'root'
@@ -48,4 +48,5 @@ export class ApiConnectionService {
   getUserById(id: Number): Observable<User> {
     return this.http.get<User>(Api.base+ Api.users + `?id=${id}`);
   }
+  
 }

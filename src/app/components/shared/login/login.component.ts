@@ -14,22 +14,10 @@ export class LoginComponent implements OnInit {
   @ViewChild('reset') resetForm: NgForm;
   @ViewChild('create') createForm: NgForm;
 
-  private users: User[];
-  email_log = '';
-  password_log = '';
-  // public myUserData: User = {
-  //   active: 1,
-  //   name: '',
-  //   last_name: '',
-  //   email: '',
-  //   password: '',
-  // };
 
   public myUserData: User = new User();
   public logUser: User = new User();
   public message: String;
-  //to be removed
-  public user:User = new User();
 
   constructor(private dataService: ApiConnectionService, private router:Router) { }
 
@@ -38,32 +26,11 @@ export class LoginComponent implements OnInit {
   public registerContent = false;
 
   ngOnInit() {
-    // this.getAllUsers();
-    
-    this.getUserProfile();
+   
   }
   
   onReset(){
 
-  }
-  onSignin( ){
-    this.getAllUsers();
-  }
-
-  // nu ii bun
-  getAllUsers() {
-    this.dataService.getAllUsers().subscribe(res => {
-      this.users = res;
-      for(let i=0; i<=this.users.length; i++){
-        if(this.users[i].email === this.logUser.email && this.users[i].password === this.logUser.password){
-          console.log('merge');
-          this.router.navigate(['/dashboard']);
-        }
-        else{
-          console.log('crapa');
-        }
-      }
-    });
   }
 
   manageForms(login:boolean, register: boolean, reset: boolean ): void {
@@ -86,18 +53,9 @@ export class LoginComponent implements OnInit {
         console.log('User is now logged in');
         this.router.navigate(['/dashboard']);
       } else {
-        this.message = 'User invalid!'
+        this.message = 'Email or password are incorrect!'
         console.log('User not found.');
-        
       }
-      
     })
   };
-
-  getUserProfile(): void {
-    this.dataService.getUserById(1).subscribe(res => {
-      this.user = res;
-      console.log('logged user ', this.user)
-    })
-  }
 }
