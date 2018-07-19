@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private dataService: ApiConnectionService, private router:Router) { }
 
+
   public loginContent = true;
   public resetContent = false;
   public registerContent = false;
@@ -28,22 +29,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
    
   }
-  
-  onReset(){
 
-  }
+  onReset() {}
 
-  manageForms(login:boolean, register: boolean, reset: boolean ): void {
+
+  manageForms(login: boolean, register: boolean, reset: boolean ): void {
     this.loginContent = login;
     this.registerContent = register;
     this.resetContent = reset;
-    
-  };
+  }
 
   registerUser() {
     this.dataService
       .registerUser(this.myUserData)
-      .subscribe(res => this.manageForms(true,false,false));
+      .subscribe(res => this.manageForms(true, false, false));
   }
 
   loginUser(): void {

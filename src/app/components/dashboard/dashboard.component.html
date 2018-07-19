@@ -1,9 +1,69 @@
 <!--
   This is the main component displayed to ther user. It is linked to the 'courses'
-  page in the navigation bar. It contains some components, including the list of 
+  page in the navigation bar. It contains some components, including the list of
   courses categories. Every category links to the courses list, by category.
   Categories can be searched through, and there's a link to display more categories.
 -->
-<p>
-  dashboard works!
-</p>
+<div id="wrapper">
+<app-page-header></app-page-header>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+<div class="container_allusers">
+  <div class="descList">
+    <span style="margin-left:140px;">basic info</span>
+    <span style="margin-left:70px;">total score</span>
+    <span>tags</span>
+    <span>date created</span>
+  </div>
+  <ul class="users-list">
+    <li>
+      <input type="checkbox">
+      <img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic">
+      <p class="name">Marcus David <span class="useremail">username@gmail.com</span></p>
+      <span class="score">12,2500</span>
+      <div id="tags">
+        <span class="tag">happy tag</span>
+        <span class="tag">another tag</span>
+      </div>
+      <span class="datecreated">25-oct-2018</span>
+      <span class="opt"><a (click)="alertme()" style="cursor: pointer;"><i class="fas fa-ellipsis-h"></i></a>
+        <div [hidden]="false" class="editUser">
+          <ul>
+            <li><i class="far fa-edit"></i>Edit</li>
+            <li><i class="far fa-trash-alt"></i>Delete</li>
+            <li><i class="fas fa-key"></i>Make and administrator</li>
+          </ul>
+        </div>
+      
+      </span>
+    </li>
+
+    <li><br>
+      <input type="checkbox">
+      <img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic">
+      <p class="name">Marcus David <span class="useremail">username@gmail.com</span></p>
+      <span class="score">12,2500</span>
+      <div id="tags">
+        <span class="tag">happy tag</span>
+        <span class="tag">another tag</span>
+      </div>
+      <span class="datecreated">25-oct-2018</span>
+      <span class="opt"><a href="#"><i class="fas fa-ellipsis-h"></i></a></span>
+    </li>
+
+    <li>
+      <input type="checkbox">
+      <img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic">
+      <p class="name">Marcus David <span class="useremail">username@gmail.com</span></p>
+      <span class="score">12,2500</span>
+      <div id="tags">
+        <span class="tag">happy tag</span>
+        <span class="tag">another tag</span>
+      </div>
+      <span class="datecreated">25-oct-2018</span>
+      <span class="opt"><a href="#"><i class="fas fa-ellipsis-h"></i></a></span>
+    </li>
+  </ul>
+
+</div>
+<app-footer></app-footer>
+</div>

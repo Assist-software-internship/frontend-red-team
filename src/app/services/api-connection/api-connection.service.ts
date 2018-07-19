@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { User } from '../../shared/user interface/user';
-
+import { User} from '../../shared/user interface/user';
+import {Course} from '../../shared/course';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -48,5 +48,12 @@ export class ApiConnectionService {
   getUserById(id: Number): Observable<User> {
     return this.http.get<User>(Api.base+ Api.users + `?id=${id}`);
   }
-  
+
+  updateUser(id: Number, userData: User): Observable<User> {
+    return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
+  }
+
+  getAllCourse(): Observable<Course[]> {
+    return this.http.get<Course[]>(Api.base + Api.course);
+  }
 }

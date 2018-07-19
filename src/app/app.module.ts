@@ -16,9 +16,12 @@ import { ChapterListComponent } from './components/shared/chapter-list/chapter-l
 import { MyAccountComponent } from './components/shared/my-account/my-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { ApiConnectionService } from './services/api-connection/api-connection.service';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +30,7 @@ const routes: Routes = [
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CourseListComponent },
+ // { path: 'logout', component: LogoutComponent},
   {
     path: 'courses/:id',
     component: ChapterListComponent
@@ -35,7 +39,7 @@ const routes: Routes = [
     path: 'courses/:courseId/:chapterId',
     component: ChapterQuestionsComponent
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
@@ -51,7 +55,8 @@ const routes: Routes = [
     ChapterListComponent,
     MyAccountComponent,
     DashboardComponent,
-    ChapterQuestionsComponent
+    ChapterQuestionsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
