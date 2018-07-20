@@ -7,14 +7,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  title = 'app works';
+  listCategory = ['Astrology', 'Finance' , 'Grammar', 'Fun Facts', 'Jokes', 'Life Hacks']
+  public categoryTitle: string;
+  public categorySubtitle: string;
+  constructor() {
+    this.categoryTitle = 'Browse through best learning courses for Alexa';
+    this.categorySubtitle = 'Pick the one you like and start learning';
+   }
 
-  alertme(){
-    alert();
-  }
-
-
-  constructor() { }
 
   ngOnInit() {
     

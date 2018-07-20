@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiConnectionService } from './services/api-connection/api-connection.service';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { CourseComponent } from './components/admin/course/course.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
@@ -18,21 +20,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 
-import { HttpClientModule } from '@angular/common/http';
-
-import { ApiConnectionService } from './services/api-connection/api-connection.service';
-
-
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'account', component: MyAccountComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
+
   { path: 'courses', component: CourseListComponent },
  // { path: 'logout', component: LogoutComponent},
   {
-    path: 'courses/:id',
+    path: 'courses/:courseId',
     component: ChapterListComponent
   },
   {
@@ -56,7 +54,7 @@ const routes: Routes = [
     MyAccountComponent,
     DashboardComponent,
     ChapterQuestionsComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
