@@ -44,13 +44,13 @@
     line-height: 14px;
     text-transform: uppercase;
     display: inline-flex;
-    margin-left: 34px;
+    margin-left: 31px;
 }
 
 .descList{
     text-align: center;
     margin-top: 122px;
-    margin-left: 0px;
+    margin-left: -28px;
 }
 
 input[type=checkbox]:checked {
@@ -121,7 +121,7 @@ input[type=checkbox]:checked:after {
 
 .users-list .useremail{
     height: 14px;	width: 121px;	color: #AEB5BB;	font-size: 14px;	line-height: 14px;
-    font-weight: 100;
+    font-weight: 100;display: flex;
 }
 
 .score{
@@ -143,8 +143,11 @@ input[type=checkbox]:checked:after {
     font-size: 12px;	
     line-height: 22px;
     text-align: center;
-    padding: 6px;
+    padding: 6px 10px 4px 6px;
     margin-left:10px;
+}
+.tag i {
+    margin-right:3px;
 }
 .datecreated{
     text-transform: uppercase;
@@ -169,6 +172,7 @@ input[type=checkbox]:checked:after {
     color:#FFF; 
     font-size:10px;
     z-index: 1;
+    margin-left:-136px;
 }
 
 .fa-ellipsis-h{

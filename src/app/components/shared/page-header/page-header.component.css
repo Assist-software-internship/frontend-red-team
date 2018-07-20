@@ -3,14 +3,10 @@
     padding: 27px 70px 0 120px;
 }
 
-.container li a {
+li a {
     font-weight: 200;
-    background-color: #f8f8f8;
-    border-color: #e7e7e7;
-    height: 70px;
     color: #00217A;
-    font-size: 16px;	
-    line-height: 19px;
+    font-size: 16px;	 
 }
 
 .profilePic{
@@ -22,7 +18,7 @@
     cursor: pointer;
 }
 
-.logoPic{margin-top: -10px;margin-left:254px;}
+a{color:#00217A;text-decoration: none;}
 
 .navbar li :hover{
     color: #00217A;
@@ -31,9 +27,9 @@
 .active{
     border-bottom: 2px solid #006FFF;
     color: #00217A;	
-	
-    font-weight: bold;
+
 }
+.active a {    font-weight: bold;}
 
 #navbar{
     height: 100px;
@@ -50,11 +46,8 @@
     display: inline-flex;
 }
 
-.pages li {
-    line-height: 109px;   
-    width:50px; 
-    margin-left: 34px;
-}
+
+
 
 .pages li a{
     margin-right:10px;
@@ -63,13 +56,11 @@
     color: #00217A;	
     font-size: 16px;
     margin-right: 21px;
-
+    
     height: 100px;
 }
 
-.active{
-    font-weight: bold;
-}
+.logoPic{margin-top: -10px;}
 
 .profile{
     list-style: none;
@@ -79,6 +70,7 @@
     margin-left:60px;
     height: 80px;
     align-items: center;
+    margin-top: 14px;
 }
 
 .profile li a{
@@ -90,15 +82,34 @@
 }
 
 #right{
+ 
+    display: flex;
+    align-items: center;
+
+}
+
+.pages li {
+    line-height: 93px;
+    width: 50px;
+    margin-left: 34px;
+    padding-top: 13px;
+    color:#00217A;
+}
+
+#right{
     float: right;
     display: flex;
     align-items: center;
-    margin-right: 239px;
 }
 
-@media only screen and (max-width: 1159px) {
+@media only screen and (min-width: 1000px) {
    .profile li:nth-child(2) {
-    width: 134px;
-   }
+         width: 134px;
+    }
 
+   .logoPic{margin-left:254px;}
+
+   #right{
+        margin-right: 239px;
+    }
 }
