@@ -152,6 +152,8 @@ p {
   margin-top: 50px;
   margin-left: 1000px;
   text-align: center;
+  margin-right: 300px;
+  position: relative;
   height: 30px;
   width: 70px;
   cursor: pointer;

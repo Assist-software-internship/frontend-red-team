@@ -30,9 +30,6 @@ export class LoginComponent implements OnInit {
   public registerContent = false;
 
   ngOnInit() {
-    // this.getAllUsers();
-    
-    //this.getUserProfile();
   }
 
   onReset(){
@@ -65,11 +62,4 @@ export class LoginComponent implements OnInit {
       
     })
   };
-
-  // getUserProfile(): void {
-  //   this.dataService.getUserById(1).subscribe(res => {
-  //     this.user = res;
-  //     console.log('logged user ', this.user)
-  //   })
-  // }
 }

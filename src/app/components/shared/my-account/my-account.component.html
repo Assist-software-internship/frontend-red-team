@@ -8,7 +8,7 @@
     <p>Here you can edit your account`s informations, courses you started and the progress for each one.Contact us at contact@alexteachme.com, if you need any help.</p>
 
     <!--<input type="submit" name="logout" id="logout" value="Log Out">-->
-    <button type="button" onclick="onLogOut()" id="logout">Log out</button>
+    <button type="button" (click)="onLogOut()" id="logout">Log out</button>
 
     <p></p>
 </div>
@@ -29,28 +29,32 @@
           class="upload-file"
           #fileInput>
         <button type="button" (click)='fileInput.click()' class="upload-file">Upload file</button>
-      <!--Change username-->
+      <!--Update user & password & email-->
         <div class="username">
             <input type="text" name="username" id="username" [(ngModel)]="user.name">
         </div>
-     <!--Change  password-->
+
         <div class="password">
            <input *ngIf="!showPassword" type="password" name="password" id="password" [(ngModel)]="user.password">
            <input *ngIf="showPassword" type="text" name="password" id="password" [(ngModel)]="user.password">
-           <button (click)="toggleShowPassword()" class="showPassword"><i class="fa" class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}}"></i> </button>
+           <button (click)="toggleShowPassword()"
+                    class="showPassword"><i 
+                    class="fa" 
+                    class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}}"></i> </button>
         </div>
-      <!--Change email-->
+
         <div class="email">
             <input type="text" name="email" id="email" [(ngModel)]="user.email">
         </div>
-      <!--Save changes-->
+      <!--Update Button -->
         <div class="save">
             <button type="button" name="save" id="save" (click) = "updateUserProfile()">Save</button>
-            <input type="submit" name="save" id="save" value="Save">
         </div>
-      <!--Cancel changes-->
+      <!--Reset datas to the old one-->
         <div class="cancel">
-            <input type="submit" name="cancel" id="cancel" value="Cancel">
+            <button type="button" name="cancel" id="cancel" (click)="getUserProfile(user.name);
+                                                                    getUserProfile(user.password);
+                                                                    getUserProfile(user.email)">Cancel</button>
         </div>
         <hr class="line">
     <!--Courses started-->

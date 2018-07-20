@@ -19,6 +19,7 @@ export class MyAccountComponent implements OnInit {
   @Output()
   public user: User = new User();
   public showPassword = false;
+  public logUser: User = new User();
 
   constructor(private dataService: ApiConnectionService, private router: Router) {
   }
@@ -26,13 +27,24 @@ export class MyAccountComponent implements OnInit {
   
     ngOnInit() {
      this.getAllCourses();
-    //  this.showPassword = false;
     }
 
     ngAfterViewInit() {
       this.getUserProfile();
 
     }
+
+    onLogOut() {
+      localStorage.removeItem('id');
+      this.router.navigate(['/login']);
+    }
+
+    loginUser(): void {
+      this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
+        this.user = res[0];
+        localStorage.setItem('id', JSON.stringify(1));
+      })
+    };
 
     getUserProfile(): void {
       this.dataService.getUserById(parseInt(localStorage.getItem('id'))).subscribe(res => {
@@ -54,8 +66,6 @@ export class MyAccountComponent implements OnInit {
       });
     }
     toggleShowPassword(){
-      console.log('aaa');
-        // this.showPassword = true;
         this.showPassword === false ? this.showPassword = true : this.showPassword = false;
     }
 }
