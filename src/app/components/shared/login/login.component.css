@@ -113,3 +113,17 @@ input.ng-invalid.ng-touched{
   width: 65px;
   margin-top: 17px;
 }
+
+.showPassword{
+  background: transparent;
+  border: 0px;
+  outline: 0px;
+  right: 15px;
+  top: 10px;
+  }
+
+  .style-eye{
+    margin-left: -45px;
+    color: #AEB5BB;
+    margin-top: 2px;
+  }

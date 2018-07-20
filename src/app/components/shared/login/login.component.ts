@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('reset') resetForm: NgForm;
   @ViewChild('create') createForm: NgForm;
 
-
+  showPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
   public message: String;
@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
 
   onReset() {}
 
+  toggleShowPassword(){
+    this.showPassword === false ? this.showPassword = true : this.showPassword = false;
+    }
 
   manageForms(login: boolean, register: boolean, reset: boolean ): void {
     this.loginContent = login;
@@ -50,6 +53,7 @@ export class LoginComponent implements OnInit {
       console.log('response ', res);
       if(res.length > 0) {
         console.log('User is now logged in');
+        localStorage.setItem('id', res[0].id.toString());
         this.router.navigate(['/dashboard']);
       } else {
         this.message = 'Email or password are incorrect!'

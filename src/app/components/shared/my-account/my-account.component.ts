@@ -22,7 +22,7 @@ export class MyAccountComponent implements OnInit {
   constructor(private dataService: ApiConnectionService, private router: Router) {
   }
 
-  
+  localStorage
     ngOnInit() {
      this.getAllCourses();
     }
