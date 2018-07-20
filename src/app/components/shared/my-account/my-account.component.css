@@ -1,7 +1,16 @@
-.container{
-    background-color: #F6FAFC;
-    padding: 27px 70px 18px 120px;
-    width: 1440px;
+.container_myacc{
+  min-width: 1000px;
+  margin: 0 auto;
+  padding-top: 64px;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 59px;
+  background-color: #F6FAFC;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .my-account{
   width: 1440px;

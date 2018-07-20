@@ -15,12 +15,9 @@ export class LoginComponent implements OnInit {
   @ViewChild('create') createForm: NgForm;
 
 
-
   public myUserData: User = new User();
   public logUser: User = new User();
   public message: String;
-  //to be removed
-  //public user:User = new User();
 
   constructor(private dataService: ApiConnectionService, private router:Router) { }
 
@@ -30,11 +27,11 @@ export class LoginComponent implements OnInit {
   public registerContent = false;
 
   ngOnInit() {
+   
   }
 
-  onReset(){
+  onReset() {}
 
-  }
 
   manageForms(login: boolean, register: boolean, reset: boolean ): void {
     this.loginContent = login;
@@ -55,11 +52,9 @@ export class LoginComponent implements OnInit {
         console.log('User is now logged in');
         this.router.navigate(['/dashboard']);
       } else {
-        this.message = 'User invalid!'
+        this.message = 'Email or password are incorrect!'
         console.log('User not found.');
-        
       }
-      
     })
   };
 }

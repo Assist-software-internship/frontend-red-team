@@ -55,6 +55,14 @@
       "email": "test@test.com",
       "password": "test",
       "id": 7
+    },
+    {
+      "active": 1,
+      "name": "mihai",
+      "last_name": "ion",
+      "email": "mihai@ion.com",
+      "password": "parola12",
+      "id": 8
     }
   ],
   "course": [
