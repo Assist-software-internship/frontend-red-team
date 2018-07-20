@@ -4,25 +4,13 @@
     width: 88%;
   }
   
-  /* #wrapper {
-    min-height: 100% !important;
-    position: relative;
-    padding-bottom: 59px;
-    background-color: #F6FAFC;
-    max-width: 1440px;
-    margin: 0 auto;
-    min-width: 1002px;
-  } */
-  
-  
-  .category_content{
-      width: 60%;
-      margin: auto;
-      height: 350px;
-      margin-top: -47px;
-      background-color: #FFF;
-      border-radius: 5px;
-  }
+.category_content{
+  margin-top: -45px;
+  height: 80px;
+  background: #FFF;
+  padding: 15px;
+  border: 1px solid red;
+}
   .search_content{
     display: flex;
     padding-top: 30px;
@@ -30,7 +18,7 @@
     padding-bottom: 110px;
   }
   .search_input{
-    width: 70%;
+    width: 100%;
     background-color: #EFF1F4;
     border: none;
     outline: 0;

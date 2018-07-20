@@ -7,7 +7,22 @@
 <app-page-header></app-page-header>
 <div class="container_cat" >
   <app-hero [title]="categoryTitle" [subtitle]="categorySubtitle" ></app-hero>
-  <div class="category_content">
+ 
+ <div class="container">
+    <div class=" col-md-6 col-md-offset-3 category_content">
+      <div class="row">
+        <div class="col-md-8">
+          <input type="text" name="" id="" class="search_input" placeholder="search here..."  >
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary" >Search</button>
+        </div>
+      </div>
+   </div>
+ </div>
+ 
+ 
+  <!-- <div class="category_content">
     <div class="search_content">
       <input type="text" name="" id="" class=" search_input" placeholder="search here..." >
       <button type="submit" class="btn-search" >SEARCH</button>
@@ -21,5 +36,5 @@
     <div class="discover_content">
       <button type="submit" class="btn-discover" >Discover more</button>
     </div>
-  </div>
+  </div> -->
 </div>
