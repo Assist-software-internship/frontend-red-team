@@ -1,78 +1,115 @@
 .container_cat{
     background-color: #F6FAFC;
-    padding: 27px 70px 18px 120px;
-    width: 88%;
+    padding: 0 0 18px 0;
+    width: 100%;
   }
-  
+  /* modified */
+.margin-item{
+  padding-top: 170px;
+}
 .category_content{
   margin-top: -45px;
-  height: 80px;
   background: #FFF;
-  padding: 15px;
-  border: 1px solid red;
+  padding: 30px;
+  border-radius: 5px;
 }
-  .search_content{
-    display: flex;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-bottom: 110px;
-  }
-  .search_input{
-    width: 100%;
-    background-color: #EFF1F4;
-    border: none;
-    outline: 0;
-    height: 43px;
-  }
-  .btn-search{
-    margin-left: 70px;
-    background: #0075F8;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 0 38px;
-  }
-  .category_list{
-    width: 100%;
-    margin: auto;
-    padding-top: 40px;
-    padding-left: 78px;
-  }
-  .list_item{
-    width: 210px;
-    height: 140px;
-    background: #459ebb;
-    border-radius: 5px;
-    float: left;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  .list_title{
-    padding-top: 56px;
-    font-size: 18px;
-    color: white;
-    margin: auto;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    outline: 0;
-  }
-  .discover_content{
-    text-align: center;
-    padding: 25px 0 40px 0;
-  }
-  .btn-discover{
-    border: 1px solid #0076F7;
-    border-radius: 5px;
-    color: #0076F7;
-    font-size: 17px;
-    padding: 2px 14px 2px 14px;
-    margin-top: 20px;
-  }
-  ::placeholder{
-    padding-left: 10px;
-    font-style: italic;
-    color: #B3BBC0;
-  }
+.search_input{
+  width: 100%;
+  background-color: #EFF1F4;
+  border: none;
+  outline: 0;
+  height: 43px;
+  border-radius: 5px;
+
+}
+.btn-search{
+  color: #fff;
+  background-color: #006FFF;
+  height: 43px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.list_item{
+  width: 220px;
+  height: 140px;
+  background: #459ebb;
+  border-radius: 5px;
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.list_title{
+  padding-top: 56px;
+  font-size: 18px;
+  color: white;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  outline: 0;
+}
+.btn-discover{
+  border: 1px solid #0076F7;
+  border-radius: 5px;
+  color: #0076F7;
+  font-size: 17px;
+  padding: 4px 14px;
+  background: transparent;
+}
+.discover_section{
+  text-align: center; 
+  padding-bottom: 80px; 
+}
+::placeholder{
+  padding-left: 10px;
+  font-style: italic;
+  color: #B3BBC0;
+  border-radius: 5px;
+}
+
+/* for footer */
+.footer {	
+  height: 59px;	
+  max-width: 1440px;	
+  background-color: #F7F7F7;
+  margin:0 auto;
+  border-color: #e7e7e7;
+  padding: 0 120px 0 120px;
+  font-family: Arial;
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.copy {	
+  height: 14px;	
+  width: 222px;	
+  color: #AEB5BB;
+  font-size: 12px;	
+  line-height: 66px;
+  margin-left:120px;
+}
+ul{
+  float: right;
+  height: 14px;	width: 405px;	color: #AEB5BB;		font-size: 12px;	line-height: 14px;
+  margin-right: -20px;
+}
+li{
+  text-decoration: none;
+  display: inline-flex;
+  margin-right: 15px;
+  
+}
+
+.left{
+  font-weight: bold;
+}
+
+.footer a{
+  color: #AEB5BB;
+  text-decoration: none;
+}

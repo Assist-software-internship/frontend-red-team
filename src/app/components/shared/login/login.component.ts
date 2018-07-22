@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../../../shared/user interface/user';
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
   showPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
+  public resetUser: User = new User();
   public message: String;
 
-  constructor(private dataService: ApiConnectionService, private router:Router) { }
+  constructor(private dataService: ApiConnectionService, private router: Router) { }
 
 
   public loginContent = true;
@@ -27,16 +28,18 @@ export class LoginComponent implements OnInit {
   public registerContent = false;
 
   ngOnInit() {
-   
+
   }
 
-  onReset() {}
+  onReset() {
+    this.resetPassword();
+  }
 
-  toggleShowPassword(){
+  toggleShowPassword() {
     this.showPassword === false ? this.showPassword = true : this.showPassword = false;
-    }
+  }
 
-  manageForms(login: boolean, register: boolean, reset: boolean ): void {
+  manageForms(login: boolean, register: boolean, reset: boolean): void {
     this.loginContent = login;
     this.registerContent = register;
     this.resetContent = reset;
@@ -51,7 +54,7 @@ export class LoginComponent implements OnInit {
   loginUser(): void {
     this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
       console.log('response ', res);
-      if(res.length > 0) {
+      if (res.length > 0) {
         console.log('User is now logged in');
         localStorage.setItem('id', res[0].id.toString());
         this.router.navigate(['/dashboard']);
@@ -60,5 +63,10 @@ export class LoginComponent implements OnInit {
         console.log('User not found.');
       }
     })
-  };
+  }
+  resetPassword(): void {
+    this.dataService.resetPass(this.resetUser.id, this.resetUser).subscribe(res => {
+      console.log('password updated')
+    })
+  }
 }

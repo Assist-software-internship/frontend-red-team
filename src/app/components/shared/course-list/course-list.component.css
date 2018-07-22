@@ -1,9 +1,16 @@
 .container_courses{
   background-color: #F6FAFC;
-  padding: 27px 115px 18px 50px;;
-  width: 85%;
+  padding: 0px 0px 18px 0px;;
+  width: 100%;
   margin: auto;
+  /* modified */
 }
+.margin-row{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+
 .container_content{
   padding-top: 80px;
 }

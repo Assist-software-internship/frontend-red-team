@@ -52,6 +52,10 @@ export class ApiConnectionService {
   updateUser(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
   }
+  resetPass(id: Number, userData: User): Observable<User> {
+    return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
+  }
+ 
 
   getAllCourse(): Observable<Course[]> {
     return this.http.get<Course[]>(Api.base + Api.course);

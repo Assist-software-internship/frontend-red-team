@@ -10,14 +10,14 @@
 <div class="container_courses">
   <app-hero [title]="courseTitle" [subtitle]="courseSubtitle"></app-hero>
   <div class="container container_content" id="tourpackages-carousel">
-      <div class="row">
-        <div class="col-sm-12 col-md-4" *ngFor="let item of coursesData">
+      <div class="row margin-row" >
+        <div class="col-sm-6 col-md-4 col-lg-4" *ngFor="let item of course">
           <div class="thumbnail">
-            <img src="{{item.image}}" alt="" class="course_img">
+            <img src="{{item.images}}" alt="" class="course_img img-responsive">
               <div class="caption">
-                <p class="course_title"> {{item.title}} </p>
-                <p class="course_description" > {{item.description}} </p>
-                <p class="buttom-btn" ><a href="#" class="course_btn" role="button"> {{item.button}} </a></p>
+                <p class="course_title"> {{item.small_description}} </p>
+                <p class="course_description" > {{item.long_description}} </p>
+                <p class="buttom-btn" ><a href="#" class="course_btn" role="button"> {{item.tags}} </a></p>
             </div>
           </div>
         </div>
@@ -29,14 +29,14 @@
       </div>
   </div>
   <div class="footer">
-      <p class="copy">
-        <span s class="left">Alexa teach me 2018. </span>All rights reserved
-      </p>
-      <ul>
-        <li><a href="#">Terms Conditions</a></li>
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Support</a></li>
-      </ul>
-    </div>
+    <p class="copy">
+      <span s class="left">Alexa teach me 2018. </span>All rights reserved
+    </p>
+    <ul>
+      <li><a href="#">Terms Conditions</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </div>
 </div>
 
