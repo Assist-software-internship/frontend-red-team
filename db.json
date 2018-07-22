@@ -33,11 +33,9 @@
       "active": 1
     },
     {
-      "email": "rosu@stefan.com",
-      "password": "parola12",
-      "name": "rosu ",
-      "last_name": "stefan",
       "active": 1,
+      "email": "rosu@stefan.com",
+      "password": "parola1234",
       "id": 5
     },
     {

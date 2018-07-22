@@ -11,8 +11,8 @@ export class CourseListComponent implements OnInit {
   public course: Course[];
   public courseTitle: string;
   public courseSubtitle: string;
-  
-  constructor(private dataService: ApiConnectionService) { 
+
+  constructor(private dataService: ApiConnectionService) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
   }

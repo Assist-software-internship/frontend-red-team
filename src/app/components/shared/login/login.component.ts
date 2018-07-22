@@ -20,23 +20,25 @@ export class LoginComponent implements OnInit {
   public resetUser: User = new User();
   public message: String;
 
-  constructor(private dataService: ApiConnectionService, private router: Router) { }
-
+  constructor(
+    private dataService: ApiConnectionService,
+    private router: Router
+  ) { }
 
   public loginContent = true;
   public resetContent = false;
   public registerContent = false;
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   onReset() {
     this.resetPassword();
   }
 
   toggleShowPassword() {
-    this.showPassword === false ? this.showPassword = true : this.showPassword = false;
+    this.showPassword === false
+      ? (this.showPassword = true)
+      : (this.showPassword = false);
   }
 
   manageForms(login: boolean, register: boolean, reset: boolean): void {
@@ -52,21 +54,37 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(): void {
-    this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
-      console.log('response ', res);
-      if (res.length > 0) {
-        console.log('User is now logged in');
-        localStorage.setItem('id', res[0].id.toString());
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.message = 'Email or password are incorrect!'
-        console.log('User not found.');
-      }
-    })
+    this.dataService
+      .fakeLogin(this.logUser.email, this.logUser.password)
+      .subscribe(res => {
+        console.log('response ', res);
+        if (res.length > 0) {
+          console.log('User is now logged in');
+          localStorage.setItem('id', res[0].id.toString());
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.message = 'Email or password are incorrect!';
+          console.log('User not found.');
+        }
+      });
   }
+  // fakeResetPassword
+  fakeResetPassword(): void {
+    this.dataService.getUserByEmail(this.resetUser.email).subscribe(res => {
+      if (res.length > 0) {
+        const user = res[0];
+        this.dataService
+          .fakeResetPassword(user.id, this.resetUser)
+          .subscribe(response => {
+            console.log('password updated ', res);
+          });
+      }
+    });
+  }
+  // reset password
   resetPassword(): void {
-    this.dataService.resetPass(this.resetUser.id, this.resetUser).subscribe(res => {
-      console.log('password updated')
-    })
+    this.dataService
+      .resetPassword(this.resetUser)
+      .subscribe(res => console.log('password updated'));
   }
 }

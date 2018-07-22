@@ -6,33 +6,46 @@
 -->
 <app-page-header></app-page-header>
 <div class="container_cat">
-  <app-hero [title]="categoryTitle" [subtitle]="categorySubtitle"></app-hero>
+  <app-hero [title]="categoryTitle"
+            [subtitle]="categorySubtitle"></app-hero>
+
   <div class="container">
     <div class="col-md-8 col-md-offset-2 category_content">
       <div class="row ">
         <div class="col-md-9">
-          <input type="text" name="" id="" class="search_input" placeholder="search here...">
+          <input type="text"
+                 name=""
+                 id=""
+                 class="search_input"
+                 placeholder="search here...">
         </div>
         <div class="col-md-3">
-          <button type="submit" class="btn btn-search">SEARCH</button>
+          <button type="submit"
+                  class="btn btn-search">SEARCH</button>
         </div>
       </div>
     </div>
     <div class="row margin-item">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="list_item" *ngFor="let item of listCategory">
-          <p class="list_title" routerLink="/courses">{{item | uppercase}}</p>
+      <div class="margin-thumbnail">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
+             *ngFor="let item of listCategory">
+          <div class="list_item">
+            <p class="list_title"
+               routerLink="/courses">{{item | uppercase}}</p>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 discover_section">
-        <button type="submit" class="btn-discover">Discover more</button>
+        <button type="submit"
+                class="btn-discover">Discover more</button>
       </div>
     </div>
     <div class="footer">
       <p class="copy">
-        <span s class="left">Alexa teach me 2018. </span>All rights reserved
+        <span s
+              class="left">Alexa teach me 2018. </span>All rights reserved
       </p>
       <ul>
         <li>

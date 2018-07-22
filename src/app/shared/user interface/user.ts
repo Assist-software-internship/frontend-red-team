@@ -5,7 +5,7 @@ export class User {
   last_name: String;
   email: String;
   password: String;
-  
+
   constructor() {
     this.active = 1;
   }
