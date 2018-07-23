@@ -34,7 +34,6 @@ export class UserListComponent implements OnInit {
     this.dataService
       .registerUser(this.myUserData)
       .subscribe(res => this);
-     console.log(this.myUserData.last_name)
   }
 
   deleteUser(id,i) {
@@ -45,14 +44,11 @@ export class UserListComponent implements OnInit {
       //  this.splice(id, 1);
       var t = this.users.indexOf(this.users[i]);
       this.users.splice(t, 1);
-        console.log("sters")
       });
   }
 
   updateUserProfile(): void {
     this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
-      console.log('updated');  
-      console.log(this.user.id + " " + this.user.role)
     });
   }
 
