@@ -1,21 +1,46 @@
-///<reference path="../../../../node_modules/@angular/router/src/router.d.ts"/>
-import {  Component, OnInit, ViewChild, Output } from '@angular/core';
-import {User} from '../../shared/user interface/user';
-import {Course} from '../../shared/course';
-import { ApiConnectionService } from '../../services/api-connection/api-connection.service';
-import {Observable} from 'rxjs';
-import { HttpClient} from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-
 export class DashboardComponent implements OnInit {
-
+  listCategory = [
+    'Astrology',
+    'Finance',
+    'Grammar',
+    'Fun Facts',
+    'Jokes',
+    'Life Hacks',
+    'Category 7',
+    'Category 8',
+    'Category 9',
+    'Category 10',
+    'Category 11',
+    'Category 12',
+  ];
+  filteredStatus = '';
+  max = 6;
+  public categoryTitle: string;
+  public categorySubtitle: string;
+  constructor() {
+    this.categoryTitle = 'Browse through best learning courses for Alexa';
+    this.categorySubtitle = 'Pick the one you like and start learning';
+  }
   ngOnInit() {
- 
+
+  }
+  discoverMore(): void {
+    this.max = this.max + 6;
+  }
+  displayLess() {
+    if (this.max == this.listCategory.length) {
+      this.max = this.max - 6;
+    }
+  }
+  search_function() {
+    const searchCategory = this.filteredStatus;
+    console.log('selected value: ', searchCategory);
   }
 }

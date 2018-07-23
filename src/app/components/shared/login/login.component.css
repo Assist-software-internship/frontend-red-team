@@ -1,5 +1,4 @@
 .wrapper{
-  /* margin: 350px auto; */
   background-image: url('../../../../assets/bg_image.png');
   background-size: cover;
   background-color: #081531;
@@ -7,26 +6,16 @@
   width: 100%;
 }
 .content{
-  padding-top: 350px;
+  padding-top: 200px;
 }
-.left-side{
-  float: left;
-  width: 36%;
-  margin-top: 70px;
-}
-.right-side{
-  float: left;
-  width: 56%;
-  padding-left: 130px;
+.display_eye{
+  display: flex;
 }
 .error_message{
-    color: white;
-    padding-top: 15px;
+  color: white;
+  line-height: 50px;
+  padding-left: 15px;
 }
-.message_content{
-  display: -webkit-inline-flex;
-}
-
 .sign-btn{
   margin-top: 33px;
   height: 45px;
@@ -63,14 +52,15 @@
   border-radius: 5px;	
   background-color: #FFFFFF;
   width: 300px;
+  /* margin-bottom: 5px; */
 }
-.banner-title{
+.title{
   font-size: 20px;	
   line-height: 26px;	
   text-align: center;
   color: gray;
 }
-.login-to{
+.subtitle{
   font-size: 36px;
   line-height: 30px;	
   text-align: center;
@@ -84,9 +74,7 @@
 }
 .to-sign-up{
   display: inline-flex;
-  width: 100%;
-  padding-top: 260px;
-  padding-left: 400px;
+  padding-top: 190px;
 }
 a{
   color: #F7F7F7;
@@ -102,7 +90,6 @@ a:hover{
 }
 input.ng-invalid.ng-touched{
   border: 1px solid red;
-  margin-right: 20px;
 }
 .terms{
   color: white;
@@ -121,9 +108,16 @@ input.ng-invalid.ng-touched{
   right: 15px;
   top: 10px;
   }
-
-  .style-eye{
-    margin-left: -45px;
-    color: #AEB5BB;
-    margin-top: 2px;
+.showConfirmPassword{
+  background: transparent;
+  border: 0px;
+  outline: 0px;
+  right: 15px;
+  top: 10px;
   }
+
+.style-eye{
+  margin-left: -45px;
+  color: #AEB5BB;
+  margin-top: 2px;
+}
