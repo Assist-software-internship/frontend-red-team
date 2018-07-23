@@ -20,6 +20,10 @@ import { element } from 'protractor';
   styleUrls: ['./page-header.component.css']
 })
 export class PageHeaderComponent implements OnInit {
+  @Output()
+  public user: User = new User();
+
+  constructor(private dataService: ApiConnectionService) { }
   public visible = false;
   toggle(){
    
@@ -40,6 +44,18 @@ export class PageHeaderComponent implements OnInit {
   getRoute(){
     return window.location.pathname;
   }
+ 
+  ngAfterViewInit() {
+    this.getUserProfile();
+  }
+  
+  getUserProfile(): void {
+    this.dataService.getUserById(parseInt(localStorage.getItem('id'))).subscribe(res => {
+      this.user = res[0];
+      console.log('Users ', this.user);
+    });
+  }
+
   
 
 }

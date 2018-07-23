@@ -14,13 +14,10 @@ export class LoginComponent implements OnInit {
   @ViewChild('reset') resetForm: NgForm;
   @ViewChild('create') createForm: NgForm;
 
-
-
+  showPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
   public message: String;
-  //to be removed
-  //public user:User = new User();
 
   constructor(private dataService: ApiConnectionService, private router:Router) { }
 
@@ -30,14 +27,14 @@ export class LoginComponent implements OnInit {
   public registerContent = false;
 
   ngOnInit() {
-    // this.getAllUsers();
-    
-    //this.getUserProfile();
+   
   }
 
-  onReset(){
+  onReset() {}
 
-  }
+  toggleShowPassword(){
+    this.showPassword === false ? this.showPassword = true : this.showPassword = false;
+    }
 
   manageForms(login: boolean, register: boolean, reset: boolean ): void {
     this.loginContent = login;
@@ -56,20 +53,12 @@ export class LoginComponent implements OnInit {
       console.log('response ', res);
       if(res.length > 0) {
         console.log('User is now logged in');
+        localStorage.setItem('id', res[0].id.toString());
         this.router.navigate(['/dashboard']);
       } else {
-        this.message = 'User invalid!'
+        this.message = 'Email or password are incorrect!'
         console.log('User not found.');
-        
       }
-      
     })
   };
-
-  // getUserProfile(): void {
-  //   this.dataService.getUserById(1).subscribe(res => {
-  //     this.user = res;
-  //     console.log('logged user ', this.user)
-  //   })
-  // }
 }

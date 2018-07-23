@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CourseListComponent },
- // { path: 'logout', component: LogoutComponent},
+
   {
     path: 'courses/:id',
     component: ChapterListComponent
