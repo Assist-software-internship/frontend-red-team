@@ -22,7 +22,7 @@ export class CourseListComponent implements OnInit {
     this.getAllCourses();
   }
   getAllCourses() {
-    this.dataService.getAllCourse().subscribe(res => {
+    this.dataService.getAllCourses().subscribe(res => {
       this.course = res;
       console.log('Course ', this.course);
       console.log('Course length:', this.course.length);

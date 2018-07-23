@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
 
   { path: 'courses', component: CourseListComponent },
- // { path: 'logout', component: LogoutComponent},
+
   {
     path: 'courses/:courseId',
     component: ChapterListComponent
@@ -63,10 +63,10 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [ApiConnectionService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 
 export class AppModule { }

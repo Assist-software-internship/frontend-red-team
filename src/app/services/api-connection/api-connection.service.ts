@@ -30,9 +30,25 @@ export class ApiConnectionService {
   registerUser(userData: User): Observable<User> {
     return this.http.post<User>(Api.base + Api.users, userData, httpOptions);
   }
+  
+  deleteUser(id:Number): Observable<User> {
+    return this.http.delete<any>(Api.base+Api.users +`/${id}`)
+  }
+
+  updateCourse(courseData: Course): Observable<Course> {
+    return this.http.put<Course>(
+      Api.base + Api.course,
+      courseData,
+      httpOptions
+    );
+  }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(Api.base + Api.users);
+  }
+
+  updateCourseProgress(id:Number, courseData: Course): Observable<Course> {
+    return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
   }
 
   fakeLogin(email: String, password: String): Observable<User[]> {
@@ -76,7 +92,7 @@ export class ApiConnectionService {
     );
   }
 
-  getAllCourse(): Observable<Course[]> {
+  getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(Api.base + Api.course);
   }
 }

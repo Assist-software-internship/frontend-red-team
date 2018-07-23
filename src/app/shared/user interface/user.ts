@@ -5,8 +5,9 @@ export class User {
   last_name: String;
   email: String;
   password: String;
-
+  role: Number;
   constructor() {
-    this.active = 1;
+    this.active = 0;
+    this.role = 0;
   }
 }
