@@ -33,9 +33,26 @@ export class ApiConnectionService {
     );
   }
 
+  updateCourse(courseData: Course): Observable<Course> {
+    return this.http.put<Course>(
+      Api.base + Api.course,
+      courseData,
+      httpOptions
+    );
+  }
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(Api.base + Api.users);
   }
+
+  updateCourseProgress(id:Number, courseData: Course): Observable<Course> {
+    return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
+  }
+
+  updateUser(id: Number, userData: User): Observable<User> {
+    return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
+  }
+
 
   fakeLogin(email: String, password: String): Observable<User[]> {
     return this.http.get<User[]>(Api.base+ Api.users + `?email=${email}&password=${password}`);
@@ -49,9 +66,6 @@ export class ApiConnectionService {
     return this.http.get<User>(Api.base+ Api.users + `?id=${id}`);
   }
 
-  updateUser(id: Number, userData: User): Observable<User> {
-    return this.http.put<User>(Api.base+ Api.users + `/${id}`, userData, httpOptions);
-  }
 
   getAllCourse(): Observable<Course[]> {
     return this.http.get<Course[]>(Api.base + Api.course);
