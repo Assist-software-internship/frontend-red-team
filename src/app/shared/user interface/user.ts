@@ -6,6 +6,7 @@ export class User {
   email: String;
   password: String;
   role: Number;
+  image: File;
   constructor() {
     this.active = 0;
     this.role = 0;

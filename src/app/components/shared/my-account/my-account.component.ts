@@ -2,13 +2,14 @@ import { Component, OnInit, ViewChild, Output, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {User} from '../../../shared/user interface/user';
 import {Course} from '../../../shared/course';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
 import {Observable} from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FileUploader } from 'ng-file-upload';
+// import { FileUploader } from 'ng-file-upload';
 import { EventEmitter } from 'events';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-my-account',
@@ -22,11 +23,11 @@ export class MyAccountComponent implements OnInit {
   public user: User = new User();
   public showPassword = false;
   public logUser: User = new User();
-  public uploader: FileUploader;
+  // public uploader: FileUploader;
   private hasDragOver = false;
 
 
-  constructor(private dataService: ApiConnectionService, private router: Router) {
+  constructor(private dataService: ApiConnectionService, private router: Router, public sanitizer: DomSanitizer) {
   }
 
   localStorage
@@ -83,30 +84,19 @@ export class MyAccountComponent implements OnInit {
     toggleShowPassword(){
         this.showPassword === false ? this.showPassword = true : this.showPassword = false;
     }
+    photoURL() {
+      return this.sanitizer.bypassSecurityTrustUrl(this.user[0].image);
+    }
+    updateImage(): void {
+      this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
+        console.log('Image updated');
+      });
+    }
 
-    // @Input()
-    // private url = '';
-
-    // @Output()
-    // private urlChange = new EventEmitter();
-
-    // setDefaultProfilePicture(){
-    //   this.uploader = new FileUploader({
-    //     url: 'assets/default.jpg',
-    //     disableMultipart: false,
-    //     autoUpload: true
-    //   });
-    // }
-
-    // getProfilPicture(){
-    //   this.uploader.response.subscribe(res=> {
-    //     this.url = 'images.jpeg' + JSON.parse(res).id;
-    //     this.urlChange.emit(this.url);
-    //   });
-    // }
-    // public fileOver(e: any): void {
-    //   this.hasDragOver = e;
-    // }
+    onFileSelected(event) {
+      console.log(event.srcElement.value);
+      this.user.image = event.srcElement.value;
+    }
 }
 
 
