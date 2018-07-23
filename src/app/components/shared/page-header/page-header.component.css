@@ -141,7 +141,7 @@ a{color:#00217A;text-decoration: none;}
         color: #000000;
         position: absolute;
         cursor: pointer;
-        padding-top: 37px;
+        padding-top: 45px;
         
     }
     .menubtn:hover{
@@ -182,7 +182,7 @@ a{color:#00217A;text-decoration: none;}
     }
 
     .logoPic{
-        margin-top: 20px !important;
+        margin-top: 25px !important;
     }
   
     .imgP{
