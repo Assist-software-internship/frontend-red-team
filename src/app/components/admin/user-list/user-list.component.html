@@ -5,7 +5,51 @@
   Every user can be edited, duplicated, removed or his role may be changed.
   There's also a possibility to create a new user.
 -->
-<app-page-header></app-page-header>
-<p>
-  user-list works!
-</p>
+<div id="wrapper">
+  <app-page-header></app-page-header>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <div class="container_allusers">
+    <div class="descList">
+      <span style="margin-left:140px;">basic info</span>
+      <span style="margin-left:70px;">total score</span>
+      <span>role</span>
+      <span>date created</span>
+    </div>
+    
+    <ul class="users-list" *ngFor="let user of users;let i = index">
+      
+      <li id="user.id">
+        <div  id="checkActive">  <span class="details">Active : </span><input type="checkbox" [ngModel]="user.active==1" (click)="changeActive(i)" ></div>
+        <img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic">
+        <p class="name"> {{user.name}} {{user.last_name}} <span class="useremail"><span class="details">E-mail : </span>{{user.email}}</span></p>
+        <span class="score"><span class="details">Total score : </span> 12,2500</span>
+        <div id="tags">
+          <span class="tag" [hidden]="user.role==1"><i class="fas fa-user"></i>User</span> 
+          <span class="tag"[hidden]="user.role==0"><i class="fas fa-key"></i>Admin</span> 
+        </div>
+        <span class="datecreated"><span class="details">Date created : </span>25-oct-2018</span>
+
+        <ul class="minCtrl">
+          <li><i class="far fa-edit"></i>Edit</li>
+          <li (click)="delUser(i)"><i class="far fa-trash-alt"></i>Delete</li>
+          <span [hidden]="user.role==1"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Make Admin</li></span> 
+          <span [hidden]="user.role==0"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Remove Admin</li></span> 
+        </ul>
+
+        <span class="opt"><a style="cursor: pointer;"><i class="fas fa-ellipsis-h"></i></a>
+          <div [hidden]="false" class="editUser">
+            <ul>
+              <li><i class="far fa-edit"></i>Edit</li>
+              <li (click)="delUser(i)"><i class="far fa-trash-alt"></i>Delete</li>
+             <span [hidden]="user.role==1"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Make An Administrator</li></span> 
+             <span [hidden]="user.role==0"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Remove Administrator</li></span> 
+            </ul>
+          </div>
+        </span>
+      </li>
+  
+    </ul>
+  
+  </div>
+  <app-footer></app-footer>
+  </div>

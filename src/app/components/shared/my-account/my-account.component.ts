@@ -17,6 +17,7 @@ import { EventEmitter } from 'events';
 })
 export class MyAccountComponent implements OnInit {
   public courses: Course[];
+  public users: User[];
   @Output()
   public user: User = new User();
   public showPassword = false;
@@ -72,9 +73,11 @@ export class MyAccountComponent implements OnInit {
     }
 
     getAllCourses() {
-      this.dataService.getAllCourse().subscribe(res => {
+
+      this.dataService.getAllCourses().subscribe(res => {
         this.courses = res;
         console.log('Course ', this.courses);
+
       });
     }
     toggleShowPassword(){

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User} from '../../shared/user interface/user';
 import {Course} from '../../shared/course';
+import { baseDirectiveCreate } from '@angular/core/src/render3/instructions';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -31,6 +32,10 @@ export class ApiConnectionService {
       userData,
       httpOptions
     );
+  }
+  
+  deleteUser(id:Number): Observable<User> {
+    return this.http.delete<any>(Api.base+Api.users +`/${id}`)
   }
 
   updateCourse(courseData: Course): Observable<Course> {
@@ -67,7 +72,7 @@ export class ApiConnectionService {
   }
 
 
-  getAllCourse(): Observable<Course[]> {
+  getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(Api.base + Api.course);
   }
 }
