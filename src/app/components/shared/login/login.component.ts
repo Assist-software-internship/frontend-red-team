@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../../../shared/user interface/user';
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
@@ -15,28 +15,41 @@ export class LoginComponent implements OnInit {
   @ViewChild('create') createForm: NgForm;
 
   showPassword = true;
+  showConfirmPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
+  public resetUser: User = new User();
   public message: String;
+  password_message = '';
+  confirm_password = '';
 
-  constructor(private dataService: ApiConnectionService, private router:Router) { }
-
+  constructor(
+    private dataService: ApiConnectionService,
+    private router: Router
+  ) { }
 
   public loginContent = true;
   public resetContent = false;
   public registerContent = false;
 
-  ngOnInit() {
-   
+  ngOnInit() { }
+
+  onReset() {
+    this.resetPassword();
   }
 
-  onReset() {}
+  toggleShowPassword() {
+    this.showPassword === false
+      ? (this.showPassword = true)
+      : (this.showPassword = false);
+  }
+  toggleShowConfirmPassword() {
+    this.showConfirmPassword === false
+      ? (this.showConfirmPassword = true)
+      : (this.showConfirmPassword = false);
+  }
 
-  toggleShowPassword(){
-    this.showPassword === false ? this.showPassword = true : this.showPassword = false;
-    }
-
-  manageForms(login: boolean, register: boolean, reset: boolean ): void {
+  manageForms(login: boolean, register: boolean, reset: boolean): void {
     this.loginContent = login;
     this.registerContent = register;
     this.resetContent = reset;
@@ -49,16 +62,48 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(): void {
-    this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
-      console.log('response ', res);
-      if(res.length > 0) {
-        console.log('User is now logged in');
-        localStorage.setItem('id', res[0].id.toString());
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.message = 'Email or password are incorrect!'
-        console.log('User not found.');
+    this.dataService
+      .fakeLogin(this.logUser.email, this.logUser.password)
+      .subscribe(res => {
+        console.log('response ', res);
+        if (res.length > 0) {
+          console.log('User is now logged in');
+          localStorage.setItem('id', res[0].id.toString());
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.message = 'Email or password are incorrect!';
+          console.log('User not found.');
+        }
+      });
+  }
+  // fakeResetPassword
+  fakeResetPassword(): void {
+    this.dataService.getUserByEmail(this.resetUser.email).subscribe(res => {
+      if (res.length > 0) {
+        const user = res[0];
+        if (this.resetUser.password != this.confirm_password) {
+          this.password_message = 'Password not match';
+        }
+        else {
+          this.dataService
+            .fakeResetPassword(user.id, this.resetUser)
+            .subscribe(response => {
+              console.log('password updated ', res);
+              this.manageForms(true, false, false);
+              this.resetForm.reset();
+            });
+        }
+
       }
-    })
-  };
+    });
+  }
+  // reset password
+  resetPassword(): void {
+    this.dataService
+      .resetPassword(this.resetUser)
+      .subscribe(res => {
+        console.log('password updated ', res);
+        this.manageForms(true, false, false)
+      });
+  }
 }

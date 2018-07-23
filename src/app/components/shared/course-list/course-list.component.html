@@ -5,8 +5,59 @@
   used for the admin - this component displays all the courses and offers the ability
   to create a new course, edit or remove an existing course.
 -->
+
 <app-page-header></app-page-header>
-<div class="container">
-  <h3>Courses</h3>
+<div class="container_courses">
+  <app-hero [title]="courseTitle"
+            [subtitle]="courseSubtitle"></app-hero>
+  <div class="container container_content"
+       id="tourpackages-carousel">
+    <div class="row margin-row">
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+           *ngFor="let item of course | slice:0:[max]">
+        <div class="thumbnail">
+          <img src="{{item.images}}"
+               alt=""
+               class="course_img img-responsive">
+          <div class="caption">
+            <p class="course_title"> {{item.small_description | slice:0:100 }} </p>
+            <p class="course_description"> {{item.long_description | slice:0:200}} </p>
+            <p class="buttom-btn">
+              <a href="#"
+                 class="course_btn"
+                 role="button"> {{item.tags}} </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 discover_section">
+        <button type="submit"
+                class="btn-discover"
+                (click)="discoverMore()">Discover more</button>
+        <!-- <button *ngIf="max === course.length"
+                type="submit"
+                class="btn-discover" (click)=" displayLess()" >Display less</button> -->
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p class="copy">
+      <span s
+            class="left">Alexa teach me 2018. </span>All rights reserved
+    </p>
+    <ul>
+      <li>
+        <a href="#">Terms Conditions</a>
+      </li>
+      <li>
+        <a href="#">Privacy</a>
+      </li>
+      <li>
+        <a href="#">Support</a>
+      </li>
+    </ul>
+  </div>
 </div>
-<app-footer></app-footer>
