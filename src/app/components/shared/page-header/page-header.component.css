@@ -1,0 +1,104 @@
+.container{
+    padding: 27px 0 18px 0;
+    padding: 27px 70px 0 120px;
+}
+
+.container li a {
+    font-weight: 200;
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    height: 70px;
+    color: #00217A;
+    font-size: 16px;	
+    line-height: 19px;
+}
+
+.profilePic{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    height: 45px;
+    margin-right: -13px;
+    cursor: pointer;
+}
+
+.logoPic{margin-top: -10px;margin-left:254px;}
+
+.navbar li :hover{
+    color: #00217A;
+}
+
+.active{
+    border-bottom: 2px solid #006FFF;
+    color: #00217A;	
+	
+    font-weight: bold;
+}
+
+#navbar{
+    height: 100px;
+    border: 1px solid #EFF1F4;	
+    background-color: #FFFFFF;	
+    box-shadow: 0 2px 4px 0 rgba(239,241,244,0.4);
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+}
+
+#navbar .pages{
+    list-style: none;
+    display: inline-flex;
+}
+
+.pages li {
+    line-height: 109px;   
+    width:50px; 
+    margin-left: 34px;
+}
+
+.pages li a{
+    margin-right:10px;
+    text-decoration: none;
+  	
+    color: #00217A;	
+    font-size: 16px;
+    margin-right: 21px;
+
+    height: 100px;
+}
+
+.active{
+    font-weight: bold;
+}
+
+.profile{
+    list-style: none;
+    display: inline-flex;
+    text-decoration: none;
+    outline: none;
+    margin-left:60px;
+    height: 80px;
+    align-items: center;
+}
+
+.profile li a{
+    display: inline-flex;
+    text-decoration: none;
+    outline: none;
+    margin-right: 20px;
+    color: #00217A;
+}
+
+#right{
+    float: right;
+    display: flex;
+    align-items: center;
+    margin-right: 239px;
+}
+
+@media only screen and (max-width: 1142px) {
+   .profile li:nth-child(2) {
+    width: 134px;
+   }
+
+}

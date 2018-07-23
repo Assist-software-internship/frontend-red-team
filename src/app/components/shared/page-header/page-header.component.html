@@ -3,24 +3,18 @@
   should be displayed on all pages, except for the login ones and should conditionally
   display certain links according to the logged in user role (admin / user).
 -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="container">
 
-      <div class="navbar-header">
-        <a routerLink="/dashboard" class="navbar-brand">ASSIST</a>
-      </div>
-
-      <div class="navbar-default">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="/account">User</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" style="margin-right: 70px">
-          <li><a routerLink="/courses">Courses</a></li>
-          <li><a href="#">What's new</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </div>
-    </div>
+<div id="navbar">
+  <a routerLink="/courses" class="navbar-brand"><img src="assets/logo.svg" class="logoPic"></a>
+  <div id="right">
+    <ul class="pages">
+      <li><a routerLink="/courses">Courses</a></li>
+      <li class="active"><a href="/about">Users</a></li>
+    </ul>
+    
+    <ul class="profile">
+      <li><a routerLink="/account"><img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic"></a> </li>
+      <li><a routerLink="/account" class="username" style="font-size:12px;">Duane Mendoza</a> </li>
+    </ul>
   </div>
-</nav>
+</div>

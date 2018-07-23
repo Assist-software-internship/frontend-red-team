@@ -1,0 +1,42 @@
+.footer {	
+    height: 59px;	
+    max-width: 1440px;	
+    background-color: #F7F7F7;
+    margin:0 auto;
+    border-color: #e7e7e7;
+    padding: 0 120px 0 120px;
+    font-family: Arial;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.copy {	
+    height: 14px;	
+    width: 222px;	
+    color: #AEB5BB;
+    font-size: 12px;	
+    line-height: 66px;
+    margin-left:120px;
+}
+ul{
+    float: right;
+    height: 14px;	width: 405px;	color: #AEB5BB;		font-size: 12px;	line-height: 14px;
+    margin-right: -20px;
+}
+li{
+    text-decoration: none;
+    display: inline-flex;
+    margin-right: 15px;
+    
+}
+
+.left{
+    font-weight: bold;
+}
+
+.footer a{
+    color: #AEB5BB;
+    text-decoration: none;
+}

@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiConnectionService } from './services/api-connection/api-connection.service';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { CourseComponent } from './components/admin/course/course.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
@@ -16,6 +18,8 @@ import { ChapterListComponent } from './components/shared/chapter-list/chapter-l
 import { MyAccountComponent } from './components/shared/my-account/my-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { SearchPipe } from './components/dashboard/search.pipe';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,16 +27,18 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
+
   { path: 'courses', component: CourseListComponent },
+ // { path: 'logout', component: LogoutComponent},
   {
-    path: 'courses/:id',
+    path: 'courses/:courseId',
     component: ChapterListComponent
   },
   {
     path: 'courses/:courseId/:chapterId',
     component: ChapterQuestionsComponent
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
@@ -48,15 +54,18 @@ const routes: Routes = [
     ChapterListComponent,
     MyAccountComponent,
     DashboardComponent,
-    ChapterQuestionsComponent
+    ChapterQuestionsComponent,
+    FooterComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ApiConnectionService],
   bootstrap: [AppComponent]
 })
 
