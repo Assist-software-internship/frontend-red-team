@@ -15,7 +15,7 @@
     <div class="row margin-row">
 
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-           *ngFor="let item of course">
+           *ngFor="let item of course | slice:0:[max]">
         <div class="thumbnail">
           <img src="{{item.images}}"
                alt=""
@@ -35,7 +35,11 @@
     <div class="row">
       <div class="col-md-12 discover_section">
         <button type="submit"
-                class="btn-discover">Discover more</button>
+                class="btn-discover"
+                (click)="discoverMore()">Discover more</button>
+        <!-- <button *ngIf="max === course.length"
+                type="submit"
+                class="btn-discover" (click)=" displayLess()" >Display less</button> -->
       </div>
     </div>
   </div>

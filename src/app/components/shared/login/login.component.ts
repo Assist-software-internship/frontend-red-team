@@ -15,10 +15,13 @@ export class LoginComponent implements OnInit {
   @ViewChild('create') createForm: NgForm;
 
   showPassword = true;
+  showConfirmPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
   public resetUser: User = new User();
   public message: String;
+  password_message = '';
+  confirm_password = '';
 
   constructor(
     private dataService: ApiConnectionService,
@@ -39,6 +42,11 @@ export class LoginComponent implements OnInit {
     this.showPassword === false
       ? (this.showPassword = true)
       : (this.showPassword = false);
+  }
+  toggleShowConfirmPassword() {
+    this.showConfirmPassword === false
+      ? (this.showConfirmPassword = true)
+      : (this.showConfirmPassword = false);
   }
 
   manageForms(login: boolean, register: boolean, reset: boolean): void {
@@ -73,11 +81,19 @@ export class LoginComponent implements OnInit {
     this.dataService.getUserByEmail(this.resetUser.email).subscribe(res => {
       if (res.length > 0) {
         const user = res[0];
-        this.dataService
-          .fakeResetPassword(user.id, this.resetUser)
-          .subscribe(response => {
-            console.log('password updated ', res);
-          });
+        if (this.resetUser.password != this.confirm_password) {
+          this.password_message = 'Password not match';
+        }
+        else {
+          this.dataService
+            .fakeResetPassword(user.id, this.resetUser)
+            .subscribe(response => {
+              console.log('password updated ', res);
+              this.manageForms(true, false, false);
+              this.resetForm.reset();
+            });
+        }
+
       }
     });
   }
@@ -85,6 +101,9 @@ export class LoginComponent implements OnInit {
   resetPassword(): void {
     this.dataService
       .resetPassword(this.resetUser)
-      .subscribe(res => console.log('password updated'));
+      .subscribe(res => {
+        console.log('password updated ', res);
+        this.manageForms(true, false, false)
+      });
   }
 }

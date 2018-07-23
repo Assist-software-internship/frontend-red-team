@@ -17,18 +17,20 @@
                  name=""
                  id=""
                  class="search_input"
-                 placeholder="search here...">
+                 placeholder="search here..."
+                 [(ngModel)]="filteredStatus">
         </div>
         <div class="col-md-3">
           <button type="submit"
-                  class="btn btn-search">SEARCH</button>
+                  class="btn btn-search"
+                  (click)="search_function()">SEARCH</button>
         </div>
       </div>
     </div>
     <div class="row margin-item">
       <div class="margin-thumbnail">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
-             *ngFor="let item of listCategory">
+             *ngFor="let item of listCategory | slice:0:[max] | search:filteredStatus">
           <div class="list_item">
             <p class="list_title"
                routerLink="/courses">{{item | uppercase}}</p>
@@ -38,8 +40,14 @@
     </div>
     <div class="row">
       <div class="col-md-12 discover_section">
-        <button type="submit"
-                class="btn-discover">Discover more</button>
+        <button *ngIf="max < listCategory.length"
+                type="submit"
+                class="btn-discover"
+                (click)="discoverMore()">Discover more</button>
+        <button *ngIf="max == listCategory.length"
+                type="submit"
+                class="btn-discover"
+                (click)=" displayLess()">Display less</button>
       </div>
     </div>
     <div class="footer">

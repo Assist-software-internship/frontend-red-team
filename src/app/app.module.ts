@@ -19,6 +19,7 @@ import { MyAccountComponent } from './components/shared/my-account/my-account.co
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { SearchPipe } from './components/dashboard/search.pipe';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -55,6 +56,7 @@ const routes: Routes = [
     DashboardComponent,
     ChapterQuestionsComponent,
     FooterComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
