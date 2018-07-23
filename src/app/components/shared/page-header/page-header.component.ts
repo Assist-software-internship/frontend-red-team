@@ -9,8 +9,10 @@ import {Observable} from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 import { Router, Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import {BrowserDomAdapter} from '@angular/platform-browser/src/browser/browser_adapter';
 
-
+import {ElementRef,Renderer2} from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-page-header',
@@ -18,15 +20,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./page-header.component.css']
 })
 export class PageHeaderComponent implements OnInit {
+  public visible = false;
+  toggle(){
+   
+    if (this.visible){
+      document.getElementById('right').style.display = "none";
+      this.visible = false;
+    }else{
+      document.getElementById('right').style.display = "flex";
+      this.visible = true;
+    }
 
+  }
 
-
-  ngOnInit() {
-    console.log()
+  ngOnInit() { 
+   
   }
 
   getRoute(){
     return window.location.pathname;
   }
+  
 
 }

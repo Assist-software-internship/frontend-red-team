@@ -5,10 +5,10 @@ export class User {
   last_name: String;
   email: String;
   password: String;
-  priv:Number;
+  role:Number;
   
   constructor() {
     this.active = 0;
-    this.priv = 0;
+    this.role = 0;
   }
 }

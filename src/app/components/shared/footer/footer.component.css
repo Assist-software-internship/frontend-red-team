@@ -1,18 +1,15 @@
 .footer {	
-    height: 59px;	
+    min-height: 59px;	
     max-width: 1440px;	
     background-color: #F7F7F7;
     margin:0 auto;
     border-color: #e7e7e7;
-    padding: 0 120px 0 120px;
     font-family: Arial;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    line-height: 6px;
     padding-top: 22px;
-    min-width: 520px;
 }
 
 
@@ -49,6 +46,18 @@ ul{
     margin-left: -12px;
 }
 
+@media only screen and (max-width: 277) {
+
+    .footer{
+        border: 1px solid red !important;
+        line-height: 16px !important;
+    }
+}
+@media only screen and (min-width: 300px) {
+    .footer{
+        line-height: 6px !important;
+    }
+}
 @media only screen and (min-width: 1000px) {
     .copy {	
         height: 14px;	
@@ -66,7 +75,7 @@ ul{
         color: #AEB5BB;		
         font-size: 12px;	
         line-height: 14px;
-        margin-right: -20px;
+      
     }
     .footer {	
       

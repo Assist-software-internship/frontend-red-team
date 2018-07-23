@@ -5,16 +5,21 @@
 -->
 
 <div id="navbar" >
-  <a routerLink="/courses" class="navbar-brand"><img src="assets/logo.svg" class="logoPic"></a>
+  <a (click)="toggle()"  class="menubtn"><i class="fas fa-bars"></i></a>
+  <span class="imgP">
+    <a routerLink="/courses" class="navbar-brand"><img src="assets/logo.svg" class="logoPic"></a>
+  </span>
   <div id="right">
-    <span [hidden]="getRoute() != '/dashboardx'">
+    <span class="menuOpt" [hidden]="getRoute() != '/users'">
       <ul class="pages">
-        <li><a routerLink="/courses">Courses</a></li>
-        <li class="active"><a href="/about">Users</a></li>
+          <li><a routerLink="/courses" id="minProf">Profile</a></li>
+          <a routerLink="/courses"><li>Courses</li></a>
+       <a href="/about"> <li class="active">Users</li></a>
       </ul>
    </span>
-   <span [hidden]="getRoute() != '/dashboard'">
+   <span class="menuOpt" [hidden]="getRoute() == '/users'">
     <ul class="pages">
+      <li><a routerLink="/courses" id="minProf">Profile</a></li>
       <li><a routerLink="/courses">Courses</a></li>
       <li style="width:auto;"><a routerLink="/courses" style="margin-right: 0px !important;">What's new</a></li>
       <li class="active"><a href="/about">About</a></li>
@@ -22,7 +27,8 @@
  </span>
     <ul class="profile">
       <li><a routerLink="/account"><img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic"></a> </li>
-      <li><a routerLink="/account" class="username" style="font-size:12px;">Duane Mendoza</a> </li>
+      <li><a routerLink="/account" class="username" style="font-size:12px;">Duane Mendoza</a>    <span class="points">1234</span></li>
+
     </ul>
   </div>
 </div>

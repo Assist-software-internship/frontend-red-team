@@ -6,8 +6,8 @@
       "password": "assist1",
       "name": "John1john",
       "last_name": "Doe1",
-      "active": 0,
-      "priv": 0
+      "active": 1,
+      "role": 1
     },
     {
       "id": 3,
@@ -16,7 +16,7 @@
       "name": "John3",
       "last_name": "Doe3",
       "active": 1,
-      "priv": 0
+      "role": 1
     },
     {
       "id": 4,
@@ -25,7 +25,7 @@
       "name": "John4",
       "last_name": "Doe4",
       "active": 1,
-      "priv": 0
+      "role": 0
     },
     {
       "email": "rosu@stefan.com",
@@ -33,17 +33,17 @@
       "name": "rosu ",
       "last_name": "stefan",
       "id": 5,
-      "priv": 1,
-      "active": 1
+      "role": 1,
+      "active": 0
     },
     {
-      "active": 1,
+      "active": 0,
       "name": "test",
       "last_name": "test2",
       "email": "test@test.com",
       "password": "test",
       "id": 7,
-      "priv": 0
+      "role": 1
     }
   ],
   "course": [
