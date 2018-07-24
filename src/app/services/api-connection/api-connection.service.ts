@@ -23,6 +23,11 @@ const Api = {
   categories: 'categories'
 };
 
+const Api_user = {
+  base: 'http://192.168.210.116:8080/',
+  users: 'users'
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -59,6 +64,10 @@ export class ApiConnectionService {
     return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
   }
 
+  updateImage(id:Number, userData: User): Observable<User> {
+    return this.http.put<User>(Api.base + Api.course + `/${id}`, userData, httpOptions);
+  }
+
   fakeLogin(email: String, password: String): Observable<User[]> {
     return this.http.get<User[]>(
       Api.base + Api.login + `?email=${email}&password=${password}`
@@ -70,17 +79,16 @@ export class ApiConnectionService {
   }
 
   getUserById(id: Number): Observable<User> {
-    return this.http.get<User>(Api.base + Api.users + `?id=${id}`);
+    return this.http.get<User>(Api_user.base + Api_user.users + `?id=${id}`);
   }
 
-  // get by email
   getUserByEmail(email: String): Observable<User[]> {
     return this.http.get<User[]>(Api.base + Api.users + `?email=${email}`);
   }
 
-  updateUser(id: Number, userData: User): Observable<User> {
+  updateUser(user_id: Number, userData: User): Observable<User> {
     return this.http.put<User>(
-      Api.base + Api.user + `/${id}`,
+      Api.base + Api.user + `/${user_id}`,
       userData,
       httpOptions
     );

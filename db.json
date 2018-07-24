@@ -34,7 +34,8 @@
       "last_name": "stefan",
       "id": 5,
       "role": 0,
-      "active": 1
+      "active": 0,
+      "image": "./assets/images.jpeg"
     },
     {
       "active": 0,

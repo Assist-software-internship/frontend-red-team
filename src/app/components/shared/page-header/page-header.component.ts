@@ -56,6 +56,9 @@ export class PageHeaderComponent implements OnInit {
     });
   }
 
-  
+  onFileSelected(event) {
+    console.log(event.srcElement.value);
+    this.user.image = event.srcElement.value;
+  }  
 
 }
