@@ -13,12 +13,14 @@ import { Router } from '@angular/router';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
+
 export class UserListComponent implements OnInit {
   public users: User[];
   public myUserData: User = new User();
   constructor(private dataService: ApiConnectionService, private router: Router) {}
   public user: User = new User();
   public welcome ="ho";
+
   ngOnInit() {
     this.getAllUsers();
   }
@@ -29,7 +31,6 @@ export class UserListComponent implements OnInit {
     });
   }
   
-
   registerUser() {
     this.dataService
       .registerUser(this.myUserData)
@@ -48,19 +49,18 @@ export class UserListComponent implements OnInit {
   }
 
   updateUserProfile(): void {
-    this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
+    this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
     });
   }
 
   updateUser(){
     this.dataService
-      .updateUser(this.myUserData.id,this.myUserData)
+      .updateUser(this.myUserData.user_id,this.myUserData)
       .subscribe(res => this);
   }
 
-  
   delUser(index,i){
-      this.deleteUser(this.users[index].id,index);
+      this.deleteUser(this.users[index].user_id,index);
   }
 
   changeRole(index,i){
@@ -71,6 +71,7 @@ export class UserListComponent implements OnInit {
   }
 
   changeActive(index,i){
+    console.log("user id : "+ this.users[index].user_id)
     this.user = this.users[index];
     let new_active_state = this.users[index].active ==0 ? 1 : 0
     this.users[index].active = new_active_state;

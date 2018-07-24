@@ -12,9 +12,10 @@ const httpOptions = {
 };
 
 const Api = {
-  base: 'http://localhost:3000/',
+  base: 'http://192.168.210.116:8080/',
   users: 'users',
-  course: 'course'
+  course: 'course',
+  user: 'user'
 };
 
 @Injectable({
@@ -74,7 +75,7 @@ export class ApiConnectionService {
 
   updateUser(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(
-      Api.base + Api.users + `/${id}`,
+      Api.base + Api.user + `/${id}`,
       userData,
       httpOptions
     );
