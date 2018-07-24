@@ -1,13 +1,12 @@
 export class User {
   user_id?: Number;
-  active?: Number;
+  email: String;
   firstName: String;
   lastName: String;
-  email: String;
   password: String;
-  role?: Number;
-  constructor() {
-    this.active = 0;
-    this.role = 0;
-  }
+  active?: Number;
+  resetToken?: null;
+  roles?: Number[];
+
+  constructor() { }
 }

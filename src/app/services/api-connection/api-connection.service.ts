@@ -7,15 +7,20 @@ import { Course } from '../../shared/course';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
   })
 };
 
 const Api = {
   base: 'http://192.168.210.116:8080/',
   users: 'users',
+  user : 'user',
   course: 'course',
-  user: 'user'
+  register: 'create/user',
+  login: 'login',
+  reset: 'reset',
+  categories: 'categories'
 };
 
 @Injectable({
@@ -26,15 +31,9 @@ export class ApiConnectionService {
    * There's also a possibility to use a local BE, with json-server.
    */
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  registerUser(userData: User): Observable<User> {
-    return this.http.post<User>(Api.base + Api.users, userData, httpOptions);
-  }
-  
-  deleteUser(id:Number): Observable<User> {
-    return this.http.delete<any>(Api.base+Api.users +`/${id}`)
-  }
 
   updateCourse(courseData: Course): Observable<Course> {
     return this.http.put<Course>(
@@ -48,20 +47,26 @@ export class ApiConnectionService {
     return this.http.get<User[]>(Api.base + Api.users);
   }
 
-  updateCourseProgress(id:Number, courseData: Course): Observable<Course> {
+  registerUser(userData: User): Observable<User> {
+    // return this.http.post<User>(Api.base + Api.register, JSON.stringify(userData), httpOptions);
+    return this.http.post<User>(Api.base + Api.register, userData, httpOptions);
+  }
+
+  deleteUser(id: Number): Observable<User> {
+    return this.http.delete<any>(Api.base + Api.users + `/${id}`)
+  }
+  updateCourseProgress(id: Number, courseData: Course): Observable<Course> {
     return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
   }
 
   fakeLogin(email: String, password: String): Observable<User[]> {
     return this.http.get<User[]>(
-      Api.base + Api.users + `?email=${email}&password=${password}`
+      Api.base + Api.login + `?email=${email}&password=${password}`
     );
   }
 
-  loginUser(email: String, password: String): Observable<User> {
-    return this.http.get<User>(
-      Api.base + Api.users + `?email=${email}&password=${password}`
-    );
+  loginUser(userData: User): Observable<User> {
+    return this.http.post<User>(Api.base + Api.login, userData, httpOptions);
   }
 
   getUserById(id: Number): Observable<User> {
@@ -82,7 +87,7 @@ export class ApiConnectionService {
   }
 
   resetPassword(userData: User) {
-    return this.http.put<User>(Api.base + Api.users, userData, httpOptions);
+    return this.http.post<User>(Api.base + Api.reset, userData, httpOptions);
   }
 
   fakeResetPassword(id: Number, userData: User): Observable<User> {
