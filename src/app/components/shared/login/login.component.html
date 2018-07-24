@@ -26,6 +26,7 @@
                      [(ngModel)]="logUser.email"
                      required
                      email
+                     pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                      #email="ngModel">
               <span class="error_message"
                     *ngIf="!email.valid && email.touched ">Please enter a email address!</span>
@@ -40,7 +41,7 @@
                      [(ngModel)]="logUser.password"
                      required
                      #pass="ngModel"
-                     minlength="5">
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
               <input *ngIf="!showPassword"
                      type="text"
                      name="password_log"
@@ -50,7 +51,7 @@
                      [(ngModel)]="logUser.password"
                      required
                      #pass2="ngModel"
-                     minlength="5">
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
               <button type="button"
                       (click)="toggleShowPassword()"
                       class="showPassword">
@@ -107,6 +108,7 @@
                      [(ngModel)]="resetUser.email"
                      required
                      email
+                     pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                      #email_reset="ngModel"
                      style="margin-bottom: 5px;">
               <span class="error_message"
@@ -121,7 +123,8 @@
                      placeholder="new password "
                      [(ngModel)]="resetUser.password"
                      required
-                     #new_pass="ngModel">
+                     #new_pass="ngModel"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
               <input *ngIf="!showPassword"
                      type="text"
                      name="new_password"
@@ -130,7 +133,8 @@
                      placeholder="new password "
                      [(ngModel)]="resetUser.password"
                      required
-                     #new_pass="ngModel">
+                     #new_pass="ngModel"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
               <button type="button"
                       (click)="toggleShowPassword()"
                       class="showPassword">
@@ -149,7 +153,8 @@
                      placeholder="confirm password"
                      [(ngModel)]="confirm_password"
                      required
-                     #confirm_pass="ngModel">
+                     #confirm_pass="ngModel"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
               <input *ngIf="!showConfirmPassword"
                      type="text"
                      name="confirm_password"
@@ -158,7 +163,8 @@
                      placeholder="confirm password"
                      [(ngModel)]="confirm_password"
                      required
-                     #confirm_pass="ngModel">
+                     #confirm_pass="ngModel"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
               <button type="button"
                       (click)="toggleShowConfirmPassword()"
                       class="showConfirmPassword">
@@ -219,7 +225,7 @@
                      id="first_name"
                      class="rectangle form-control"
                      placeholder="first name "
-                     [(ngModel)]="myUserData.name"
+                     [(ngModel)]="myUserData.firstName"
                      required
                      #first_name="ngModel"
                      pattern="[a-zA-Z ]*">
@@ -233,7 +239,7 @@
                      id="last_name"
                      class="rectangle form-control space-between "
                      placeholder="last name"
-                     [(ngModel)]="myUserData.last_name"
+                     [(ngModel)]="myUserData.lastName"
                      required
                      #last_name="ngModel"
                      pattern="[a-zA-Z ]*">
@@ -250,7 +256,8 @@
                      [(ngModel)]="myUserData.email"
                      required
                      #email_register="ngModel"
-                     email>
+                     email
+                     pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
               <span class="error_message"
                     *ngIf="!email_register.valid && email_register.touched "
                     style="color: white">Please enter a email address!</span>
@@ -264,7 +271,7 @@
                      placeholder="••••••••••"
                      [(ngModel)]="myUserData.password"
                      required
-                     minlength="8"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$"
                      #password_register="ngModel">
               <input *ngIf="!showPassword"
                      type="text"
@@ -274,7 +281,7 @@
                      placeholder="••••••••••"
                      [(ngModel)]="myUserData.password"
                      required
-                     minlength="8"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$"
                      #password_register="ngModel">
               <button type="button"
                       (click)="toggleShowPassword()"

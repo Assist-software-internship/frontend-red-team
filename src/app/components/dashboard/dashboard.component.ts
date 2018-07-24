@@ -7,19 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   listCategory = [
-    'Astrology',
-    'Finance',
-    'Grammar',
-    'Fun Facts',
-    'Jokes',
-    'Life Hacks',
-    'Category 7',
-    'Category 8',
-    'Category 9',
-    'Category 10',
-    'Category 11',
-    'Category 12',
+    { title: 'Ana' },
+    { title: 'Maria' },
+    { title: 'Bia' },
+    { title: 'Ion' },
+    { title: 'Cindy' },
+    { title: 'Ionut' },
+    { title: 'Daria' },
+    { title: 'Dan' },
+    { title: 'Delia' },
+    { title: 'Mihai' }
   ];
+  // listCategory = [
+  //   'Astrology',
+  //   'Finance',
+  //   'Grammar',
+  //   'Fun Facts',
+  //   'Jokes',
+  //   'Life Hacks',
+  //   'Category 7',
+  //   'Category 8',
+  //   'Category 9',
+  //   'Category 10',
+  //   'Category 11',
+  //   'Category 12',
+  // ];
   filteredStatus = '';
   max = 6;
   public categoryTitle: string;
@@ -35,7 +47,7 @@ export class DashboardComponent implements OnInit {
     this.max = this.max + 6;
   }
   displayLess() {
-    if (this.max == this.listCategory.length) {
+    if (this.max === this.listCategory.length) {
       this.max = this.max - 6;
     }
   }

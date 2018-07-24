@@ -12,10 +12,27 @@
             [subtitle]="courseSubtitle"></app-hero>
   <div class="container container_content"
        id="tourpackages-carousel">
+    <div class="col-md-8 col-md-offset-2 category_content">
+      <div class="row ">
+        <div class="col-md-9">
+          <input type="text"
+                 name=""
+                 id=""
+                 class="search_input"
+                 placeholder="search here..."
+                 [(ngModel)]="filteredStatus">
+        </div>
+        <div class="col-md-3">
+          <button type="submit"
+                  class="btn btn-search"
+                  (click)="search_function()">SEARCH</button>
+        </div>
+      </div>
+    </div>
     <div class="row margin-row">
 
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-           *ngFor="let item of course | slice:0:[max]">
+           *ngFor="let item of course | slice:0:[max] | search:filteredStatus:'tags'">
         <div class="thumbnail">
           <img src="{{item.images}}"
                alt=""
