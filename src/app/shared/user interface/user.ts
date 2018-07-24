@@ -1,14 +1,14 @@
 export class User {
-  id?: Number;
-  active: Number;
-  name: String;
-  last_name: String;
+  user_id?: Number;
+  active?: Number;
+  firstName: String;
+  lastName: String;
   email: String;
   password: String;
-  role: Number;
+  roles?: Number;
   image: File;
   constructor() {
     this.active = 0;
-    this.role = 0;
+    this.roles = 0;
   }
 }

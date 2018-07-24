@@ -73,7 +73,7 @@ export class ApiConnectionService {
   }
 
   getUserById(id: Number): Observable<User> {
-    return this.http.get<User>(Api.base + Api.users + `?id=${id}`);
+    return this.http.get<User>(Api_user.base + Api_user.users + `?id=${id}`);
   }
 
   getUserByEmail(email: String): Observable<User[]> {

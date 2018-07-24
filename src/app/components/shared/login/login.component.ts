@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         console.log('response ', res);
         if (res.length > 0) {
           console.log('User is now logged in');
-          localStorage.setItem('id', res[0].id.toString());
+          localStorage.setItem('id', res[0].user_id.toString());
           this.router.navigate(['/dashboard']);
         } else {
           this.message = 'Email or password are incorrect!';
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.dataService
-            .fakeResetPassword(user.id, this.resetUser)
+            .fakeResetPassword(user.user_id, this.resetUser)
             .subscribe(response => {
               console.log('password updated ', res);
               this.manageForms(true, false, false);

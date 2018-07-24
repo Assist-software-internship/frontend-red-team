@@ -25,9 +25,10 @@ export class MyAccountComponent implements OnInit {
   public logUser: User = new User();
   // public uploader: FileUploader;
   private hasDragOver = false;
+  selectedFile = null;
 
 
-  constructor(private dataService: ApiConnectionService, private router: Router, public sanitizer: DomSanitizer) {
+  constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
   }
 
   localStorage
@@ -68,7 +69,7 @@ export class MyAccountComponent implements OnInit {
     }
 
     updateUserProfile(): void {
-      this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
+      this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
         console.log('updated');  
       });
     }
@@ -84,18 +85,23 @@ export class MyAccountComponent implements OnInit {
     toggleShowPassword(){
         this.showPassword === false ? this.showPassword = true : this.showPassword = false;
     }
-    photoURL() {
-      return this.sanitizer.bypassSecurityTrustUrl(this.user[0].image);
-    }
-    updateImage(): void {
-      this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
-        console.log('Image updated');
-      });
-    }
+    // updateImage(): void {
+    //   this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
+    //     console.log('Image updated');
+    //   });
+    // }
 
     onFileSelected(event) {
       console.log(event.srcElement.value);
-      this.user.image = event.srcElement.value;
+      this.selectedFile = <File>event.target.files[0];
+    }
+    onUpload() {
+      const fd = new FormData();
+      fd.append('image', this.selectedFile.this.selectedFile.name);
+      this.http.post('./assets/images.png', fd)
+      .subscribe(res => {
+        console.log(res);
+      });
     }
 }
 
