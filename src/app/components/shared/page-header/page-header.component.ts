@@ -38,7 +38,7 @@ export class PageHeaderComponent implements OnInit {
   }
 
   ngOnInit() { 
-   
+    console.log(  this.getRoute())
   }
 
   getRoute(){

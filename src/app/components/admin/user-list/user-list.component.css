@@ -1,6 +1,7 @@
 .container_allusers{
     /* min-width: 1000px; */
     margin: 0 auto;
+    display: grid;
 }
 
 #wrapper {
@@ -66,8 +67,10 @@
     .descList{
         text-align: center;
         margin-top: 80px !important;
-        margin-left: -28px !important;
         visibility: visible;
+        max-width: 940px;
+        margin: 0 auto;
+        display: flex;
     }
 
     .profilePic{
@@ -88,25 +91,26 @@
         text-align: left ;
         line-height: 16px ;
         margin-left: 12px ;
+        
     }
 
     .users-list .useremail{
         height: 14px;	
         width: 121px;	
         color: #AEB5BB;	
-        font-size: 14px;	
+        font-size: 13px;	
         line-height: 14px;
         font-weight: 100;display: flex;
     }
 
     #tags{
-        margin-left: 140px;
+        margin-left: 61px;
      
     }
 
     .score{
         color: #AEB5BB;
-        margin-left:20px;
+        margin-left:100px;
     }
 
     .datecreated{
@@ -258,14 +262,15 @@
 
 .descList span {
     height: 14px;	
-    width: 180px;	
+    width: 100px;	
     color: #AEB5BB;		
     font-size: 12px;	
     font-weight: bold;	
     line-height: 14px;
     text-transform: uppercase;
     display: inline-flex;
-    margin-left: 31px;
+    margin-right: 10px;
+    float: left;
 }
 
 input[type=checkbox]:checked {
@@ -385,3 +390,4 @@ input[type=checkbox]:checked:after {
 .opt:hover .editUser{
     display: block;
 }
+
