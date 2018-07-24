@@ -38,7 +38,7 @@
                     </div>
                     <!-- Update user & password & email -->
                     <div class="username">
-                        <input type="text" name="username" id="username" [ngModel]="user.firstName + ' ' + user.lastName">
+                        <input type="text" name="username" id="username" [ngModel]="user.firstName + ' ' + user.lastName" (ngModelChange) = "splitName()">
                     </div>
 
                     <div class="password">

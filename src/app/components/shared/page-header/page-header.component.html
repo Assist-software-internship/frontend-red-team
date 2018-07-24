@@ -18,7 +18,7 @@
        <a href="/about"> <li class="active">Users</li></a>
       </ul>
    </span>
-   <span class="menuOpt" [hidden]="getRoute() == '/users'">
+   <span class="menuOpt" [hidden]="getRoute() == '/users' || getRoute() == '/courses'">
     <ul class="pages">
       <a routerLink="/courses" id="minProf"><li>Profile</li></a>
       <a routerLink="/courses"><li>Courses</li></a>

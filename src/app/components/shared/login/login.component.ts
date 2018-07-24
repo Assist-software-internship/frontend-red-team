@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
   public resetContent = false;
   public registerContent = false;
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   onReset() {
     this.resetPassword();
@@ -60,43 +62,50 @@ export class LoginComponent implements OnInit {
       .registerUser(this.myUserData)
       .subscribe(res => this.manageForms(true, false, false));
   }
-
-  loginUser(): void {
+  loginUser() {
     this.dataService
-      .fakeLogin(this.logUser.email, this.logUser.password)
+      .loginUser(this.logUser)
       .subscribe(res => {
-        console.log('response ', res);
-        if (res.length > 0) {
-          console.log('User is now logged in');
-          localStorage.setItem('id', res[0].user_id.toString());
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.message = 'Email or password are incorrect!';
-          console.log('User not found.');
-        }
+        this.router.navigate(['/dashboard']);
+        localStorage.setItem('id', res[0].user_id.toString());
       });
   }
+  // loginUser(): void {
+  //   this.dataService
+  //     .fakeLogin(this.logUser.email, this.logUser.password)
+  //     .subscribe(res => {
+  //       console.log('response ', res);
+  //       if (res.length > 0) {
+  //         console.log('User is now logged in');
+  //         localStorage.setItem('id', res[0].user_id.toString());
+  //         this.router.navigate(['/dashboard']);
+  //       } else {
+  //         this.message = 'Email or password are incorrect!';
+  //         console.log('User not found.');
+  //       }
+  //     });
+  // }
   // fakeResetPassword
-  fakeResetPassword(): void {
-    this.dataService.getUserByEmail(this.resetUser.email).subscribe(res => {
-      if (res.length > 0) {
-        const user = res[0];
-        if (this.resetUser.password != this.confirm_password) {
-          this.password_message = 'Password not match';
-        }
-        else {
-          this.dataService
-            .fakeResetPassword(user.user_id, this.resetUser)
-            .subscribe(response => {
-              console.log('password updated ', res);
-              this.manageForms(true, false, false);
-              this.resetForm.reset();
-            });
-        }
+  // fakeResetPassword(): void {
+  //   this.dataService.getUserByEmail(this.resetUser.email).subscribe(res => {
+  //     if (res.length > 0) {
+  //       const user = res[0];
+  //       if (this.resetUser.password != this.confirm_password) {
+  //         this.password_message = 'Password not match';
+  //       }
+  //       else {
+  //         this.dataService
+  //           .fakeResetPassword(user.id, this.resetUser)
+  //           .subscribe(response => {
+  //             console.log('password updated ', res);
+  //             this.manageForms(true, false, false);
+  //             this.resetForm.reset();
+  //           });
+  //       }
 
-      }
-    });
-  }
+  //     }
+  //   });
+  // }
   // reset password
   resetPassword(): void {
     this.dataService

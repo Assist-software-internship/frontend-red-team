@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, Output, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {User} from '../../../shared/user interface/user';
-import {Course} from '../../../shared/course';
-import { DomSanitizer } from '@angular/platform-browser';
+import { User } from '../../../shared/user interface/user';
+import { Course } from '../../../shared/course';
+
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
-import {Observable} from 'rxjs';
-import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 // import { FileUploader } from 'ng-file-upload';
 import { EventEmitter } from 'events';

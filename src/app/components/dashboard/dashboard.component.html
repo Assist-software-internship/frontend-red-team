@@ -30,10 +30,10 @@
     <div class="row margin-item">
       <div class="margin-thumbnail">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
-             *ngFor="let item of listCategory | slice:0:[max] | search:filteredStatus">
+             *ngFor="let item of listCategory | slice:0:[max] | search:filteredStatus:'title'">
           <div class="list_item">
             <p class="list_title"
-               routerLink="/courses">{{item | uppercase}}</p>
+               routerLink="/courses">{{item.title | uppercase}}</p>
           </div>
         </div>
       </div>
