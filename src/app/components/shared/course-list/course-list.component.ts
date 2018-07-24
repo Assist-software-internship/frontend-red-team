@@ -11,8 +11,7 @@ export class CourseListComponent implements OnInit {
   public course: Course[];
   public courseTitle: string;
   public courseSubtitle: string;
-  max = 6;
-
+  max = 2;
   constructor(private dataService: ApiConnectionService) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
@@ -29,11 +28,10 @@ export class CourseListComponent implements OnInit {
     });
   }
   discoverMore(): void {
-    this.max = this.max + 6;
+    this.max = this.max + 2;
   }
-  // displayLess(): void{
-  //   if(this.max == this.course.length){
-  //     this.max = this.max -6;
-  //   }
-  // }
+  displayLess(): void {
+    this.max = this.max - 2;
+  }
+
 }

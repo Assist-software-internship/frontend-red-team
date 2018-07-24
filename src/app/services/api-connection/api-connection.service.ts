@@ -15,7 +15,7 @@ const httpOptions = {
 const Api = {
   base: 'http://192.168.210.116:8080/',
   users: 'users',
-  user : 'user',
+  user: 'user',
   course: 'course',
   register: 'create/user',
   login: 'login',
@@ -64,7 +64,7 @@ export class ApiConnectionService {
     return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
   }
 
-  updateImage(id:Number, userData: User): Observable<User> {
+  updateImage(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(Api.base + Api.course + `/${id}`, userData, httpOptions);
   }
 
@@ -107,6 +107,6 @@ export class ApiConnectionService {
   // }
 
   getAllCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(Api.base + Api.course);
+    return this.http.get<Course[]>('http://localhost:3000/' + 'course');
   }
 }
