@@ -89,13 +89,13 @@ export class ApiConnectionService {
     return this.http.post<User>(Api.base + Api.reset, userData, httpOptions);
   }
 
-  fakeResetPassword(id: Number, userData: User): Observable<User> {
-    return this.http.put<User>(
-      Api.base + Api.users + `/${id}`,
-      userData,
-      httpOptions
-    );
-  }
+  // fakeResetPassword(id: Number, userData: User): Observable<User> {
+  //   return this.http.put<User>(
+  //     Api.base + Api.users + `/${id}`,
+  //     userData,
+  //     httpOptions
+  //   );
+  // }
 
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(Api.base + Api.course);
