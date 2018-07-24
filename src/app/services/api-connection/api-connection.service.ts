@@ -20,7 +20,9 @@ const Api = {
   register: 'create/user',
   login: 'login',
   reset: 'reset',
-  categories: 'categories'
+  categories: 'categories',
+  course_category: '/courses?category='
+
 };
 
 const Api_user = {
@@ -108,5 +110,8 @@ export class ApiConnectionService {
 
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>('http://localhost:3000/' + 'course');
+  }
+  getCoursesByCategory(id: Number): Observable<Course[]> {
+    return this.http.get<Course[]>('http://localhost:3000/course?id=' + id);
   }
 }

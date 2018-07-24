@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,30 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   listCategory = [
-    { title: 'Astrology' },
-    { title: 'Finance' },
-    { title: 'Grammar' },
-    { title: 'Fun Facts' },
-    { title: 'Jokes' },
-    { title: 'Life Hacks' },
-    { title: 'Computers' },
-    { title: 'Math' },
-    { title: 'Economy' },
-    { title: 'Math 1' },
-    { title: 'Economy 2' },
-    { title: 'Math 4 ' },
-    { title: 'Economy 4' },
-    { title: 'Math 5' },
-    { title: 'Economy 5' },
-    { title: 'Math 6' },
-    { title: 'Economy 7' },
-    { title: 'Sports' }
+    { title: 'Astrology', id: 1 },
+    { title: 'Finance', id: 2 },
+    { title: 'Grammar', id: 3 },
+    { title: 'Fun Facts', id: 4 },
+    { title: 'Jokes', id: 5 },
+    { title: 'Life Hacks', id: 6 },
+    { title: 'Computers', id: 7 },
+    { title: 'Math', id: 8 },
+    { title: 'Economy', id: 9 },
+    { title: 'Math 1', id: 10 },
+    { title: 'Economy 2', id: 11 },
+    { title: 'Math 4 ', id: 12 },
+    { title: 'Economy 4', id: 13 },
+    { title: 'Math 5', id: 14 },
+    { title: 'Economy 5', id: 15 },
+    { title: 'Math 6', id: 16 },
+    { title: 'Economy 7', id: 17 },
+    { title: 'Sports', id: 18 }
   ];
   filteredStatus = '';
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
-  constructor() {
+  constructor(private router: Router) {
     this.categoryTitle = 'Browse through best learning courses for Alexa';
     this.categorySubtitle = 'Pick the one you like and start learning';
   }
@@ -46,5 +47,10 @@ export class DashboardComponent implements OnInit {
   search_function() {
     const searchCategory = this.filteredStatus;
     console.log('selected value: ', searchCategory);
+  }
+  toCourses(id: Number) {
+    localStorage.setItem('category_id', id.toString());
+    this.router.navigate(['/courses']);
+    console.log('selected id=', id)
   }
 }

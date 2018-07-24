@@ -18,9 +18,11 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllCourses();
+    // this.getAllCourses();
+    this.getCoursesByCategory();
   }
   getAllCourses() {
+    const course_id = localStorage.getItem('category_id');
     this.dataService.getAllCourses().subscribe(res => {
       this.course = res;
       console.log('Course ', this.course);
@@ -32,6 +34,13 @@ export class CourseListComponent implements OnInit {
   }
   displayLess(): void {
     this.max = this.max - 2;
+  }
+  getCoursesByCategory() {
+    const course_id = parseInt(localStorage.getItem('category_id'));
+    this.dataService.getCoursesByCategory(course_id).subscribe(res => {
+      this.course = res;
+      console.log(res);
+    })
   }
 
 }

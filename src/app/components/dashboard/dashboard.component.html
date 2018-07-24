@@ -33,7 +33,7 @@
              *ngFor="let item of listCategory | search:filteredStatus:'title' | slice:0:[max]  ">
           <div class="list_item">
             <p class="list_title"
-               routerLink="/courses">{{item.title | uppercase}}</p>
+               (click)="toCourses(item.id)" id="{{item.id}}" >{{item.title | uppercase}}</p>
           </div>
         </div>
       </div>
