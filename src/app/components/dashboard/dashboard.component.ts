@@ -7,31 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   listCategory = [
-    { title: 'Ana' },
-    { title: 'Maria' },
-    { title: 'Bia' },
-    { title: 'Ion' },
-    { title: 'Cindy' },
-    { title: 'Ionut' },
-    { title: 'Daria' },
-    { title: 'Dan' },
-    { title: 'Delia' },
-    { title: 'Mihai' }
+    { title: 'Astrology' },
+    { title: 'Finance' },
+    { title: 'Grammar' },
+    { title: 'Fun Facts' },
+    { title: 'Jokes' },
+    { title: 'Life Hacks' },
+    { title: 'Computers' },
+    { title: 'Math' },
+    { title: 'Economy' },
+    { title: 'Math 1' },
+    { title: 'Economy 2' },
+    { title: 'Math 4 ' },
+    { title: 'Economy 4' },
+    { title: 'Math 5' },
+    { title: 'Economy 5' },
+    { title: 'Math 6' },
+    { title: 'Economy 7' },
+    { title: 'Sports' }
   ];
-  // listCategory = [
-  //   'Astrology',
-  //   'Finance',
-  //   'Grammar',
-  //   'Fun Facts',
-  //   'Jokes',
-  //   'Life Hacks',
-  //   'Category 7',
-  //   'Category 8',
-  //   'Category 9',
-  //   'Category 10',
-  //   'Category 11',
-  //   'Category 12',
-  // ];
   filteredStatus = '';
   max = 6;
   public categoryTitle: string;
@@ -41,15 +35,13 @@ export class DashboardComponent implements OnInit {
     this.categorySubtitle = 'Pick the one you like and start learning';
   }
   ngOnInit() {
-
+    console.log('length of categories', this.listCategory.length)
   }
   discoverMore(): void {
     this.max = this.max + 6;
   }
   displayLess() {
-    if (this.max === this.listCategory.length) {
-      this.max = this.max - 6;
-    }
+    this.max = this.max - 6;
   }
   search_function() {
     const searchCategory = this.filteredStatus;
