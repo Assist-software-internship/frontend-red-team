@@ -13,12 +13,14 @@ import { Router } from '@angular/router';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
+
 export class UserListComponent implements OnInit {
   public users: User[];
   public myUserData: User = new User();
   constructor(private dataService: ApiConnectionService, private router: Router) { }
   public user: User = new User();
-  public welcome = "ho";
+  public welcome ="ho";
+
   ngOnInit() {
     this.getAllUsers();
   }
@@ -28,8 +30,7 @@ export class UserListComponent implements OnInit {
       this.users = res;
     });
   }
-
-
+  
   registerUser() {
     this.dataService
       .registerUser(this.myUserData)

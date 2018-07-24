@@ -7,6 +7,7 @@ export class User {
   active?: Number;
   resetToken?: null;
   roles?: Number[];
+  image: File;
 
   constructor() { }
 }

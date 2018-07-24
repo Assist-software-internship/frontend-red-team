@@ -7,6 +7,7 @@ li a {
     font-weight: 200;
     color: #00217A;
     font-size: 16px;	 
+    display: flex;
 }
 
 .profilePic{
@@ -79,6 +80,7 @@ a{color:#00217A;text-decoration: none;}
     outline: none;
     margin-right: 20px;
     color: #00217A;
+    margin-top: 8px;
 }
 
 #right{
@@ -89,7 +91,7 @@ a{color:#00217A;text-decoration: none;}
 }
 
 .pages li {
-    line-height: 93px;
+    line-height: 94px;
     /* width: 50px; */
     margin-left: 34px;
     padding-top: 13px;
@@ -108,7 +110,7 @@ a{color:#00217A;text-decoration: none;}
 }
 
 @media only screen and (max-width: 700px) {
-    #minProf{display: table-header-group !important;}
+   
     #right{
         clear: both;
         display: none;
@@ -213,7 +215,7 @@ a{color:#00217A;text-decoration: none;}
    .logoPic{margin-left:254px;}
 
    #right{
-        margin-right: 239px;
+        margin-right: 216px;
     }
   
 }
@@ -221,12 +223,10 @@ a{color:#00217A;text-decoration: none;}
 .pages{display: none;}
 
 .points{
-    position: absolute;
-    margin-left: -132px;
-    margin-top: 16px;
     background: #ff5656;
     color: #fff;
     border-radius: 5px;
-    padding: 1px 5px 1px 5px;
+    padding: 2px 5px 0px 5px;
     font-size: 11px;
+    width: fit-content;
 }

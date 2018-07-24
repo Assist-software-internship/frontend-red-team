@@ -137,6 +137,8 @@
   font-size: 18px;
   padding-left: 20px;
   color: #AEB5BB;
+  border: 1px solid;
+  outline: none;
 
 }
 .password{
@@ -158,19 +160,21 @@
   margin-top: 13px;
   margin-left: 63px;
   padding-left: 20px;
-  /* border: 1px solid #AEB5BB; */
   border-radius: 5px;
   background-color: #FFFFFF;
   line-height: 21px;
   color: #AEB5BB;
   font-size: 18px;
+  border: 1px solid;
+  outline: none;
 }
 #email{
   height: 45px;
   width: 300px;
   margin-top: 13px;
   margin-left: 63px;
-  /* border: 1px solid #AEB5BB; */
+  border: 1px solid;
+  outline: none;
   border-radius: 5px;
   background-color: #FFFFFF;
   line-height: 21px;
