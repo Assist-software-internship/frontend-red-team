@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 // import { FileUploader } from 'ng-file-upload';
 import { EventEmitter } from 'events';
 import { isNgTemplate } from '@angular/compiler';
+import { userInfo } from 'os';
+import { base64textString } from 'angular-base64-download';
 
 @Component({
   selector: 'app-my-account',
@@ -19,6 +21,7 @@ import { isNgTemplate } from '@angular/compiler';
 export class MyAccountComponent implements OnInit {
   public courses: Course[];
   public users: User[];
+  private wholeName: string;
   @Output()
   public user: User = new User();
   public showPassword = false;
@@ -26,14 +29,23 @@ export class MyAccountComponent implements OnInit {
   // public uploader: FileUploader;
   private hasDragOver = false;
   selectedFile = null;
-
+  public firstload=true;
 
   constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
   }
 
+    
   localStorage
     ngOnInit() {
      this.getAllCourses();
+     this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe(res => {
+      this.user = res[0];
+      this.wholeName = res[0].firstName + ' ' + res[0].lastName;
+      console.log("S-au salvat datele");
+     });
+   
+     this.firstload=false;
+
     }
 
     ngAfterViewInit() {
@@ -46,18 +58,23 @@ export class MyAccountComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    loginUser(): void {
-      this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
-        this.user = res[0];
-        localStorage.setItem('id', JSON.stringify(1));
-      })
-    };
-
     getUserProfile(): void {
-      this.dataService.getUserById(parseInt(localStorage.getItem('id'))).subscribe(res => {
+      this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe(res => {
         this.user = res[0];
-        console.log('Users ', this.user);
+        console.log('Users::: '+ this.user.firstName + this.user.lastName);
       });
+    }
+    splitName(event) {
+        // if (event.getLength > 20  || event.indexOf(' ') > 0)
+           //let name = event.split(' ');
+        
+        this.user.firstName = name[0];
+        this.user.lastName = name[1];
+        console.log("asdas: " + this.user.firstName + this.user.lastName);
+        if(this.user.firstName.length < 1)
+          console.log("");
+        // if(this.user.lastName == "")
+
     }
 
     updateCourseProgress(item: Course){
@@ -69,6 +86,13 @@ export class MyAccountComponent implements OnInit {
     }
 
     updateUserProfile(): void {
+      const firstName = this.wholeName.split(' ')[0];
+      const lastName = this.wholeName.split(' ')[1];
+      let invalidUsername = false;
+      if(firstName.length < 1){
+        invalidUsername = true;
+      }
+      console.log('first', firstName, 'last', lastName);
       this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
         console.log('updated');  
       });
@@ -85,11 +109,6 @@ export class MyAccountComponent implements OnInit {
     toggleShowPassword(){
         this.showPassword === false ? this.showPassword = true : this.showPassword = false;
     }
-    // updateImage(): void {
-    //   this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
-    //     console.log('Image updated');
-    //   });
-    // }
 
     onFileSelected(event) {
       console.log(event.srcElement.value);
@@ -103,6 +122,23 @@ export class MyAccountComponent implements OnInit {
         console.log(res);
       });
     }
+    handleFileSelect(evt){
+      var files = evt.target.files;
+      var file = files[0];
+
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+    }
+  }
+    _handleReaderLoaded(readerEvt) {
+          var binaryString = readerEvt.target.result;
+          binaryString= btoa(binaryString);
+          console.log(btoa(binaryString));
+      }
 }
 
 

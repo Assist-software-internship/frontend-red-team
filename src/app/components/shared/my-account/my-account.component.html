@@ -23,12 +23,11 @@
                         <input
                         style="display: none;"
                         type="file"
-                        (change)="onFileSelected($event)"
-                        (onclick)="onUpload()"
+                        (change)="handleFileSelect($event)"
                         name="upload-file"
                         class="upload-file"
                         #fileInput>
-                        <button type="file" (change)="onFileSelected($event)" (click)="fileInput.click()" class="upload-file">Upload file</button>
+                        <button type="file" (click)="fileInput.click()" class="upload-file">Upload file</button>
                 </div>
         <!-- </div> -->
 
@@ -38,7 +37,19 @@
                     </div>
                     <!-- Update user & password & email -->
                     <div class="username">
-                        <input type="text" name="username" id="username" [ngModel]="user.firstName + ' ' + user.lastName" (ngModelChange) = "splitName()">
+                        <input 
+                        type="text" 
+                        name="username" 
+                        id="username" 
+                        [(ngModel)]="wholeName"
+                        required
+                        username
+                        pattern="[a-zA-Z ]{1,}"
+                        #username="ngModel">
+                        <span class="invalidUsername"
+                              *ngIf="!username.valid && username.touched">Please enter first name and last name <br> with white space between them !!
+
+                        </span>
                     </div>
 
                     <div class="password">
@@ -59,9 +70,7 @@
                     </div>
                     <!--Reset datas to the old one-->
                     <div class="cancel">
-                        <button type="button" name="cancel" id="cancel" (click)="getUserProfile(user.firstName + ' ' + lastName);
-                                                                                getUserProfile(user.password);
-                                                                        getUserProfile(user.email)">Cancel</button>
+                        <button type="button" name="cancel" id="cancel" (click)="getUserProfile()">Cancel</button>
                     </div>
             
         <!--Courses started-->
