@@ -40,7 +40,7 @@
                      placeholder="••••••••••"
                      [(ngModel)]="logUser.password"
                      required
-                     #pass="ngModel"
+                     #passlogin="ngModel"
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <input *ngIf="!showPassword"
                      type="text"
@@ -50,7 +50,7 @@
                      placeholder="••••••••••"
                      [(ngModel)]="logUser.password"
                      required
-                     #pass="ngModel"
+                     #passlogintwo="ngModel"
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
                       (mousedown)="toggleShowPassword()"
