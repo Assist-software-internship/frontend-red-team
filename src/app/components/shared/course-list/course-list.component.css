@@ -18,6 +18,10 @@
   position: relative;
   padding: 0px;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+.thumbnail:hover{
+  border: 1px solid #0076f7bf;
 }
 
 .thumbnail img {
@@ -58,6 +62,10 @@ a{
   font-size: 17px;
   padding: 4px 14px;
   background: transparent;
+}
+.btn-discover:hover{
+  background: #006FFF;
+  color: white;
 }
 .discover_section{
   text-align: center; 
