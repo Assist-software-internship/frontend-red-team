@@ -9,28 +9,31 @@
   <a (click)="toggle()"  class="menubtn"><i class="fas fa-bars"></i></a>
   <span class="imgP">
     <a routerLink="/courses" class="navbar-brand"><img src="assets/logo.svg" class="logoPic"></a>
+    
   </span>
   <div id="right">
-    <span class="menuOpt" [hidden]="getRoute() != '/users'">
+    
+    <span class="menuOpt" [hidden]="currentRoute != '/users'">
       <ul class="pages">
-        <a routerLink="/courses" id="minProf"><li>Profile</li></a>
-        <a routerLink="/courses"><li>Courses</li></a>
-       <a href="/about"> <li class="active">Users</li></a>
+        <a routerLink="/courses" id="minProf"><li [ngClass]="{'active': currentRoute=='/profile'}">Profile</li></a>
+        <a routerLink="/courses"><li [ngClass]="{'active': currentRoute=='/dashboard'}">Courses</li></a>
+       <a > <li [ngClass]="{'active': currentRoute=='/users'}">Users</li></a>
       </ul>
    </span>
-   <span class="menuOpt" [hidden]="getRoute() == '/users' || getRoute() == '/courses'">
+
+   <span class="menuOpt" [hidden]="currentRoute == '/users'">
     <ul class="pages">
-      <a routerLink="/courses" id="minProf"><li>Profile</li></a>
-      <a routerLink="/courses"><li>Courses</li></a>
+      <a routerLink="/courses" id="minProf"><li ng-class="active:currentRoute=='/profile'">Profile</li></a>
+      <a routerLink="/courses"><li [ngClass]="{'active': currentRoute =='/dashboard'||'courses'}">Courses</li></a>
       <a routerLink="/courses" style="margin-right: 0px !important;"><li style="width:auto;">What's new</li></a>
-      <a href="/about"> <li class="active">About</li></a>
+      <a > <li [ngClass]="{'active': currentRoute=='/about'}">About</li></a>
     </ul>
  </span>
+
     <ul class="profile">
       <li><a routerLink="/account"><img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic"></a> </li>
       <!-- <li><a routerLink="/account" class="username" style="font-size:12px;" [(ngModel)]="user.name">{{user.name}}</a><span class="points">1234</span></li> -->
       <li style="display: grid;"><a routerLink="/account" class="username" style="font-size:12px;" >Manolea Ioan</a><span class="points">1234</span></li>
- 
     </ul>
   </div>
 </div>

@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
   public myUserData: User = new User();
   constructor(private dataService: ApiConnectionService, private router: Router) { }
   public user: User = new User();
-  public welcome ="ho";
+
 
   ngOnInit() {
     this.getAllUsers();
