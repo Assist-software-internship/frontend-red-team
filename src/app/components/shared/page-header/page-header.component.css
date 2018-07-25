@@ -74,13 +74,14 @@ a{color:#00217A;text-decoration: none;}
     margin-top: 14px;
 }
 
+
 .profile li a{
     /* display: inline-flex; */
     text-decoration: none;
     outline: none;
     margin-right: 20px;
     color: #00217A;
-    margin-top: 8px;
+    margin-top: -8px;
 }
 
 #right{
@@ -96,6 +97,7 @@ a{color:#00217A;text-decoration: none;}
     margin-left: 34px;
     padding-top: 13px;
     color:#00217A;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 701px) {

@@ -1,4 +1,9 @@
 <div class="banner">
-  <p class="title" >{{title}}</p>
-  <p class="subtitle" >{{subtitle}}</p>
+  <ul>
+    <li><p class="category" [hidden]= "!isCourseIDPage">{{category}}</p></li>
+    <li><p class="title">{{title}}</p></li>
+    <li><p class="subtitle" [hidden]= "isCourseIDPage">{{subtitle}}</p></li>
+    <li><p class="subtitleLeft" [hidden]= "!isCourseIDPage">{{subtitle}}</p></li>
+  </ul>
+
 </div>

@@ -58,6 +58,7 @@ export class ApiConnectionService {
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(Api.base + Api.users);
+    // return this.http.get<User[]>('http://localhost:3000/' + Api.users);
   }
 
   registerUser(userData: User): Observable<User> {
