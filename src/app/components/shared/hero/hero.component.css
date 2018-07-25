@@ -49,17 +49,19 @@ li{
 }
 
 .category{
-  height: 26px;	
-  width: 100px;	
+  height: 26px;
+  width: auto;
   border-radius: 5px;
   background: linear-gradient(270deg, #B465DA 0%, #CF6CC9 28.04%, #EE609C 67.6%, #EE609C 100%);
-  font-size: 18px;	
+  font-size: 18px;
   font-weight: bold;
   letter-spacing: 0.8px;
   line-height: 21px;
   text-transform: uppercase;
-  color:#fff;
-  padding-top: 4px;
+  color: #fff;
+  padding: 5px 10px 10px 10px;
+  float: left;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 1047px) {
