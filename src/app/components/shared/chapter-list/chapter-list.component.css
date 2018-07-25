@@ -1,5 +1,149 @@
 .container_chapterlist{
     margin: 0 auto;
     display: grid;
-    border: 1px solid red;
+    padding-bottom: 140px;
+    display: block;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 80px;
+    background-color: #F6FAFC;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+#banner{
+    height: 390px;
+    max-width:1440px;
+    background-image: url("../../../../assets/bg_image.png");
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 110px;
+    display: block;
+}
+
+
+.startbtn:hover{
+    background: #006FFF;
+    color:#fff;
+}
+
+#curriculum{
+    border-bottom: 1px solid #EFF1F4;
+    min-height: 180px;
+    max-width: 812px;
+    margin: 0 auto;
+    padding-bottom: 35px;
+    margin-bottom: 60px;
+    display: block;
+    width: 90%;
+    height: auto;
+}
+
+#curriculum i {
+    height: 33px;
+    color: #006FFF;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 11px;
+    font-style: normal;
+    width: 100%;
+    text-transform: uppercase;
+    display: block;
+}
+
+.startbtn{
+    height: 29px;	
+    width: 55px;
+    border: 1px solid #006FFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#006FFF;
+    padding-top: 3px;
+    float:left;
+    margin-left: 33px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#fullbtn{
+    height: 29px;	width: 204px;
+    border: 1px solid #006FFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#006FFF;
+    margin:0 auto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#fullbtn:hover{
+    background: #006FFF;
+    color:#fff;
+}
+
+
+@media only screen and (min-width: 910px) {    
+
+    #curriculum h1{
+        height: 33px;
+        /* width: 812px; */
+        color: #06102B;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 38px;
+        margin: 0;
+        display: block;
+    }
+    
+    #curriculum p{
+        height: 69px;	
+        max-width: 699px;	
+        color: #AEB5BB;	
+        font-size: 14px;	
+        line-height: 23px;
+        float:left;
+    }
+    
+
+}
+
+@media only screen and (max-width: 909px) {
+    #curriculum h1{
+        font-size: 25px;
+        font-weight: bold;
+        line-height: 31px;
+        margin: 0;
+        display: block;
+        padding-bottom: 20px;
+    }
+
+    .startbtn{
+       margin-left: 0px;
+    }
+
+    #curriculum i {
+        text-align: center;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    #curriculum h1{
+        font-size: 19px !important;
+        line-height: 22px !important;
+    }
+
+    .startbtn{
+        float: none !important;
+        margin: 0 auto;
+    }
 }

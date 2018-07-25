@@ -40,8 +40,8 @@
                      placeholder="••••••••••"
                      [(ngModel)]="logUser.password"
                      required
-                     #pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
+                     #passlogin="ngModel"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <input *ngIf="!showPassword"
                      type="text"
                      name="password_log"
@@ -50,10 +50,10 @@
                      placeholder="••••••••••"
                      [(ngModel)]="logUser.password"
                      required
-                     #pass2="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
+                     #passlogintwo="ngModel"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
-                      (click)="toggleShowPassword()"
+                      (mousedown)="toggleShowPassword()"
                       class="showPassword">
                 <i class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
@@ -93,7 +93,7 @@
           <p class="title">Your're sorry</p>
           <p class="subtitle">Let's reset your password</p>
         </div>
-        <form (ngSubmit)="fakeResetPassword()"
+        <form (ngSubmit)="resetPassword()"
               #reset="ngForm">
           <div class="col-md-7">
             <span class="error_message"
@@ -124,7 +124,7 @@
                      [(ngModel)]="resetUser.password"
                      required
                      #new_pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <input *ngIf="!showPassword"
                      type="text"
                      name="new_password"
@@ -134,7 +134,7 @@
                      [(ngModel)]="resetUser.password"
                      required
                      #new_pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
                       (click)="toggleShowPassword()"
                       class="showPassword">
@@ -154,7 +154,7 @@
                      [(ngModel)]="confirm_password"
                      required
                      #confirm_pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <input *ngIf="!showConfirmPassword"
                      type="text"
                      name="confirm_password"
@@ -164,7 +164,7 @@
                      [(ngModel)]="confirm_password"
                      required
                      #confirm_pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$">
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
                       (click)="toggleShowConfirmPassword()"
                       class="showConfirmPassword">
@@ -271,7 +271,7 @@
                      placeholder="••••••••••"
                      [(ngModel)]="myUserData.password"
                      required
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$"
                      #password_register="ngModel">
               <input *ngIf="!showPassword"
                      type="text"
@@ -281,7 +281,7 @@
                      placeholder="••••••••••"
                      [(ngModel)]="myUserData.password"
                      required
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?]).{8,30}$"
+                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$"
                      #password_register="ngModel">
               <button type="button"
                       (click)="toggleShowPassword()"

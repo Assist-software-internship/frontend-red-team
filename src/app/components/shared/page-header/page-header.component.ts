@@ -7,7 +7,7 @@ import {Course} from '../../../shared/course';
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
 import {Observable} from 'rxjs';
 import { HttpClient} from '@angular/common/http';
-import { Router, Route } from '@angular/router';
+import { Router, Route, RoutesRecognized } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import {BrowserDomAdapter} from '@angular/platform-browser/src/browser/browser_adapter';
 
@@ -19,11 +19,28 @@ import { element } from 'protractor';
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.css']
 })
+
+
 export class PageHeaderComponent implements OnInit {
+
+  public currentRoute
+
   @Output()
   public user: User = new User();
 
-  constructor(private dataService: ApiConnectionService) { }
+  constructor(router: Router,private dataService: ApiConnectionService) { 
+    router.events.subscribe((url:any) => console.log(url));
+    this.currentRoute = router.url;
+    // console.log(router.url);  // to print only path eg:"/login"
+    console.log(this.currentRoute);
+    if( this.currentRoute == "/dashboard" ){
+      
+    }
+
+
+  }
+
+  
   public visible = false;
   toggle(){
    
@@ -37,8 +54,13 @@ export class PageHeaderComponent implements OnInit {
 
   }
 
+  private wholeName: string;
+  
   ngOnInit() { 
-    console.log(  this.getRoute())
+    this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe(res => {
+      this.user = res[0];
+      this.wholeName = res[0].firstName + ' ' + res[0].lastName;
+    });
   }
 
   getRoute(){

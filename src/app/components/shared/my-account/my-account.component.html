@@ -6,7 +6,7 @@
     <div class="container-account">
         <div class="container-logout">
             <h2>My Account</h2>
-            <p>Here you can edit your account`s informations, courses you started and the progress for each one.<br>Contact us at contact@alexteachme.com, if you need any help.</p>
+            <p>Here you can edit your account`s informations, courses you started and the progress for each one.<br>Contact us at <a href="http://www.gmail.com">contact@alexteachme.com</a>, if you need any help.</p>
 
             <!--<input type="submit" name="logout" id="logout" value="Log Out">-->
             <button type="button" (click)="onLogOut()" id="logout">LOG OUT</button>
@@ -36,49 +36,81 @@
                         To quickly change your profile picture, just drag&drop an image or upload a file. <br>Image selected, should have maximum 15 MB size.
                     </div>
                     <!-- Update user & password & email -->
-                    <div class="username">
-                        <input 
-                        type="text" 
-                        name="username" 
-                        id="username" 
-                        [(ngModel)]="wholeName"
-                        required
-                        username
-                        pattern="[a-zA-Z ]{1,}"
-                        #username="ngModel">
-                        <span class="invalidUsername"
-                              *ngIf="!username.valid && username.touched">Please enter first name and last name <br> with white space between them !!
+                    <form (onSubmit) = "updateUserProfile()" #update = "ngForm">
+                            <div class="account-modifications">
+                                    <div class=" username">
+                                        <input class="form-control invalidUsername"
+                                        type="text" 
+                                        name="username" 
+                                        id="username" 
+                                        [(ngModel)]="wholeName"
+                                        required
+                                        pattern="[a-zA-Z ]{1,}"
+                                        #username="ngModel">
+                                        <span class="error_data_input" 
+                                            *ngIf="username.invalid && username.touched">Please enter first name and last name with white space between them !!
 
-                        </span>
-                    </div>
+                                        </span>
+                                    </div>
+                                    <!-- ////////////// -->
+                                    <div class="password">
+                                        <input type="{{showHide ? 'password' : 'text'}}"
+                                                    name="password_log"
+                                                    class="form-control"
+                                                    id="password"
+                                                    placeholder="••••••••••"
+                                                    [(ngModel)]="logUser.password"
+                                                    required
+                                                    #password="ngModel"
+                                                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
+                                            <button type="button"
+                                                    (mousedown)="showMyPass()"
+                                                    class="showPassword">
+                                                <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
+                                            </button>
+                                            <span class="error_data_input"
+                                                    *ngIf="!password.valid &&logUser.password&&logUser.password.length &&password.dirty">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
 
-                    <div class="password">
-                    <input *ngIf="!showPassword" type="password" name="password" id="password" [(ngModel)]="user.password">
-                    <input *ngIf="showPassword" type="text" name="password" id="password" [(ngModel)]="user.password">
-                    <button (click)="toggleShowPassword()"
-                                class="showPassword"><i
-                                class="fa"
-                                class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}}"></i> </button>
-                    </div>
+                                    </div>
+                                    <!-- ////////////////// -->
+                                    <!-- <div class="password">
+                                        <input *ngIf="!showPassword" type="password" name="password" id="password" placeholder="**********">
+                                        <input *ngIf="showPassword" type="text" name="password" id="password" placeholder="Enter a new password">
+                                        <button (click)="toggleShowPassword()"
+                                                    class="showPassword"><i
+                                                    class="fa"
+                                                    class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}}"></i> </button>
+                                    </div> -->
 
-                    <div class="email">
-                        <input type="text" name="email" id="email" [(ngModel)]="user.email">
-                    </div>
-                    <!--Update Button -->
-                    <div class="save">
-                        <button type="button" name="save" id="save" (click) = "updateUserProfile()">Save</button>
-                    </div>
-                    <!--Reset datas to the old one-->
-                    <div class="cancel">
-                        <button type="button" name="cancel" id="cancel" (click)="getUserProfile()">Cancel</button>
-                    </div>
-            
+                                    <div class="email">
+                                        <input type="text" 
+                                            name="email" 
+                                            id="email"
+                                            class="form-control"  
+                                            [(ngModel)]="user.email"
+                                            required
+                                            email
+                                            pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                                            #email="ngModel">
+                                        <span class="error_data_input"
+                                            *ngIf="email.invalid && email.touched ">Please enter a valid email format!</span>
+                                    </div>
+                                    <!--Update Button -->
+                                    <div class="save">
+                                        <button type="button" [disabled] = "!update.valid" name="save" id="save" (click) = "updateUserProfile()">Save</button>
+                                    </div>
+                                    <!--Reset datas to the old one-->
+                                    <div class="cancel">
+                                        <button type="button" name="cancel" id="cancel" (click)="getUserProfile()">Cancel</button>
+                                    </div>
+                            </div>
+                </form>
         <!--Courses started-->
       </div>
              <hr class="line">
 
-
-             <h2 class="container-head-courses">Started Courses</h2>
+      <div class="container-head-courses">
+             <h2>Started Courses</h2>
 
         <div class="container-started-courses" *ngFor="let item of courses;let i = index" [hidden] = 'item.points<= 0'>
             
@@ -102,7 +134,7 @@
                         
             </div>
         </div>
-
+    </div>
     </div>
   </div>
   <app-footer></app-footer>

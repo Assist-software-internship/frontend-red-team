@@ -30,6 +30,7 @@ export class MyAccountComponent implements OnInit {
   private hasDragOver = false;
   selectedFile = null;
   public firstload=true;
+  showHide = true;
 
   constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
   }
@@ -61,6 +62,7 @@ export class MyAccountComponent implements OnInit {
     getUserProfile(): void {
       this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe(res => {
         this.user = res[0];
+        this.wholeName = res[0].firstName + ' ' + res[0].lastName;
         console.log('Users::: '+ this.user.firstName + this.user.lastName);
       });
     }
@@ -75,6 +77,10 @@ export class MyAccountComponent implements OnInit {
           console.log("");
         // if(this.user.lastName == "")
 
+    }
+
+    showMyPass() {
+      this.showHide = !(this.showHide);
     }
 
     updateCourseProgress(item: Course){

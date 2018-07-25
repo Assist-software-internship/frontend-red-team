@@ -1,49 +1,49 @@
 {
   "users": [
     {
-      "id": 1,
+      "user_id": 1,
       "email": "john.doe1@assist.ro",
       "password": "assist12",
-      "name": "John1123",
-      "last_name": "Doe1",
+       "firstName": "John1123",
+      "lastName": "Doe1",
       "active": 1,
       "role": 0
     },
     {
-      "id": 3,
+      "user_id": 3,
       "email": "john.doe3@assist.ro",
       "password": "assist3",
-      "name": "John3",
-      "last_name": "Doe3",
+       "firstName": "John3",
+      "lastName": "Doe3",
       "active": 1,
       "role": 1
     },
     {
-      "id": 4,
+      "user_id": 4,
       "email": "john.doe4@assist.ro",
       "password": "assist4",
-      "name": "John4",
-      "last_name": "Doe4",
+       "firstName": "John4",
+      "lastName": "Doe4",
       "active": 1,
       "role": 0
     },
     {
       "email": "rosu@stefan.com",
       "password": "parola123",
-      "name": "Rosu Stefan",
-      "last_name": "stefan",
-      "id": 5,
+       "firstName": "Rosu Stefan",
+      "lastName": "stefan",
+      "user_id": 5,
       "role": 0,
       "active": 0,
       "image": "./assets/images.jpeg"
     },
     {
       "active": 0,
-      "name": "test",
-      "last_name": "test2",
+       "firstName": "test",
+      "lastName": "test2",
       "email": "test@test.com",
       "password": "test",
-      "id": 7,
+      "user_id": 7,
       "role": 1
     }
   ],

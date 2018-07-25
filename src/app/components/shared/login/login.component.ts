@@ -73,11 +73,17 @@ export class LoginComponent implements OnInit {
 
   // reset password
   resetPassword(): void {
-    this.dataService
-      .resetPassword(this.resetUser)
-      .subscribe(res => {
-        console.log('password updated ', res);
-        this.manageForms(true, false, false)
-      });
+    if (this.resetUser.password != this.confirm_password) {
+      this.password_message = 'Password not match';
+    }
+    else {
+      this.dataService
+        .resetPassword(this.resetUser)
+        .subscribe(res => {
+          console.log('password updated ', res);
+          this.manageForms(true, false, false)
+        });
+    }
+
   }
 }
