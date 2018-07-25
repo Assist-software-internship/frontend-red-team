@@ -13,8 +13,14 @@
 }
 .error_message{
   color: white;
-  line-height: 50px;
+  /* line-height: 50px; */
   padding-left: 15px;
+  width: 50%;
+  padding-top: 7px;
+}
+.display_terms{
+  display: inline;
+  padding: 27px;
 }
 .sign-btn{
   margin-top: 33px;
@@ -95,6 +101,7 @@ input.ng-invalid.ng-touched{
   color: white;
   font-size: 14px;
   font-weight: 300;
+  margin-left: -16px;
 }
 .agree{
   width: 65px;
@@ -107,6 +114,8 @@ input.ng-invalid.ng-touched{
   outline: 0px;
   right: 15px;
   top: 10px;
+  margin-left: -10px;
+
   }
 .showConfirmPassword{
   background: transparent;
@@ -114,10 +123,11 @@ input.ng-invalid.ng-touched{
   outline: 0px;
   right: 15px;
   top: 10px;
+  margin-left: -10px;
   }
 
 .style-eye{
-  margin-left: -45px;
+  margin-left: -35px;
   color: #AEB5BB;
   margin-top: 2px;
 }

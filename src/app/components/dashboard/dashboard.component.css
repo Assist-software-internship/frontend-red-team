@@ -37,6 +37,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.list_item:hover{
+  background: linear-gradient(to left,rgba(11, 148, 220, 0.67), rgba(80, 158, 185, 0.89));
+}
 
 .col-content-padding {
   padding: 10px;
@@ -62,6 +65,10 @@
   font-size: 17px;
   padding: 4px 14px;
   background: transparent;
+}
+.btn-discover:hover{
+  background: #006FFF;
+  color: white;
 }
 .discover_section {
   text-align: center;
