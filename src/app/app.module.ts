@@ -20,13 +20,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { SearchPipe } from './components/dashboard/search.pipe';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'account', component: MyAccountComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
   { path: 'courses', component: CourseListComponent },
 
@@ -63,9 +65,9 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, {useHash: true}),
+    RouterModule.forRoot(routes, { useHash: true }),
   ],
-  providers: [ApiConnectionService],
+  providers: [ApiConnectionService, AuthGuard, AuthService],
   bootstrap: [AppComponent],
 })
 
