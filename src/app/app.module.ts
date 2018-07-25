@@ -63,7 +63,7 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, {useHash: true}),
   ],
   providers: [ApiConnectionService],
   bootstrap: [AppComponent],

@@ -32,32 +32,22 @@
                     *ngIf="!email.valid && email.touched ">Please enter a email address!</span>
             </div>
             <div class="display_eye">
-              <input *ngIf="showPassword"
-                     type="password"
+              <input type="{{showHide ? 'password' : 'text'}}"
                      name="password_log"
                      id="password_log"
                      class="rectangle sec-rectangle form-control space-between "
                      placeholder="••••••••••"
                      [(ngModel)]="logUser.password"
                      required
-                     #passlogin="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
-              <input *ngIf="!showPassword"
-                     type="text"
-                     name="password_log"
-                     id="password_log2"
-                     class="rectangle sec-rectangle form-control space-between "
-                     placeholder="••••••••••"
-                     [(ngModel)]="logUser.password"
-                     required
-                     #passlogintwo="ngModel"
+                     #passwordlogin="ngModel"
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
-                      (mousedown)="toggleShowPassword()"
+                      (mousedown)="showMyPass()"
                       class="showPassword">
-                <i class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
+                <i class="fa {{ showHide ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
-              <!-- <span class="error_message" *ngIf="! pass.valid &&  pass.touched ">Please enter a password!</span> -->
+              <span class="error_message"
+                    *ngIf="! passwordlogin.valid &&  passwordlogin.touched ">Please enter a password!</span>
             </div>
             <button type="submit"
                     class="btn btn-primary form-control sign-btn"
@@ -115,8 +105,7 @@
                     *ngIf="!email_reset.valid && email_reset.touched ">Please enter a email address!</span>
             </div>
             <div style="display: flex;">
-              <input *ngIf="showPassword"
-                     type="password"
+              <input type="{{showHide ? 'password' : 'text'}}"
                      name="new_password"
                      id="new_password"
                      class="rectangle form-control"
@@ -125,38 +114,18 @@
                      required
                      #new_pass="ngModel"
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
-              <input *ngIf="!showPassword"
-                     type="text"
-                     name="new_password"
-                     id="new_password"
-                     class="rectangle form-control "
-                     placeholder="new password "
-                     [(ngModel)]="resetUser.password"
-                     required
-                     #new_pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
+
               <button type="button"
-                      (click)="toggleShowPassword()"
+                      (click)="showMyPass()"
                       class="showPassword">
-                <i class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
+                <i class="fa {{ showHide ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
-              <!-- <span class="error_message"
-                    *ngIf="showPassword && !(new_pass.valid && new_pass.touched) "
-                    style="color: white">Enter a new password!</span> -->
+              <span class="error_message"
+                    *ngIf="!new_pass.valid && new_pass.touched"
+                    style="color: white">Enter a new password!</span>
             </div>
             <div style="display: flex;">
-              <input *ngIf="showConfirmPassword"
-                     type="password"
-                     name="confirm_password"
-                     id="confirm_password"
-                     class="rectangle sec-rectangle form-control space-between"
-                     placeholder="confirm password"
-                     [(ngModel)]="confirm_password"
-                     required
-                     #confirm_pass="ngModel"
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
-              <input *ngIf="!showConfirmPassword"
-                     type="text"
+              <input type="{{showHide ? 'password' : 'text'}}"
                      name="confirm_password"
                      id="confirm_password"
                      class="rectangle sec-rectangle form-control space-between"
@@ -166,13 +135,13 @@
                      #confirm_pass="ngModel"
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
-                      (click)="toggleShowConfirmPassword()"
+                      (click)="showMyPass()"
                       class="showConfirmPassword">
                 <i class="fa {{ showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
-              <!-- <span class="error_message"
-                    *ngIf="! confirm_pass.valid &&  confirm_pass.touched "
-                    style="color: white">Enter the confirm password!</span> -->
+              <span class="error_message"
+                    *ngIf="!confirm_pass.valid &&  confirm_pass.touched "
+                    style="color: white">Enter the confirm password!</span>
 
             </div>
             <button type="submit"
@@ -263,18 +232,7 @@
                     style="color: white">Please enter a email address!</span>
             </div>
             <div style="display: flex;">
-              <input *ngIf="showPassword"
-                     type="password"
-                     name="password_register"
-                     id="password_register"
-                     class="rectangle sec-rectangle form-control space-between "
-                     placeholder="••••••••••"
-                     [(ngModel)]="myUserData.password"
-                     required
-                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$"
-                     #password_register="ngModel">
-              <input *ngIf="!showPassword"
-                     type="text"
+              <input type="{{showHide ? 'password' : 'text'}}"
                      name="password_register"
                      id="password_register"
                      class="rectangle sec-rectangle form-control space-between "
@@ -284,11 +242,13 @@
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$"
                      #password_register="ngModel">
               <button type="button"
-                      (click)="toggleShowPassword()"
+                      (click)="showMyPass()"
                       class="showPassword">
-                <i class="fa {{ showPassword ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
+                <i class="fa {{ showHide ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
-              <!-- <span class="error_message" *ngIf="! password_register.valid &&  password_register.touched " style="color: white">Please enter a password!</span> -->
+              <span class="error_message"
+                    *ngIf="!password_register.valid &&  password_register.touched "
+                    style="color: white">Please enter a password!</span>
             </div>
 
             <button type="submit"

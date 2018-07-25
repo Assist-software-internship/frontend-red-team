@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('reset') resetForm: NgForm;
   @ViewChild('create') createForm: NgForm;
 
-  showPassword = true;
+  showHide = true;
   showConfirmPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
@@ -36,21 +36,12 @@ export class LoginComponent implements OnInit {
 
   }
 
+  showMyPass() {
+    this.showHide = !(this.showHide);
+  }
   onReset() {
     this.resetPassword();
   }
-
-  toggleShowPassword() {
-    this.showPassword === false
-      ? (this.showPassword = true)
-      : (this.showPassword = false);
-  }
-  toggleShowConfirmPassword() {
-    this.showConfirmPassword === false
-      ? (this.showConfirmPassword = true)
-      : (this.showConfirmPassword = false);
-  }
-
   manageForms(login: boolean, register: boolean, reset: boolean): void {
     this.loginContent = login;
     this.registerContent = register;
