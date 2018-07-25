@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
   showMyPass() {
     this.showHide = !(this.showHide);
   }
+  showMyConfirmPass() {
+    this.showConfirmPassword = !(this.showConfirmPassword);
+  }
   onReset() {
     this.resetPassword();
   }

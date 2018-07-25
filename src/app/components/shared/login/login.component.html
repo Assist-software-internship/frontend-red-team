@@ -29,7 +29,7 @@
                      pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                      #email="ngModel">
               <span class="error_message"
-                    *ngIf="!email.valid && email.touched ">Please enter a email address!</span>
+                    *ngIf="!email.valid && email.touched ">Please enter a valid email format!</span>
             </div>
             <div class="display_eye">
               <input type="{{showHide ? 'password' : 'text'}}"
@@ -47,7 +47,7 @@
                 <i class="fa {{ showHide ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
               <span class="error_message"
-                    *ngIf="! passwordlogin.valid &&  passwordlogin.touched ">Please enter a password!</span>
+                    *ngIf="! passwordlogin.valid &&  passwordlogin.touched ">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
             </div>
             <button type="submit"
                     class="btn btn-primary form-control sign-btn"
@@ -102,7 +102,7 @@
                      #email_reset="ngModel"
                      style="margin-bottom: 5px;">
               <span class="error_message"
-                    *ngIf="!email_reset.valid && email_reset.touched ">Please enter a email address!</span>
+                    *ngIf="!email_reset.valid && email_reset.touched ">Please enter a valid email format!</span>
             </div>
             <div style="display: flex;">
               <input type="{{showHide ? 'password' : 'text'}}"
@@ -122,10 +122,10 @@
               </button>
               <span class="error_message"
                     *ngIf="!new_pass.valid && new_pass.touched"
-                    style="color: white">Enter a new password!</span>
+                    style="color: white">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
             </div>
             <div style="display: flex;">
-              <input type="{{showHide ? 'password' : 'text'}}"
+              <input type="{{showConfirmPassword ? 'password' : 'text'}}"
                      name="confirm_password"
                      id="confirm_password"
                      class="rectangle sec-rectangle form-control space-between"
@@ -135,26 +135,28 @@
                      #confirm_pass="ngModel"
                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
               <button type="button"
-                      (click)="showMyPass()"
+                      (click)="showMyConfirmPass()"
                       class="showConfirmPassword">
                 <i class="fa {{ showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'}} style-eye"></i>
               </button>
               <span class="error_message"
                     *ngIf="!confirm_pass.valid &&  confirm_pass.touched "
-                    style="color: white">Enter the confirm password!</span>
+                    style="color: white">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
 
             </div>
             <button type="submit"
                     class="btn btn-primary form-control sign-btn"
                     [disabled]="!reset.valid">RESET PASSWORD</button>
             <div class="row">
-              <input type="checkbox"
-                     name="agree"
-                     id="agree"
-                     class="agree"
-                     ngModel
-                     required>
-              <label class="terms">I agree with Terms & Conditions</label>
+              <div class="display_terms">
+                <input type="checkbox"
+                       name="agree"
+                       id="agree"
+                       class="agree"
+                       ngModel
+                       required>
+                <label class="terms">I agree with Terms & Conditions</label>
+              </div>
             </div>
           </div>
         </form>
@@ -200,7 +202,7 @@
                      pattern="[a-zA-Z ]*">
               <span class="error_message"
                     *ngIf="!first_name.valid && first_name.touched "
-                    style="color: white">First name must contains just caracters!</span>
+                    style="color: white">First name contain just caracters!</span>
             </div>
             <div style="display: flex;">
               <input type="text"
@@ -214,7 +216,7 @@
                      pattern="[a-zA-Z ]*">
               <span class="error_message"
                     *ngIf="!last_name.valid && last_name.touched "
-                    style="color: white">Last name must contains just caracters!</span>
+                    style="color: white">Last name contains just caracters!</span>
             </div>
             <div style="display: flex;">
               <input type="email"
@@ -229,7 +231,7 @@
                      pattern="[a-zA-Z0-9.-_]{2,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
               <span class="error_message"
                     *ngIf="!email_register.valid && email_register.touched "
-                    style="color: white">Please enter a email address!</span>
+                    style="color: white">Please enter a valid email format!</span>
             </div>
             <div style="display: flex;">
               <input type="{{showHide ? 'password' : 'text'}}"
@@ -248,20 +250,22 @@
               </button>
               <span class="error_message"
                     *ngIf="!password_register.valid &&  password_register.touched "
-                    style="color: white">Please enter a password!</span>
+                    style="color: white">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
             </div>
 
             <button type="submit"
                     class="btn btn-primary form-control sign-btn"
                     [disabled]="!create.valid">CREATE ACCOUNT</button>
             <div class="row">
-              <input type="checkbox"
-                     name="agree_terms"
-                     id="agree_terms"
-                     class="agree"
-                     ngModel
-                     required>
-              <label class="terms">I agree with Terms & Conditions</label>
+              <div class="display_terms">
+                <input type="checkbox"
+                       name="agree_terms"
+                       id="agree_terms"
+                       class="agree"
+                       ngModel
+                       required>
+                <label class="terms">I agree with Terms & Conditions</label>
+              </div>
             </div>
           </div>
 
