@@ -33,7 +33,8 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
            *ngFor="let item of course  | search:filteredStatus:'small_description' | slice:0:[max]">
-        <div class="thumbnail">
+        <div class="thumbnail"
+             (click)="chapterByCourseId(item.id)">
           <img src="{{item.images}}"
                alt=""
                class="course_img img-responsive">
@@ -41,8 +42,7 @@
             <p class="course_title"> {{item.small_description | slice:0:100 }} </p>
             <p class="course_description"> {{item.long_description | slice:0:200}} </p>
             <p class="buttom-btn">
-              <a href="#"
-                 class="course_btn"
+              <a class="course_btn"
                  role="button"> {{item.tags}} </a>
             </p>
           </div>
