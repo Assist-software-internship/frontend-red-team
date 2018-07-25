@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 // import { FileUploader } from 'ng-file-upload';
 import { EventEmitter } from 'events';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-my-account',
@@ -24,89 +25,84 @@ export class MyAccountComponent implements OnInit {
   public logUser: User = new User();
   // public uploader: FileUploader;
   private hasDragOver = false;
+  selectedFile = null;
 
 
-  constructor(private dataService: ApiConnectionService, private router: Router) {
+  constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
   }
 
   localStorage
-  ngOnInit() {
-    this.getAllCourses();
-  }
+    ngOnInit() {
+     this.getAllCourses();
+    }
 
-  ngAfterViewInit() {
-    this.getUserProfile();
+    ngAfterViewInit() {
+      this.getUserProfile();
 
-  }
+    }
 
-  onLogOut() {
-    localStorage.removeItem('id');
-    this.router.navigate(['/login']);
-  }
+    onLogOut() {
+      localStorage.removeItem('id');
+      this.router.navigate(['/login']);
+    }
 
-  loginUser(): void {
-    this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
-      this.user = res[0];
-      localStorage.setItem('id', JSON.stringify(1));
-    })
-  };
+    loginUser(): void {
+      this.dataService.fakeLogin(this.logUser.email, this.logUser.password).subscribe(res => {
+        this.user = res[0];
+        localStorage.setItem('id', JSON.stringify(1));
+      })
+    };
 
-  getUserProfile(): void {
-    this.dataService.getUserById(parseInt(localStorage.getItem('id'))).subscribe(res => {
-      this.user = res[0];
-      console.log('Users ', this.user);
-    });
-  }
+    getUserProfile(): void {
+      this.dataService.getUserById(parseInt(localStorage.getItem('id'))).subscribe(res => {
+        this.user = res[0];
+        console.log('Users ', this.user);
+      });
+    }
 
-  updateCourseProgress(item: Course) {
-    item.points = 0;
-    console.log('item ', item)
-    this.dataService.updateCourseProgress(item.id, item).subscribe(res => {
-      console.log('points updated , res');
-    });
-  }
+    updateCourseProgress(item: Course){
+      item.points = 0;
+      console.log('item ', item)
+      this.dataService.updateCourseProgress(item.id, item).subscribe(res => {
+        console.log('points updated , res');
+      });
+    }
 
-  updateUserProfile(): void {
-    this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
-      console.log('updated');
-    });
-  }
+    updateUserProfile(): void {
+      this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
+        console.log('updated');  
+      });
+    }
 
-  getAllCourses() {
+    getAllCourses() {
 
-    this.dataService.getAllCourses().subscribe(res => {
-      this.courses = res;
-      console.log('Course ', this.courses);
+      this.dataService.getAllCourses().subscribe(res => {
+        this.courses = res;
+        console.log('Course ', this.courses);
 
-    });
-  }
-  toggleShowPassword() {
-    this.showPassword === false ? this.showPassword = true : this.showPassword = false;
-  }
+      });
+    }
+    toggleShowPassword(){
+        this.showPassword === false ? this.showPassword = true : this.showPassword = false;
+    }
+    // updateImage(): void {
+    //   this.dataService.updateUser(this.user.id, this.user).subscribe(res => {
+    //     console.log('Image updated');
+    //   });
+    // }
 
-  // @Input()
-  // private url = '';
-
-  // @Output()
-  // private urlChange = new EventEmitter();
-
-  // setDefaultProfilePicture(){
-  //   this.uploader = new FileUploader({
-  //     url: 'assets/default.jpg',
-  //     disableMultipart: false,
-  //     autoUpload: true
-  //   });
-  // }
-
-  // getProfilPicture(){
-  //   this.uploader.response.subscribe(res=> {
-  //     this.url = 'images.jpeg' + JSON.parse(res).id;
-  //     this.urlChange.emit(this.url);
-  //   });
-  // }
-  // public fileOver(e: any): void {
-  //   this.hasDragOver = e;
-  // }
+    onFileSelected(event) {
+      console.log(event.srcElement.value);
+      this.selectedFile = <File>event.target.files[0];
+    }
+    onUpload() {
+      const fd = new FormData();
+      fd.append('image', this.selectedFile.this.selectedFile.name);
+      this.http.post('./assets/images.png', fd)
+      .subscribe(res => {
+        console.log(res);
+      });
+    }
 }
 
 

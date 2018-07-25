@@ -15,31 +15,22 @@
     <!--Account info-->
     <div class="container-info">
         <h2>Account Informations</h2>
-        <div class="container-profile-picture">
-                <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-                    ngf-accept="'image/*'" ngf-max-size="15MB" ngf-min-height="100"
-                    ngf-resize="{width: 100, height: 100}">
-                    <img src="assets/default.jpg" alt="" width="140" height="140" class="img-profile">
+        <!-- <div class="container-profile-picture"> -->
+                <div class="container-profile-picture">
+                    <img src="{{user.image ? user.image : './assets/default.jpg'}}" alt="" width="140" height="140" class="img-profile">
                 
                     
                         <input
                         style="display: none;"
                         type="file"
                         (change)="onFileSelected($event)"
+                        (onclick)="onUpload()"
                         name="upload-file"
                         class="upload-file"
                         #fileInput>
-                        <button type="button" (click)='fileInput.click()' class="upload-file">Upload file</button>
+                        <button type="file" (change)="onFileSelected($event)" (click)="fileInput.click()" class="upload-file">Upload file</button>
                 </div>
-        </div>
-        <!-- <div class="container-profile-picture">
-                <img *ngIf="url" width=300 height=300 src="{{url}}" />
-                <label *ngIf="editmode" for="uploader-input" ng2FileDrop [ngClass]="{'drag-over': hasDragOver}" (fileOver)="fileOver($event)" [uploader]="uploader">
-                  <div class="infotext"><span *ngIf="!url" >Drop your picture<br>or click to upload</span></div>
-                </label>
-                <input *ngIf="editmode" type="file" ng2FileSelect [uploader]="uploader" id="uploader-input" style="display:none" />
-        </div> -->
-
+        <!-- </div> -->
 
         <div class="container-user-save-change">
                     <div class="info-change-profile-picture">
@@ -47,7 +38,7 @@
                     </div>
                     <!-- Update user & password & email -->
                     <div class="username">
-                        <input type="text" name="username" id="username" [(ngModel)]="user.name">
+                        <input type="text" name="username" id="username" [ngModel]="user.firstName + ' ' + user.lastName" (ngModelChange) = "splitName()">
                     </div>
 
                     <div class="password">
@@ -68,7 +59,7 @@
                     </div>
                     <!--Reset datas to the old one-->
                     <div class="cancel">
-                        <button type="button" name="cancel" id="cancel" (click)="getUserProfile(user.name);
+                        <button type="button" name="cancel" id="cancel" (click)="getUserProfile(user.firstName + ' ' + lastName);
                                                                                 getUserProfile(user.password);
                                                                         getUserProfile(user.email)">Cancel</button>
                     </div>

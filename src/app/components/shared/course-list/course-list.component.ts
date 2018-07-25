@@ -11,17 +11,18 @@ export class CourseListComponent implements OnInit {
   public course: Course[];
   public courseTitle: string;
   public courseSubtitle: string;
-  max = 6;
-
+  max = 2;
   constructor(private dataService: ApiConnectionService) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
   }
 
   ngOnInit() {
-    this.getAllCourses();
+    // this.getAllCourses();
+    this.getCoursesByCategory();
   }
   getAllCourses() {
+    const course_id = localStorage.getItem('category_id');
     this.dataService.getAllCourses().subscribe(res => {
       this.course = res;
       console.log('Course ', this.course);
@@ -29,11 +30,17 @@ export class CourseListComponent implements OnInit {
     });
   }
   discoverMore(): void {
-    this.max = this.max + 6;
+    this.max = this.max + 2;
   }
-  // displayLess(): void{
-  //   if(this.max == this.course.length){
-  //     this.max = this.max -6;
-  //   }
-  // }
+  displayLess(): void {
+    this.max = this.max - 2;
+  }
+  getCoursesByCategory() {
+    const course_id = parseInt(localStorage.getItem('category_id'));
+    this.dataService.getCoursesByCategory(course_id).subscribe(res => {
+      this.course = res;
+      console.log(res);
+    })
+  }
+
 }

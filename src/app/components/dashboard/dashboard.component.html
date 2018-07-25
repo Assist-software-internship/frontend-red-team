@@ -30,10 +30,11 @@
     <div class="row margin-item">
       <div class="margin-thumbnail">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
-             *ngFor="let item of listCategory | slice:0:[max] | search:filteredStatus:'title'">
-          <div class="list_item">
-            <p class="list_title"
-               routerLink="/courses">{{item.title | uppercase}}</p>
+             *ngFor="let item of listCategory | search:filteredStatus:'title' | slice:0:[max]  ">
+          <div class="list_item"
+               (click)="toCourses(item.id)"
+               id="{{item.id}}">
+            <p class="list_title">{{item.title | uppercase}}</p>
           </div>
         </div>
       </div>
@@ -44,7 +45,7 @@
                 type="submit"
                 class="btn-discover"
                 (click)="discoverMore()">Discover more</button>
-        <button *ngIf="max == listCategory.length"
+        <button *ngIf="max > 7"
                 type="submit"
                 class="btn-discover"
                 (click)=" displayLess()">Display less</button>
