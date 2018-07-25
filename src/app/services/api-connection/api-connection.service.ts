@@ -15,19 +15,25 @@ const httpOptions = {
 const Api = {
   base: 'http://192.168.210.116:8080/',
   users: 'users',
-  user: 'user',
-  course: 'course',
+  userByEmail: 'user?email=',
   register: 'create/user',
   login: 'login',
   reset: 'reset',
+  userById: 'user?id=',
   categories: 'categories',
+  createCategory: 'create/category',
+  coursesByCategoryId: 'courses?category=',
+  courseById: 'courses?id=',
+  createCourse: 'create/course',
+  chaptersByCourseId: 'chapters?course=',
+  chapterById: 'chapter?id=',
+  createChapter: 'create/chapter',
+  questionsByChapterId: 'create/chapter',
+  createQuestions: 'create/question',
+  user: 'user',
+  course: 'course',
   course_category: '/courses?category='
 
-};
-
-const Api_user = {
-  base: 'http://192.168.210.116:8080/',
-  users: 'users'
 };
 
 @Injectable({
@@ -81,7 +87,7 @@ export class ApiConnectionService {
   }
 
   getUserById(id: Number): Observable<User> {
-    return this.http.get<User>(Api_user.base + Api_user.users + `?id=${id}`);
+    return this.http.get<User>(Api.base + Api.users + `?id=${id}`);
   }
 
   getUserByEmail(email: String): Observable<User[]> {
