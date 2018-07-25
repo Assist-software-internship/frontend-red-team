@@ -25,7 +25,7 @@
 }
 
 
-.startbtn:hover{
+.startbtn:hover,.savebtn:hover{
     background: #006FFF;
     color:#fff;
 }
@@ -40,6 +40,7 @@
     display: block;
     width: 90%;
     height: auto;
+    
 }
 
 #curriculum i {
@@ -89,6 +90,9 @@
     color:#fff;
 }
 
+#curriculum p{
+    color: #AEB5BB;	
+}
 
 @media only screen and (min-width: 910px) {    
 
@@ -110,6 +114,7 @@
         font-size: 14px;	
         line-height: 23px;
         float:left;
+        min-width: 699px;
     }
     
 
@@ -146,4 +151,115 @@
         float: none !important;
         margin: 0 auto;
     }
+
+    #right{float:none !important;margin: 0 auto !important;width: 232px;}
+}
+
+#ctrl_admin{
+    max-width: 812px;
+    margin: 0 auto;
+    margin-bottom: 42px;
+    text-align: right;
+    display: block;
+    min-height: 32px;
+}
+
+.btn_create{
+    line-height: 0px;
+    width: 79px;
+    border-radius: 5px;
+    background-color: #006FFF;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 7px;
+    cursor: pointer;
+}
+
+.btn_create:hover{
+    background-color: #5fa5ff;
+}
+
+#ctrl_admin i{
+    margin-right:5px;
+    margin-top: 7px;
+    font-size: 13px;
+}
+
+#editdelete{
+    height: 28px;	
+    width: 139px;	
+    border: 1px solid #06102B;	
+    border-radius: 5px;
+    margin-left:12px;
+    display: flex;
+    color: #7D8492;
+ 
+}
+
+#editdelete div{
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 0px;
+    width: 79px;
+    cursor: pointer;
+}
+#editdelete div:hover{
+   color:#000;
+}
+
+#edit{border-right: 1px solid #7D8492;}
+
+#right{
+    display: flex;
+    float:right;
+    margin-right: 25px;
+}
+
+.create{
+    border: 1px solid #006FFF;
+    border-radius: 5px;
+    padding: 20px;
+    border-bottom: 1px solid #006FFF !important;
+}
+
+.savebtn{
+    height: 29px;
+    width: 68px;
+    border: 1px solid #006FFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #006FFF;
+    padding-top: 3px;
+    float: left;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 13px;
+    margin-bottom: -21px;
+}
+
+input[type=text]{
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #006FFF;
+    background-color:#F6FAFC;
+    height: 24px;
+    width: 100%;
+}
+
+textarea{
+    background-color: #F6FAFC;
+    outline: none;
+    border: 1px solid #d6dce4;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    resize: none;
+    height: 68px;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px;
 }
