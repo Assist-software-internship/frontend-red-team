@@ -54,8 +54,13 @@ export class PageHeaderComponent implements OnInit {
 
   }
 
+  private wholeName: string;
+  
   ngOnInit() { 
-    // console.log(RoutesRecognized.)
+    this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe(res => {
+      this.user = res[0];
+      this.wholeName = res[0].firstName + ' ' + res[0].lastName;
+    });
   }
 
   getRoute(){

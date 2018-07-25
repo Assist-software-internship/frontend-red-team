@@ -5,7 +5,27 @@
   the last chapter, the link should go to a screen that displays a finalization
   message - this message can be part of this same component.
 -->
-<app-page-header></app-page-header>
-<p>
-  chapter-questions works!
-</p>
+<div id="wrapper">
+  <app-page-header></app-page-header>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  
+  <div class="container_chapterlist">
+
+    <app-hero id="banner" [category]="category" [title]="categoryTitle" [subtitle]="categorySubtitle"></app-hero>
+
+    <div id="curriculum"  *ngFor="let i of [1]">
+      <i>Chapter I</i>
+      <h1>Welcome To Desiclassfieds Free ClassFieds Free Ads</h1>
+      <p>
+          While saying goodbye means accepting that a part of our life is over, it also ... of that reality had started to creep
+          into my psyche weeks ago, when I was being fitted ... We journeyed together, watching each other grow through the innocence of
+      </p>
+      <div class="startbtn">Start</div>
+    </div>
+  
+    <div id="fullbtn">See the full curriculum</div>
+
+  </div>
+
+  <app-footer></app-footer>
+</div>
