@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../../shared/course';
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-list',
@@ -12,7 +13,7 @@ export class CourseListComponent implements OnInit {
   public courseTitle: string;
   public courseSubtitle: string;
   max = 2;
-  constructor(private dataService: ApiConnectionService) {
+  constructor(private dataService: ApiConnectionService, private router: Router) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
   }
@@ -41,6 +42,10 @@ export class CourseListComponent implements OnInit {
       this.course = res;
       console.log(res);
     })
+  }
+  chapterByCourseId(id) {
+    localStorage.setItem('course_id', id.toString());
+    this.router.navigate(['/courses/', id]);
   }
 
 }

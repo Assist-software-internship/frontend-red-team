@@ -92,12 +92,12 @@ export class ApiConnectionService {
   }
 
   getUserByEmail(email: String): Observable<User[]> {
-    return this.http.get<User[]>(Api.base + Api.users + `?email=${email}`);
+    return this.http.get<User[]>(Api.base + Api.userByEmail + `${email}`);
   }
 
-  updateUser(user_id: Number, userData: User): Observable<User> {
+  updateUser(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(
-      Api.base + Api.user + `/${user_id}`,
+      Api.base + Api.userById + id,
       userData,
       httpOptions
     );
