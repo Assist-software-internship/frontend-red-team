@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from '../../shared/category';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +28,13 @@ export class DashboardComponent implements OnInit {
     { title: 'Economy 7', id: 17 },
     { title: 'Sports', id: 18 }
   ];
+
+  public category: Category = new Category();
+  public admin_role = true;
   filteredStatus = '';
+  public editMode = false;
+  editClick = false;
+  deleteClick = false;
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
@@ -37,6 +44,22 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     console.log('length of categories', this.listCategory.length)
+  }
+  createCat() {
+    this.editMode = !(this.editMode);
+  }
+  editCat() {
+    this.editClick = !(this.editClick);
+    this.deleteClick = false;
+  }
+  deleteCat() {
+    this.deleteClick = !(this.deleteClick);
+    this.editClick = false;
+  }
+  openEdit(item) {
+    this.editMode = !(this.editMode);
+    console.log(item);
+    this.category = item;
   }
   discoverMore(): void {
     this.max = this.max + 6;

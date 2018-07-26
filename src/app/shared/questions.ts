@@ -1,9 +1,7 @@
 export class Questions {
-  // id?: Number;
-  // small_description: String;
-  // long_description: String;
-  // tags: String;
-  // points: Number;
-  // images: String;
+  id?: Number;
+  chapter_id?: Number;
+  content: String;
+  name: String;
   constructor() { }
 }

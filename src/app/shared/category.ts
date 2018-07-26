@@ -1,9 +1,6 @@
 export class Category {
-  // id?: Number;
-  // small_description: String;
-  // long_description: String;
-  // tags: String;
-  // points: Number;
-  // images: String;
+  id?: Number;
+  tags: String;
+  title: String;
   constructor() { }
 }

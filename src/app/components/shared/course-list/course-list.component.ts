@@ -13,6 +13,7 @@ export class CourseListComponent implements OnInit {
   public courseTitle: string;
   public courseSubtitle: string;
   max = 2;
+  public admin_role = true;
   constructor(private dataService: ApiConnectionService, private router: Router) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
