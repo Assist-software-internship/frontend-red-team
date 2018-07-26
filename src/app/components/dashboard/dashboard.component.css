@@ -66,6 +66,9 @@
   padding: 4px 14px;
   background: transparent;
 }
+.display-less{
+  margin-left: 10px;
+}
 .btn-discover:hover{
   background: #006FFF;
   color: white;
