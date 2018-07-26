@@ -48,6 +48,26 @@
   padding-left: 230px;
   padding-right: 230px;
 }
+@media only screen and (max-width: 700px) {
+  .margin-thumbnail{
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .margin-thumbnail{
+    padding-left: 50px;
+    padding-right: 10px;
+    margin-left: 70px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .margin-thumbnail{
+    padding-left: 50px;
+    padding-right: 10px;
+    margin-left: 70px;
+  }
+}
 .list_title {
   padding-top: 60px;
   font-size: 18px;
