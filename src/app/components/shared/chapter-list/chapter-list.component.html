@@ -10,15 +10,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   
   <div class="container_chapterlist">
-    <app-hero id="banner" [category]="listCategory[1].category" [title]="categoryTitle" [subtitle]="categorySubtitle"></app-hero>
+    <app-hero id="banner"  [category]=" 'test'" [title]="categoryTitle" [subtitle]="categorySubtitle"></app-hero>
     <div *ngIf="account_role" id="ctrl_admin">  
       <div id="right">
         <div class="btn_create" (click)="toggleCreate()">
           <i class="far fa-plus-square" style="margin-top: 8px;"></i>Create
         </div>
-        <div id="editdelete">
-          <div id="edit"><i class="far fa-edit"></i>Edit</div>
-          <div id="delete"><i class="far fa-trash-alt"></i>Delete</div>
+        <div id="editdelete" *ngIf="listCategory.length>0">
+          <div id="edit" (click)="toggleeditChapters()" [ngClass]="{'activeopt': editEnabled==true}"><i class="far fa-edit"></i>Edit</div>
+          <div id="delete"(click)="toggledeleteChapters()"[ngClass]="{'activeopt': deleteEnabled==true}"><i class="far fa-trash-alt"></i>Delete</div>
         </div>
       </div>
      </div>
@@ -30,12 +30,13 @@
          <textarea rows="4" cols="50" placeholder="Description" [(ngModel)]="live_desc"></textarea>
       </p>
       <div style="width:100%;display: flex; ">
-          <div class="savebtn" (click)="createNewCourse()">Save</div>
+            <button class="savebtn btn" [disabled]="live_title.length<=0 || live_chapter.length<=0  || live_desc.length<=0 " (click)="createNewCourse()">Save</button>
+            <button class="cancelbtn" (click)="cancel()" >Cancel</button>
       </div>
 
     </div>
     
-    <div id="curriculum"  *ngIf="live_title ||live_chapter || live_desc ">
+    <div id="curriculum"  *ngIf="createVisible && (live_title ||live_chapter || live_desc )">
         <i>Chapter {{live_chapter}}</i>
         <h1>{{live_title}}</h1>
         <p>
@@ -44,16 +45,30 @@
         <div class="startbtn">Start</div>
     </div>
 
-    <div id="curriculum"  *ngFor="let item of listCategory | search:filteredStatus:'id' | slice:0:[max]  ">
+    <div id="curriculum" *ngFor="let item of listCategory.slice().reverse() | search:filteredStatus:'id' | slice:0:[max] let i = index">
+
+     <div id="Chapter" [hidden]="editEnabled==true" >
       <i>Chapter {{item.chapter}}</i>
       <h1>{{item.title}}</h1>
       <p>
           {{item.shortdesc}}
       </p>
-      <div class="startbtn">Start</div>
+      <div class="startbtn"  *ngIf="!deleteEnabled">Start</div>
+      <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+    </div> 
+
+    <div class="editChapter" [hidden]="editEnabled==false" >
+      <i class="iedit">Chapter <input type="text" style="width:20px;" class="edit" value="{{item.chapter}}" [(ngModel)]="item.chapter"></i>
+      <h1 style="margin-top: 6px;"><input type="text" class="edit" value="{{item.title}}" placeholder="Title"  [(ngModel)]="item.title"></h1>
+      <p>
+          <textarea class="pedit" rows="4" cols="50" placeholder="Description"  [(ngModel)]="item.shortdesc">{{item.shortdesc}}</textarea>
+      </p>
+      <div class="startbtn" (click)="editCh(item)">Edit</div>
+    </div>
+
     </div>
   
-    <div id="fullbtn" (click)="fullCuriculum()">See the full curriculum</div>
+    <div id="fullbtn" (click)="fullCuriculum()" *ngIf="listCategory.length>=4">See the full curriculum</div>
 
   </div>
 
