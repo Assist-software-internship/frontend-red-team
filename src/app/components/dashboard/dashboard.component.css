@@ -171,6 +171,8 @@ input[type=text]{
 .newCategory{
   border: 1px solid #006FFF;
   border-radius: 5px;
+  width: 56%;
+  margin-left: 273px;
 }
 .edit_title{
   text-align: center;

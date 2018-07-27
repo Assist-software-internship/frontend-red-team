@@ -59,9 +59,21 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.dataService
       .loginUser(this.logUser)
-      .subscribe(res => {
+      .subscribe((res: any) => {
+        console.log('res ', res);
+
+        const token = res.message.split(':')[1];
+        const succes_message = res.success;
+        console.log('tip', typeof succes_message);
+        console.log('token ', token);
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('email', this.logUser.email.toString());
+        localStorage.setItem('succes_message', succes_message.toString());
         this.router.navigate(['/dashboard']);
-        localStorage.setItem('email', res[0].email);
+
+      }, (err) => {
+        console.log(err);
       });
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from '../../shared/category';
+import { ApiConnectionService } from '../../services/api-connection/api-connection.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,32 +34,34 @@ export class DashboardComponent implements OnInit {
   public admin_role = true;
   public filteredStatus = '';
   public editMode = false;
+  public createMode = false;
   public editClick = false;
   public deleteClick = false;
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
-  constructor(private router: Router) {
+  constructor(private router: Router, private dataCategory: ApiConnectionService) {
     this.categoryTitle = 'Browse through best learning courses for Alexa';
     this.categorySubtitle = 'Pick the one you like and start learning';
   }
   ngOnInit() {
     console.log('length of categories', this.listCategory.length)
+    this.getAllCategories();
   }
-  createCat() {
-    this.editMode = !(this.editMode);
+  createMenu() {
+    this.createMode = !(this.createMode);
     this.category = null;
   }
-  editCat() {
+  editMenu() {
+
     this.editClick = !(this.editClick);
     this.deleteClick = false;
   }
-  deleteCat() {
+  deleteMenu() {
     this.deleteClick = !(this.deleteClick);
     this.editClick = false;
   }
   saveCat() {
-    alert('save to db');
   }
   openEdit(item) {
     this.editMode = true;
@@ -67,6 +70,7 @@ export class DashboardComponent implements OnInit {
   }
   cancel() {
     this.editMode = false;
+    this.createMode = false;
   }
   discoverMore(): void {
     this.max = this.max + 6;
@@ -82,5 +86,10 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem('category_id', id.toString());
     this.router.navigate(['/courses']);
     console.log('selected id=', id)
+  }
+  getAllCategories() {
+    this.dataCategory.getAllCategories().subscribe(res => {
+      console.log('category list=  ', res);
+    })
   }
 }
