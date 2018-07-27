@@ -19,7 +19,7 @@ providers:[]
 export class ChapterListComponent implements OnInit {
   desc = " While saying goodbye means accepting that a part of our life is over, it also ... of that reality had started to creepinto my psyche weeks ago, when I was being fitted ... We journeyed together, watching each other grow through the innocence of "
   listCategory = [
-    { category: 'Astrology', id: 1, cat_id:2,chapter:"I", title : 'Welcome Ioan', shortdesc : this.desc },
+    { category: 'Astrology', id: 1, cat_id:1,chapter:"I", title : 'Welcome Ioan', shortdesc : this.desc },
     { category: 'Astrology', id: 2, cat_id:2,chapter:"II", title : 'Welcome to blablabla', shortdesc : "desc2" },
     { category: 'Astrology', id: 3, cat_id:2,chapter:"III", title : 'Welcome to blablabla', shortdesc :  this.desc  },
     { category: 'Astrology', id: 4, cat_id:2,chapter:"IV", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
@@ -30,6 +30,7 @@ export class ChapterListComponent implements OnInit {
     { category: 'Astrology', id: 9, cat_id:2,chapter:"IX", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
     { category: 'Astrology', id: 10, cat_id:2,chapter:"X", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
   ];
+  public course_id = parseInt(localStorage.getItem('course_id'))
   filteredStatus = '';
   max = 4;
   public account_role = 1;
