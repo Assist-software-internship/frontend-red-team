@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
+import { Router } from '@angular/router';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 
@@ -22,13 +25,13 @@ export class ChapterListComponent implements OnInit {
     { category: 'Astrology', id: 1, cat_id:1,chapter:"I", title : 'Welcome Ioan', shortdesc : this.desc },
     { category: 'Astrology', id: 2, cat_id:2,chapter:"II", title : 'Welcome to blablabla', shortdesc : "desc2" },
     { category: 'Astrology', id: 3, cat_id:2,chapter:"III", title : 'Welcome to blablabla', shortdesc :  this.desc  },
-    { category: 'Astrology', id: 4, cat_id:2,chapter:"IV", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 4, cat_id:1,chapter:"IV", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
     { category: 'Astrology', id: 5, cat_id:2,chapter:"V", title : 'Welcome to blablabla', shortdesc :  this.desc  },
-    { category: 'Astrology', id: 6, cat_id:2,chapter:"VI", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 6, cat_id:1,chapter:"VI", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
     { category: 'Astrology', id: 7, cat_id:2,chapter:"VII", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
     { category: 'Astrology', id: 8, cat_id:2,chapter:"VIII", title : 'Welcome to blablabla', shortdesc :  this.desc  },
-    { category: 'Astrology', id: 9, cat_id:2,chapter:"IX", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 10, cat_id:2,chapter:"X", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 9, cat_id:1,chapter:"IX", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 10, cat_id:1,chapter:"X", title : 'Welcome to blablabla', shortdesc : "asdasdasdasdasdasd123123123" },
   ];
   public course_id = parseInt(localStorage.getItem('course_id'))
   filteredStatus = '';
@@ -39,7 +42,6 @@ export class ChapterListComponent implements OnInit {
   public live_title = '';
   public live_desc = '';
 
-  public t23= "";
 
   public createVisible = false;
   public editEnabled = false;
@@ -48,6 +50,10 @@ export class ChapterListComponent implements OnInit {
   public categoryTitle: string;
   public categorySubtitle: string;
   public category: string;
+  public courses = [];
+
+  public notification = {visible:false,Message:"",color:0};
+
   constructor() {
     this.category = "finance";
     this.categoryTitle = 'Internet Banner Advertising Most Reliable Forms Of Web Advertising';
@@ -55,14 +61,15 @@ export class ChapterListComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
-  
+
   fullCuriculum(): void {
-    this.max = this.listCategory.length;
+    this.max = this.courses.length;
   }
 
   toggleCreate(){
-   
+
     if(this.createVisible)
        this.createVisible = false
       else
@@ -73,7 +80,7 @@ export class ChapterListComponent implements OnInit {
 
   createNewCourse(){
     if (this.live_title.length>0 || this.live_chapter.length>0  || this.live_desc.length>0 ){
-      this.listCategory.push({ category: 'Astrology', id: this.listCategory.length+1,cat_id:2, chapter:this.live_chapter, title : this.live_title, shortdesc : this.live_desc});
+      this.listCategory.push({ category: 'Astrology', id: this.listCategory.length+1,cat_id:this.course_id, chapter:this.live_chapter, title : this.live_title, shortdesc : this.live_desc});
       this.reset();
     }
   }
@@ -92,7 +99,7 @@ export class ChapterListComponent implements OnInit {
     if(this.editEnabled)
      this.editEnabled = false
     else
-      this.editEnabled=true  
+      this.editEnabled=true
       this.deleteEnabled = false;
       this.createVisible=false;
   }
@@ -112,25 +119,49 @@ export class ChapterListComponent implements OnInit {
     for (let index = 0; index < this.listCategory.length; index++) {
       const element = this.listCategory[index];
       if(element.id==item.id){
-        this.listCategory.splice(this.listCategory.indexOf(element), 1); 
+        this.listCategory.splice(this.listCategory.indexOf(element), 1);
+        this.notificationPush("Chapter " + element.chapter + " was deleted","red")
       }
     }
     // this.toggledeleteChapters();
   }
 
   editCh(item){
-   
+
     for (let index = 0; index < this.listCategory.length; index++) {
       const element = this.listCategory[index];
       if(element.id==item.id){
-        console.log(item)
-        this.listCategory[index] =  item
-        // this.listCategory.splice(this.listCategory.indexOf(element), 1); 
+        console.log(item.chapter+ " :"+this.live_chapter);
+        // this.listCategory[index] =  { category: item.category, id: item.id, cat_id:item.cat_id,chapter:this.live_chapter, title : this.live_title, shortdesc :  this.live_desc  };
+        // console.log(this.live_chapter)
+        // this.listCategory.splice(this.listCategory.indexOf(element), 1);
       }
     }
 
-    // this.listCategory[RevIndex] = { category: 'Astrology', id: 1,cat_id:2, chapter:"I", title : 'Welcome Spider', shortdesc : this.desc }
+ 
     this.toggleeditChapters();
+  }
+
+  getCoursesByCategory() {
+    this.courses = [];
+    for (let index = 0; index < this.listCategory.length; index++) {
+      const element = this.listCategory[index];
+      if(this.course_id == element.cat_id){
+        this.courses.push(element);
+      }
+    }
+    return this.courses;
+  }
+
+  notificationPush(msg,color){
+    this.notification.visible = true;
+    this.notification.Message=msg;
+    this.notification.color=color;
+    var x = this;
+
+      setTimeout(function() {
+        x.notification.visible=false;
+      }, 3000);
   }
 
 }
