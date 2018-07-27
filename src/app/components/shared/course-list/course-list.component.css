@@ -55,6 +55,51 @@
 a{
   text-decoration: none;
 }
+.admin_buttons{
+  float: right;
+  padding-right: 240px;
+  display: flex;
+  padding-bottom: 20px;
+}
+.btn_create{
+  line-height: 0px;
+  width: 79px;
+  border-radius: 5px;
+  background-color: #006FFF;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 7px;
+  cursor: pointer;
+}
+
+.btn_create:hover{
+  background-color: #5fa5ff;
+}
+#editdelete{
+  height: 28px;	
+  width: 139px;	
+  border: 1px solid #06102B;	
+  border-radius: 5px;
+  margin-left:12px;
+  display: flex;
+  color: #7D8492;
+}
+.space-edit-delete{
+  padding-left: 11px;
+  padding-top: 2px;
+}
+#edit{
+  border-right: 1px solid gray;
+  padding-right: 16px;
+}
+#edit:hover{
+  cursor: pointer;
+  color: black;
+}
+#delete:hover{
+  cursor: pointer;
+  color: black;
+}
 .btn-discover{
   border: 1px solid #0076F7;
   border-radius: 5px;
@@ -97,6 +142,32 @@ a{
 }
 input[type=text]{
   padding-left: 30px;
+}
+.newCategory{
+  border: 1px solid #006FFF;
+  border-radius: 5px;
+}
+.edit_title{
+  text-align: center;
+  padding-top: 20px;
+  color: #FFF;
+  font-size: 17px;
+}
+.edit_title:hover{
+  text-decoration: underline;
+}
+.card_buttons{
+  display: flex;
+  padding-bottom: 21px;
+  padding-top: 20px;
+}
+#save:hover{
+  cursor: pointer;
+  color: black;
+}
+#cancel:hover{
+  cursor: pointer;
+  color: black;
 }
 
 /* for footer */

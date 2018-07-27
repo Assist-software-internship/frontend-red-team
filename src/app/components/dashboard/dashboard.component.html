@@ -4,14 +4,19 @@
   courses categories. Every category links to the courses list, by category.
   Categories can be searched through, and there's a link to display more categories.
 -->
+<link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+      crossorigin="anonymous">
 <app-page-header></app-page-header>
 <div class="container_cat">
   <app-hero [title]="categoryTitle"
             [subtitle]="categorySubtitle"></app-hero>
 
   <div class="container">
-    <div class="col-md-8 col-md-offset-2 category_content">
-      <div class="row ">
+    <div class="col-md-8 col-md-offset-2 category_content"
+         *ngIf="!admin_role">
+      <div class="row">
         <div class="col-md-9">
           <input type="text"
                  name=""
@@ -27,14 +32,83 @@
         </div>
       </div>
     </div>
+
     <div class="row margin-item">
+      <div class="row"
+           *ngIf="admin_role">
+        <div class="col-sm-12">
+          <div class="admin_buttons">
+            <div class="btn_create"
+                 (click)="createCat()">
+              <i class="far fa-plus-square"
+                 style="margin-top: 8px; padding-right: 5px; "></i>Create
+            </div>
+            <div id="editdelete">
+              <div class="space-edit-delete"
+                   id="edit"
+                   (click)="editCat()">
+                <i class="far fa-edit"></i>Edit</div>
+              <div class="space-edit-delete"
+                   id="delete"
+                   (click)="deleteCat()">
+                <i class="far fa-trash-alt"></i>Delete</div>
+            </div>
+          </div>
+        </div>
+        <div class="row"
+             *ngIf="editMode">
+          <div class="col-sm-6 col-sm-offset-3 newCategory">
+            <div class="card"
+                 style="width: 310px;">
+              <div class="card-body">
+                <h5 class="card-title">CATEGORY TITLE</h5>
+                <input type="text"
+                       name=""
+                       id=""
+                       class="form-control"
+                       [(ngModel)]="category.title">
+                <h5 class="card-title">TAGS</h5>
+                <input type="text"
+                       name=""
+                       id=""
+                       class="form-control"
+                       [(ngModel)]="category.tags">
+                <div class="card_buttons">
+                  <div class="space-edit-delete"
+                       id="save"
+                       (click)="saveCat()">
+                    <i style="padding-right: 5px;"
+                       class="far fa-save"></i>Save</div>
+                  <div class="space-edit-delete"
+                       id="cancel"
+                       (click)="cancel()">
+                    <i style="padding-right: 5px;"
+                       class="fa fa-close"></i>Cancel</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="margin-thumbnail">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
              *ngFor="let item of listCategory | search:filteredStatus:'title' | slice:0:[max]  ">
           <div class="list_item"
+               *ngIf="!admin_role"
                (click)="toCourses(item.id)"
                id="{{item.id}}">
             <p class="list_title">{{item.title | uppercase}}</p>
+          </div>
+          <div class="list_item"
+               *ngIf="admin_role"
+               id="{{item.id}}">
+            <p class="list_title"
+               (click)="toCourses(item.id)">{{item.title | uppercase}}</p>
+            <p *ngIf="editClick "
+               class="edit_title"
+               (click)="openEdit(item)">EDIT</p>
+            <p *ngIf="deleteClick"
+               class="edit_title">DELETE</p>
           </div>
         </div>
       </div>
@@ -47,7 +121,7 @@
                 (click)="discoverMore()">Discover more</button>
         <button *ngIf="max > 7"
                 type="submit"
-                class="btn-discover"
+                class="btn-discover display-less"
                 (click)=" displayLess()">Display less</button>
       </div>
     </div>

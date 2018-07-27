@@ -107,6 +107,20 @@ input.ng-invalid.ng-touched{
   width: 65px;
   margin-top: 17px;
 }
+#agree{
+  height: 19px;
+  cursor: pointer;
+}
+#agree_terms{
+  height: 19px;
+  cursor: pointer;
+}
+#agree:hover{
+  cursor: pointer;
+}
+#agree_terms:hover{
+  cursor: pointer;
+}
 
 .showPassword{
   background: transparent;
