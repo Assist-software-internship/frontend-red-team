@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'account', component: MyAccountComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent},
 
   { path: 'courses', component: CourseListComponent },
 

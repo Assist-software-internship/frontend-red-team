@@ -25,7 +25,7 @@
 }
 
 
-.startbtn:hover,.savebtn:hover{
+.startbtn:hover,.savebtn:hover,.cancelbtn:hover,.deletebtn:hover{
     background: #006FFF;
     color:#fff;
 }
@@ -56,7 +56,7 @@
     display: block;
 }
 
-.startbtn{
+.startbtn,.deletebtn{
     height: 29px;	
     width: 55px;
     border: 1px solid #006FFF;
@@ -70,6 +70,8 @@
     margin-left: 33px;
     font-size: 16px;
     cursor: pointer;
+    background: transparent;
+   
 }
 
 #fullbtn{
@@ -224,7 +226,7 @@
     border-bottom: 1px solid #006FFF !important;
 }
 
-.savebtn{
+.savebtn,.cancelbtn{
     height: 29px;
     width: 68px;
     border: 1px solid #006FFF;
@@ -239,7 +241,11 @@
     cursor: pointer;
     margin-top: 13px;
     margin-bottom: -21px;
+    outline: none;
+    background-color:transparent;
 }
+
+.savebtn{margin-right:10px;}
 
 input[type=text]{
     outline: none;
@@ -262,4 +268,40 @@ textarea{
     margin-top: 10px;
     border-radius: 5px;
     padding: 5px;
+}
+
+savebtn:disabled,
+button[disabled],button[disabled]:hover{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  outline: none;
+  cursor: not-allowed;
+}
+
+
+h1 .edit{
+    max-width: 700px;
+    border-radius: 4px;
+    border: 1px dashed #b0b0b7;
+    padding: 19px 33px 15px 12px;
+}
+
+.iedit{
+    max-width: 700px;
+    border-radius: 4px;
+    border: 1px dashed #b0b0b7;
+    padding: 5px 33px 15px 12px;
+}
+
+.pedit{
+    border-radius: 4px;
+    border: 1px dashed #b0b0b7;
+    padding: 5px 33px 15px 12px;
+    
+}
+
+.activeopt{
+    background: #006fff;
+    color: #fff;
 }
