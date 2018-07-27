@@ -30,10 +30,16 @@
 
     <div id="curriculum" class="create" *ngIf="createVisible">
       <h1>Q :
-        <input type="text" style="max-width:460px;" [(ngModel)]="live_title">
+        <input type="text" style="max-width:460px;" [(ngModel)]="live_question">
       </h1>
       <p>
-        <textarea rows="4" cols="50" placeholder="Description" [(ngModel)]="live_desc"></textarea>
+        <input type="text" name="live_answer1" id="live_answer1" [(ngModel)]="live_answer1">
+      </p>
+      <p>
+        <input type="text" name="live_answer2" id="live_answer2" [(ngModel)]="live_answer2">
+      </p>
+      <p>
+        <input type="text" name="live_answer3" id="live_answer3" [(ngModel)]="live_answer3">
       </p>
       <div style="width:100%;display: flex; ">
         <div class="savebtn" (click)="createNewCourse()">Save</div>
@@ -41,17 +47,17 @@
 
     </div>
 
-    <div id="curriculum" *ngIf="live_question ||live_questionTitle">
+    <div id="curriculum" *ngIf="live_question">
       <h1>Q: {{live_question}}</h1>
       <ul>
         <li>
-          <input type="checkbox" class="chooseAnswer" value="{{live_answer1}}">
+          <input type="text" class="chooseAnswer">{{live_answer1}}
         </li>
         <li>
-          <input type="checkbox" class="chooseAnswer" value="{{live_answer2}}">
+          <input type="text" class="chooseAnswer">{{live_answer2}}
         </li>
         <li>
-          <input type="checkbox" class="chooseAnswer" value="{{live_answer3}}">
+          <input type="text" class="chooseAnswer">{{live_answer3}}
         </li>
       </ul>
       <div class="startbtn">Start</div>

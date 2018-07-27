@@ -49,7 +49,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   onLogOut() {
-    localStorage.removeItem('id');
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
 

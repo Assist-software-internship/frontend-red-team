@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./chapter-questions.component.css']
 })
 export class ChapterQuestionsComponent implements OnInit {
-  desc = "asdasdasda asdasdasd asdasd";
 
   listCategory = [
     { question: 'This is a question', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
@@ -27,7 +26,6 @@ export class ChapterQuestionsComponent implements OnInit {
   public live_answer2;
   public live_answer3;
   public live_question;
-  public live_desc;
   public createVisible = false
 
   public answer: string;
@@ -59,7 +57,6 @@ export class ChapterQuestionsComponent implements OnInit {
     this.live_answer2;
     this.live_answer3;
     this.live_question;
-    this.live_desc;
     this.createVisible = false
   }
 
