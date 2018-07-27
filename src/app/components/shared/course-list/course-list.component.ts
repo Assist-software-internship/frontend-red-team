@@ -16,6 +16,7 @@ export class CourseListComponent implements OnInit {
   public admin_role = true;
   public image_url = '';
   public editMode = false;
+  public createMode = false;
   public editClick = false;
   public deleteClick = false;
   constructor(private dataService: ApiConnectionService, private router: Router) {
@@ -27,18 +28,24 @@ export class CourseListComponent implements OnInit {
     // this.getAllCourses();
     this.getCoursesByCategory();
   }
-  createCourse() {
-    this.editMode = !(this.editMode);
+  createMenu() {
+    this.createMode = !(this.createMode);
   }
   cancel() {
+    this.createMode = false;
     this.editMode = false;
   }
-  editCourse() {
+  editMenu() {
     this.editClick = !(this.editClick);
-
+    this.deleteClick = false;
   }
-  openEdit() {
+  openEdit(item) {
     this.editMode = true;
+    this.course = item;
+  }
+  deleteMenu() {
+    this.deleteClick = !(this.deleteClick);
+    this.editClick = false;
   }
   getAllCourses() {
     const course_id = localStorage.getItem('category_id');
