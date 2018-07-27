@@ -31,6 +31,7 @@ export class MyAccountComponent implements OnInit {
   selectedFile = null;
   public firstload = true;
   showHide = true;
+  public file: File;
 
   constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
   }
@@ -97,6 +98,12 @@ export class MyAccountComponent implements OnInit {
     this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
       console.log('updated');
     });
+    // this.updatePassword();
+  }
+  updatePassword(): void {
+    this.dataService.updatePassword(this.user.password, this.user).subscribe(res => {
+      console.log('password updated');
+    })
   }
 
   getAllCourses() {
@@ -116,24 +123,26 @@ export class MyAccountComponent implements OnInit {
     this.selectedFile = <File>event.target.files[0];
 
   }
-  onUpload() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile.this.selectedFile.name);
-    this.http.post('./assets/images.png', fd)
-      .subscribe(res => {
-        console.log(res);
-      });
-  }
+  // onUpload(fd: String) {
+  //   fd = './assets/images.png';
+  //   // fd.append('./assets/images.png', this.selectedFile);
+  //   // this.http.post('./assets/images.png', fd)
+  //   //   .subscribe(res => {
+  //   //     console.log(res);
+  //   //   });
+  //   console.log("the image: " + fd);
+  // }
   handleFileSelect(evt) {
     var files = evt.target.files;
-    var file = files[0];
+    this.file = files[0];
+    console.log(this.file);
 
-    if (files && file) {
+    if (files && this.file) {
       var reader = new FileReader();
 
       reader.onload = this._handleReaderLoaded.bind(this);
 
-      reader.readAsBinaryString(file);
+      reader.readAsBinaryString(this.file);
     }
   }
   _handleReaderLoaded(readerEvt) {
