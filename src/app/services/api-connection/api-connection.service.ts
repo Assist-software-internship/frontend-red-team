@@ -19,6 +19,7 @@ const Api = {
   register: 'create/user',
   login: 'login',
   reset: 'reset',
+  changepass: 'changepass?',
   userById: 'user?id=',
   categories: 'categories',
   createCategory: 'create/category',
@@ -133,6 +134,14 @@ export class ApiConnectionService {
   updateUser(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(
       Api.base + Api.userById + id,
+      userData,
+      httpOptions
+    );
+  }
+  updatePassword(password: String, userData: User): Observable<User> {
+    let token = "token=8ip1mx&password=";
+    return this.http.put<User>(
+      Api.base + Api.changepass + token + password,
       userData,
       httpOptions
     );
