@@ -61,10 +61,60 @@ export class ApiConnectionService {
     // return this.http.get<User[]>('http://localhost:3000/' + Api.users);
   }
 
+  // getUserByEmail(email: String): Observable<User[]> {
+  //   return this.http.get<User[]>(Api.base + Api.userByEmail + email);
+  // }
+
   registerUser(userData: User): Observable<User> {
     // return this.http.post<User>(Api.base + Api.register, JSON.stringify(userData), httpOptions);
     return this.http.post<User>(Api.base + Api.register, userData, httpOptions);
   }
+
+  loginUser(userData: User): Observable<User> {
+    return this.http.post<User>(Api.base + Api.login, userData, httpOptions);
+  }
+
+  resetPassword(userData: User) {
+    return this.http.post<User>(Api.base + Api.reset, userData, httpOptions);
+  }
+
+  getUserById(id: Number): Observable<User> {
+    return this.http.get<User>(Api.base + Api.users + `?id=${id}`);
+  }
+
+  // getUserById(id: Number): Observable<User> {
+  //   return this.http.put<User>(Api.base + Api.userById + id);
+  // }
+  // getAllCategories(): Observable<Category[]> {
+  //   return this.http.get<Category[]>(Api.base + Api.categories);
+  // }
+  // createCategory(): Observable<Category[]> {
+  //   return this.http.post<Category[]>(Api.base + Api.createCategory);
+  // }
+  // getCoursesByCategory(id: Number): Observable<Course[]> {
+  // return this.http.get<Course[]>(Api.base + Api.coursesByCategoryId + id);
+  // }
+  // getCourseById(id: Number): Observable<Course[]> {
+  // return this.http.get<Course[]>(Api.base + Api.courseById + id);
+  // }
+  // createCourse(courseData: Course): Observable<Course> {
+  // return this.http.post<Course>(Api.base + Api.createCourse);
+  // }
+  // getChaptersByCourseId(id: Number): Observable<Chapter[]> {
+  // return this.http.get<Chapter[]>(Api.base + Api.chaptersByCourseId + id);
+  // }
+  // getChapterBy(id: Number): Observable<Chapter[]> {
+  // return this.http.get<Chapter[]>(Api.base + Api.chapterById + id);
+  // }
+  // createChapter(courseData: Chapter): Observable<Course> {
+  // return this.http.post<Chapter>(Api.base + Api.createChapter);
+  // }
+  // getQuestionsByChapterId(id: Number): Observable<Questions[]> {
+  // return this.http.get<Questions[]>(Api.base + Api.questionsByChapterId + id);
+  // }
+  // createQuestions(courseData: Questions): Observable<Questions> {
+  // return this.http.post<Questions>(Api.base + Api.createQuestions);
+  // }
 
   deleteUser(id: Number): Observable<User> {
     return this.http.delete<any>(Api.base + Api.users + `/${id}`)
@@ -73,26 +123,11 @@ export class ApiConnectionService {
     return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
   }
 
-  updateImage(id: Number, userData: User): Observable<User> {
-    return this.http.put<User>(Api.base + Api.course + `/${id}`, userData, httpOptions);
-  }
-
-  fakeLogin(email: String, password: String): Observable<User[]> {
-    return this.http.get<User[]>(
-      Api.base + Api.login + `?email=${email}&password=${password}`
-    );
-  }
-
-  loginUser(userData: User): Observable<User> {
-    return this.http.post<User>(Api.base + Api.login, userData, httpOptions);
-  }
-
-  getUserById(id: Number): Observable<User> {
-    return this.http.get<User>(Api.base + Api.users + `?id=${id}`);
-  }
-
   getUserByEmail(email: String): Observable<User[]> {
     return this.http.get<User[]>(Api.base + Api.userByEmail + `${email}`);
+  }
+  updateImage(id: Number, userData: User): Observable<User> {
+    return this.http.put<User>(Api.base + Api.course + `/${id}`, userData, httpOptions);
   }
 
   updateUser(id: Number, userData: User): Observable<User> {
@@ -103,21 +138,10 @@ export class ApiConnectionService {
     );
   }
 
-  resetPassword(userData: User) {
-    return this.http.post<User>(Api.base + Api.reset, userData, httpOptions);
-  }
-
-  // fakeResetPassword(id: Number, userData: User): Observable<User> {
-  //   return this.http.put<User>(
-  //     Api.base + Api.users + `/${id}`,
-  //     userData,
-  //     httpOptions
-  //   );
-  // }
-
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>('http://localhost:3000/' + 'course');
   }
+
   getCoursesByCategory(id: Number): Observable<Course[]> {
     return this.http.get<Course[]>('http://localhost:3000/course?id=' + id);
   }

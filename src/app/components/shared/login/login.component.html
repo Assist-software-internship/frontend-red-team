@@ -49,9 +49,11 @@
               <span class="error_message"
                     *ngIf="! passwordlogin.valid &&  passwordlogin.touched ">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
             </div>
-            <button type="submit"
-                    class="btn btn-primary form-control sign-btn"
-                    [disabled]="!login.valid">SIGN IN</button>
+            <div style="display: flex">
+              <button type="submit"
+                      class="btn btn-primary form-control sign-btn"
+                      [disabled]="!login.valid">SIGN IN</button>
+            </div>
             <p class="forgot">Forgot password?
               <a (click)="manageForms(false, false, true)">Reset it</a>
             </p>
@@ -144,9 +146,11 @@
                     style="color: white">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
 
             </div>
-            <button type="submit"
-                    class="btn btn-primary form-control sign-btn"
-                    [disabled]="!reset.valid">RESET PASSWORD</button>
+            <div style="display: flex">
+              <button type="submit"
+                      class="btn btn-primary form-control sign-btn"
+                      [disabled]="!reset.valid">RESET PASSWORD</button>
+            </div>
             <div class="row">
               <div class="display_terms">
                 <input type="checkbox"
@@ -253,9 +257,11 @@
                     style="color: white">Please enter at least one: upper-case leter, number, special caracters and minlength 8.</span>
             </div>
 
-            <button type="submit"
-                    class="btn btn-primary form-control sign-btn"
-                    [disabled]="!create.valid">CREATE ACCOUNT</button>
+            <div style="display: flex">
+              <button type="submit"
+                      class="btn btn-primary form-control sign-btn"
+                      [disabled]="!create.valid">CREATE ACCOUNT</button>
+            </div>
             <div class="row">
               <div class="display_terms">
                 <input type="checkbox"

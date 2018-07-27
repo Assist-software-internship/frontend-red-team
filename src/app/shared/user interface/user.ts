@@ -6,6 +6,7 @@ export class User {
   password: String;
   active?: Number;
   resetToken?: null;
+  token: String;
   roles?: Number[];
   image: File;
 
