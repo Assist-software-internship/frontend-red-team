@@ -77,11 +77,13 @@
                   <div class="space-edit-delete"
                        id="save"
                        (click)="saveCat()">
-                    <i class="far fa-save"></i>Save</div>
+                    <i style="padding-right: 5px;"
+                       class="far fa-save"></i>Save</div>
                   <div class="space-edit-delete"
                        id="cancel"
                        (click)="cancel()">
-                    <i class="fa fa-close"></i>Cancel</div>
+                    <i style="padding-right: 5px;"
+                       class="fa fa-close"></i>Cancel</div>
                 </div>
               </div>
             </div>
@@ -100,7 +102,8 @@
           <div class="list_item"
                *ngIf="admin_role"
                id="{{item.id}}">
-            <p class="list_title">{{item.title | uppercase}}</p>
+            <p class="list_title"
+               (click)="toCourses(item.id)">{{item.title | uppercase}}</p>
             <p *ngIf="editClick "
                class="edit_title"
                (click)="openEdit(item)">EDIT</p>

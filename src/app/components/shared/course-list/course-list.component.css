@@ -143,6 +143,32 @@ a{
 input[type=text]{
   padding-left: 30px;
 }
+.newCategory{
+  border: 1px solid #006FFF;
+  border-radius: 5px;
+}
+.edit_title{
+  text-align: center;
+  padding-top: 20px;
+  color: #FFF;
+  font-size: 17px;
+}
+.edit_title:hover{
+  text-decoration: underline;
+}
+.card_buttons{
+  display: flex;
+  padding-bottom: 21px;
+  padding-top: 20px;
+}
+#save:hover{
+  cursor: pointer;
+  color: black;
+}
+#cancel:hover{
+  cursor: pointer;
+  color: black;
+}
 
 /* for footer */
 .footer {	

@@ -9,7 +9,7 @@ import { Category } from '../../shared/category';
 })
 export class DashboardComponent implements OnInit {
   listCategory = [
-    { title: 'Astrology', id: 1 },
+    { title: 'Astrology', id: 1, tags: 'Science' },
     { title: 'Finance', id: 2 },
     { title: 'Grammar', id: 3 },
     { title: 'Fun Facts', id: 4 },
@@ -31,10 +31,10 @@ export class DashboardComponent implements OnInit {
 
   public category: Category = new Category();
   public admin_role = true;
-  filteredStatus = '';
+  public filteredStatus = '';
   public editMode = false;
-  editClick = false;
-  deleteClick = false;
+  public editClick = false;
+  public deleteClick = false;
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
   }
   createCat() {
     this.editMode = !(this.editMode);
+    this.category = null;
   }
   editCat() {
     this.editClick = !(this.editClick);
@@ -56,10 +57,16 @@ export class DashboardComponent implements OnInit {
     this.deleteClick = !(this.deleteClick);
     this.editClick = false;
   }
+  saveCat() {
+    alert('save to db');
+  }
   openEdit(item) {
-    this.editMode = !(this.editMode);
+    this.editMode = true;
     console.log(item);
     this.category = item;
+  }
+  cancel() {
+    this.editMode = false;
   }
   discoverMore(): void {
     this.max = this.max + 6;
