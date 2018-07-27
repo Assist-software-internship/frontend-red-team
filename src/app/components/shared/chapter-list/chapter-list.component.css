@@ -30,6 +30,11 @@
     color:#fff;
 }
 
+.deletebtn:hover{
+    background: red;
+    color:#fff;
+}
+
 #curriculum{
     border-bottom: 1px solid #EFF1F4;
     min-height: 180px;
@@ -72,6 +77,11 @@
     cursor: pointer;
     background: transparent;
    
+}
+
+.deletebtn{
+    border: 1px solid red;
+    color: red;
 }
 
 #fullbtn{
@@ -304,4 +314,24 @@ h1 .edit{
 .activeopt{
     background: #006fff;
     color: #fff;
+}
+.activeoptdelete{
+    background: red;
+    color: #fff;
+}
+
+.del{
+    border:1px solid red !important
+}
+
+#notification{
+    max-width: 812px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+    line-height: 43px;
+    padding: 2px 2px 2px 22px;
+    color: #000;
+    border:1px solid;
+    /* background: #ec1f1f; */
+    border-radius: 6px;
 }

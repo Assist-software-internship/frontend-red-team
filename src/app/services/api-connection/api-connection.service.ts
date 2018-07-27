@@ -145,4 +145,5 @@ export class ApiConnectionService {
   getCoursesByCategory(id: Number): Observable<Course[]> {
     return this.http.get<Course[]>('http://localhost:3000/course?id=' + id);
   }
+  
 }
