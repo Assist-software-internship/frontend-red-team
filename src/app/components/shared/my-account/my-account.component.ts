@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { EventEmitter } from 'events';
 import { isNgTemplate } from '@angular/compiler';
 import { userInfo } from 'os';
-import { base64textString } from 'angular-base64-download';
+// import { base64textString } from 'angular-base64-download';
 
 @Component({
   selector: 'app-my-account',

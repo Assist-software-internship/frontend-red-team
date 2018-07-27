@@ -57,7 +57,7 @@ a{
 }
 .admin_buttons{
   float: right;
-  padding-right: 240px;
+  padding-right: 248px;
   display: flex;
   padding-bottom: 20px;
 }
@@ -146,6 +146,7 @@ input[type=text]{
 .newCategory{
   border: 1px solid #006FFF;
   border-radius: 5px;
+  margin-bottom: 30px;
 }
 .edit_title{
   text-align: center;
