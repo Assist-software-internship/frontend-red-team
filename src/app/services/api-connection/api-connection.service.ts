@@ -61,10 +61,6 @@ export class ApiConnectionService {
     // return this.http.get<User[]>('http://localhost:3000/' + Api.users);
   }
 
-  getUserByEmail(email: String): Observable<User[]> {
-    return this.http.get<User[]>(Api.base + Api.users + `?email=${email}`);
-  }
-
   // getUserByEmail(email: String): Observable<User[]> {
   //   return this.http.get<User[]>(Api.base + Api.userByEmail + email);
   // }
@@ -127,13 +123,16 @@ export class ApiConnectionService {
     return this.http.put<Course>(Api.base + Api.course + `/${id}`, courseData, httpOptions);
   }
 
+  getUserByEmail(email: String): Observable<User[]> {
+    return this.http.get<User[]>(Api.base + Api.userByEmail + `${email}`);
+  }
   updateImage(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(Api.base + Api.course + `/${id}`, userData, httpOptions);
   }
 
-  updateUser(user_id: Number, userData: User): Observable<User> {
+  updateUser(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(
-      Api.base + Api.user + `/${user_id}`,
+      Api.base + Api.userById + id,
       userData,
       httpOptions
     );

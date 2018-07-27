@@ -20,12 +20,13 @@
       overflow: hidden;
     }
     .container-account{
-      min-width: 1000;
-      max-width: 100%;
-      height: 350px;
       background-color: white;
+    }
+    .container-logout{
+      max-width: 780px;
+      height: 350px;
       padding-top: 94px;
-      padding-left: 300px;
+      margin: 0 auto;
     }
     .container-account h2 {
       height: 38px;	
@@ -62,9 +63,8 @@
     /* Container account informations */
 
     .container-info{
-      /* border: 1px solid blue; */
       margin: auto;
-      max-width: 800px;
+      max-width: 780px;
     }
     .container-info h2{
       height: 38px;
@@ -73,14 +73,12 @@
       font-size: 24px;	
       font-weight: bold;	
       line-height: 38px;
-      /* border: 1px solid red; */
     }
 
 
     /* Container profile picture & upload */
 
     .container-profile-picture{
-      border: 1px solid red;
       width: 140px; 
       float: left;
       margin-top: 53px;
@@ -108,7 +106,7 @@
       background-color: lightcyan;
     }
 
-    /* Info, username, password & emal || save || cancel */
+    /* Info, username, password & email || save || cancel */
 
     .info-change-profile-picture{
       height: 92px;	
@@ -130,12 +128,14 @@
       width: 90%;
       margin: 0 auto;
       text-align: center;
+      color: #AEB5BB;
     }
 
     .account-modifications{
-      float: right;
+      float: left;
       width: 300px;
       margin-bottom: 62px;
+      margin-left: 63px;
     }
     #username{
       height: 45px;
@@ -239,7 +239,7 @@
     .line{
       border: 0;
       height: 0;
-      width: 800px;
+      width: 780px;
       margin-left: 0px;
       margin-top: 62px;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -255,44 +255,50 @@
       font-size: 24px;	
       font-weight: bold;	
       line-height: 38px;
-      /* border: 1px solid red; */
+      margin-bottom: 46px;
     }
     .container-course-progress{
       height: 174px;
-      width: 800px;
+      width: 780px;
       background-color: white;
-      margin-top: 60px;
       float: left;
       justify-content: space-between;
       border-radius: 5px;
       outline: none;
+      border: none;
+      margin-bottom: 44px;
     }
     .container-course-progress:hover{
-      border: 1px solid lightgrey;
+      border: 1px solid lightgrey;  
     }
-
-    .cancel-cours{
-      height: 23px;
-      width: 23px;
+    .container-started-courses:hover .cancel-course{
+      display: block !important;
+    }
+    .container-started-courses{
+      position: relative;
+    }
+    .cancel-course{
+      height: 19px;
+      width: 19px;
       background-color: #FA3466;
-      margin-left: 767px;
+      margin-left: 741px;
       border: none;
       border-radius: 5px;
       color: white;
-      font-size: 18px;
-      margin-top: 15px;
+      font-size: 14px;
+      margin-top: 20px;
       position: absolute;
       font-weight: bold;
       padding: 0px;
       outline: none;
+      text-align: center;
     }
-    .cancel-cours:hover{
-      background-color: indianred;;
+    .cancel-course:hover{
+      background-color: indianred;
     }
 
     .container-redirect-to-courses{
-      width: 800px;
-      height: 134px;
+      width: 700px;
       margin-top: 37px;
       float: left;
       outline: none;
@@ -303,8 +309,8 @@
       margin-left: 37px;
     }
     .small-description{
-      margin-top: 45px;
-      margin-left: 123px;
+      margin-top: 22px;
+      margin-left: 160px;
       height: 16px;	
       width: 460px;	
       color: #06102B;	
@@ -315,7 +321,7 @@
     }
     .long-description{
       margin-top: 8px;
-      margin-left: 123px;
+      margin-left: 160px;
       height: 32px;	
       width: 431px;	
       color: #AEB5BB;		
@@ -327,35 +333,23 @@
       width: 550px;
     }
     .container-progress-points{
-      width: 95px;
       margin-top: 60px;
       margin-left: 660px;
-      float: right;
       outline: none;
       position: absolute;
-    }
-    .container-points-nr{
-      width: 50px;
-      height: 30px;
+      height: 42px;	
+      width: 50px;	
+      color: #006FFF;		
+      font-size: 18px;	
+      line-height: 21px;	
       text-align: center;
-      color: dodgerblue;
-      font-size: 25px;
-      margin: auto;
-      outline: none;
     }
-    .container-points{
-      width: 70px;
-      height: 30px;
-      text-align: center;
-      color: dodgerblue;
-      font-size: 25px;
-      margin: auto;
-      outline: none;
-    }
+    
     .progress-bar{
       height: 2px;
       float: left;
-      margin-top: 20px;
+      max-width: 780px;
+      margin-top: 37px;
       background: linear-gradient(-90deg, #ff9999, yellow, lightgreen,lightcyan, lightblue);
       outline: none;
     }

@@ -11,18 +11,20 @@ export class HeroComponent implements OnInit {
   @Input() title: string;
   @Input() subtitle: string;
   @Input() category: string;
-  
+  @Input() chapter: string;
+  @Input() chapterTitle: string;
+
   public currentRoute
   public isCourseIDPage
-  
-  constructor(router: Router) { 
-    router.events.subscribe((url:any) => console.log(url));
+
+  constructor(router: Router) {
+    router.events.subscribe((url: any) => console.log(url));
     this.currentRoute = router.url;
     var paths = this.currentRoute.split('/');
 
-    if(paths[1]=="courses" && paths[2]){
+    if (paths[1] == "courses" && paths[2]) {
       this.isCourseIDPage = true;
-    }else{
+    } else {
       this.isCourseIDPage = false;
     }
   }

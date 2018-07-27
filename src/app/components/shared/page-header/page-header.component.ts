@@ -1,17 +1,17 @@
 ///<reference path="../../../../../node_modules/@angular/router/src/router.d.ts"/>
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {User} from '../../../shared/user interface/user';
-import {Course} from '../../../shared/course';
+import { User } from '../../../shared/user interface/user';
+import { Course } from '../../../shared/course';
 
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
-import {Observable} from 'rxjs';
-import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Router, Route, RoutesRecognized } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {BrowserDomAdapter} from '@angular/platform-browser/src/browser/browser_adapter';
+import { BrowserDomAdapter } from '@angular/platform-browser/src/browser/browser_adapter';
 
-import {ElementRef,Renderer2} from '@angular/core';
+import { ElementRef, Renderer2 } from '@angular/core';
 import { element } from 'protractor';
 
 @Component({
@@ -28,26 +28,26 @@ export class PageHeaderComponent implements OnInit {
   @Output()
   public user: User = new User();
 
-  constructor(router: Router,private dataService: ApiConnectionService) { 
-    router.events.subscribe((url:any) => console.log(url));
+  constructor(router: Router, private dataService: ApiConnectionService) {
+    router.events.subscribe((url: any) => console.log(url));
     this.currentRoute = router.url;
     // console.log(router.url);  // to print only path eg:"/login"
     console.log(this.currentRoute);
-    if( this.currentRoute == "/dashboard" ){
-      
+    if (this.currentRoute == "/dashboard") {
+
     }
 
 
   }
 
-  
+
   public visible = false;
-  toggle(){
-   
-    if (this.visible){
+  toggle() {
+
+    if (this.visible) {
       document.getElementById('right').style.display = "none";
       this.visible = false;
-    }else{
+    } else {
       document.getElementById('right').style.display = "flex";
       this.visible = true;
     }
@@ -55,32 +55,31 @@ export class PageHeaderComponent implements OnInit {
   }
 
   private wholeName: string;
-  
-  ngOnInit() { 
-    this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe(res => {
-      this.user = res[0];
-      this.wholeName = res[0].firstName + ' ' + res[0].lastName;
-    });
+
+  ngOnInit() {
+
   }
 
-  getRoute(){
+  getRoute() {
     return window.location.pathname;
   }
- 
+
   ngAfterViewInit() {
     this.getUserProfile();
   }
-  
+
+
   getUserProfile(): void {
-    this.dataService.getUserById(parseInt(localStorage.getItem('id'))).subscribe(res => {
-      this.user = res[0];
-      console.log('Users ', this.user);
+    this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe((res: any) => {
+      console.log('res ', res)
+      this.user = res.objects[0];
+      this.wholeName = this.user.firstName + ' ' + this.user.lastName;
+      console.log('Users::: ' + this.user.firstName + this.user.lastName);
     });
   }
-
   onFileSelected(event) {
     console.log(event.srcElement.value);
     this.user.image = event.srcElement.value;
-  }  
+  }
 
 }

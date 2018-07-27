@@ -7,23 +7,89 @@
 -->
 <div id="wrapper">
   <app-page-header></app-page-header>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+    crossorigin="anonymous">
+
   <div class="container_chapterlist">
 
-    <app-hero id="banner" [category]="category" [title]="categoryTitle" [subtitle]="categorySubtitle"></app-hero>
+    <app-hero id="chapterQuestions" [chapter]="chapter" [chapterTitle]="chapterTitle"></app-hero>
 
-    <div id="curriculum"  *ngFor="let i of [1]">
-      <i>Chapter I</i>
-      <h1>Welcome To Desiclassfieds Free ClassFieds Free Ads</h1>
+    <div *ngIf="account_role" id="ctrl_admin">
+      <div id="right">
+        <div class="btn_create" (click)="toggleCreate()">
+          <i class="far fa-plus-square" style="margin-top: 8px;"></i>Create
+        </div>
+        <div id="editdelete">
+          <div id="edit">
+            <i class="far fa-edit"></i>Edit</div>
+          <div id="delete">
+            <i class="far fa-trash-alt"></i>Delete</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="curriculum" class="create" *ngIf="createVisible">
+      <h1>Q :
+        <input type="text" style="max-width:460px;" [(ngModel)]="live_question">
+      </h1>
       <p>
-          While saying goodbye means accepting that a part of our life is over, it also ... of that reality had started to creep
-          into my psyche weeks ago, when I was being fitted ... We journeyed together, watching each other grow through the innocence of
+        <input type="text" name="live_answer1" id="live_answer1" [(ngModel)]="live_answer1">
       </p>
+      <p>
+        <input type="text" name="live_answer2" id="live_answer2" [(ngModel)]="live_answer2">
+      </p>
+      <p>
+        <input type="text" name="live_answer3" id="live_answer3" [(ngModel)]="live_answer3">
+      </p>
+      <div style="width:100%;display: flex; ">
+        <div class="savebtn" (click)="createNewCourse()">Save</div>
+      </div>
+
+    </div>
+
+    <div id="curriculum" *ngIf="live_question">
+      <h1>Q: {{live_question}}</h1>
+      <ul>
+        <li>
+          <input type="text" class="chooseAnswer">{{live_answer1}}
+        </li>
+        <li>
+          <input type="text" class="chooseAnswer">{{live_answer2}}
+        </li>
+        <li>
+          <input type="text" class="chooseAnswer">{{live_answer3}}
+        </li>
+      </ul>
       <div class="startbtn">Start</div>
     </div>
-  
-    <div id="fullbtn">See the full curriculum</div>
+
+    <div id="curriculum" *ngFor="let item of listCategory | search:filteredStatus:'id' | slice:0:[max]  ">
+
+      <ul class="chapter-question">
+        <h1>
+          <span>Q:</span>{{item.question}}</h1>
+        <div class="answersList">
+          <li class="answer">
+            <input type="checkbox" class="chooseAnswer">
+            <span> {{item.answer1}}</span>
+            <hr>
+          </li>
+
+          <li class="answer">
+            <input type="checkbox" class="chooseAnswer">
+            <span> {{item.answer2}}</span>
+            <hr>
+          </li>
+
+          <li class="answer">
+            <input type="checkbox" class="chooseAnswer">
+            <span> {{item.answer3}}</span>
+          </li>
+        </div>
+      </ul>
+
+    </div>
+
 
   </div>
 

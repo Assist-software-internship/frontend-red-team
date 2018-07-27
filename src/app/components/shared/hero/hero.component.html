@@ -1,9 +1,26 @@
 <div class="banner">
   <ul>
-    <li><span class="category" [hidden]= "!isCourseIDPage">{{category}}</span></li>
-    <li><p class="title">{{title}}</p></li>
-    <li><p class="subtitle" [hidden]= "isCourseIDPage">{{subtitle}}</p></li>
-    <li><p class="subtitleLeft" [hidden]= "!isCourseIDPage">{{subtitle}}</p></li>
+    <li>
+      <span class="category" [hidden]="!isCourseIDPage">{{category}}</span>
+    </li>
+    <li>
+      <p class="title">{{title}}</p>
+    </li>
+    <li>
+      <p class="subtitle" [hidden]="isCourseIDPage">{{subtitle}}</p>
+    </li>
+    <li>
+      <p class="subtitleLeft" [hidden]="!isCourseIDPage">{{subtitle}}</p>
+    </li>
   </ul>
-
+</div>
+<div class="chapterQuestions">
+  <ul>
+    <li>
+      <span class="chapter" [hidden]="!isCourseIDPage">{{category}}</span>
+    </li>
+    <li>
+      <p class="chapterTitle">{{title}}</p>
+    </li>
+  </ul>
 </div>
