@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from '../../shared/category';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   listCategory = [
-    { title: 'Astrology', id: 1 },
+    { title: 'Astrology', id: 1, tags: 'Science' },
     { title: 'Finance', id: 2 },
     { title: 'Grammar', id: 3 },
     { title: 'Fun Facts', id: 4 },
@@ -27,7 +28,13 @@ export class DashboardComponent implements OnInit {
     { title: 'Economy 7', id: 17 },
     { title: 'Sports', id: 18 }
   ];
-  filteredStatus = '';
+
+  public category: Category = new Category();
+  public admin_role = true;
+  public filteredStatus = '';
+  public editMode = false;
+  public editClick = false;
+  public deleteClick = false;
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
@@ -37,6 +44,29 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     console.log('length of categories', this.listCategory.length)
+  }
+  createCat() {
+    this.editMode = !(this.editMode);
+    this.category = null;
+  }
+  editCat() {
+    this.editClick = !(this.editClick);
+    this.deleteClick = false;
+  }
+  deleteCat() {
+    this.deleteClick = !(this.deleteClick);
+    this.editClick = false;
+  }
+  saveCat() {
+    alert('save to db');
+  }
+  openEdit(item) {
+    this.editMode = true;
+    console.log(item);
+    this.category = item;
+  }
+  cancel() {
+    this.editMode = false;
   }
   discoverMore(): void {
     this.max = this.max + 6;

@@ -13,6 +13,11 @@ export class CourseListComponent implements OnInit {
   public courseTitle: string;
   public courseSubtitle: string;
   max = 2;
+  public admin_role = true;
+  public image_url = '';
+  public editMode = false;
+  public editClick = false;
+  public deleteClick = false;
   constructor(private dataService: ApiConnectionService, private router: Router) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
@@ -21,6 +26,19 @@ export class CourseListComponent implements OnInit {
   ngOnInit() {
     // this.getAllCourses();
     this.getCoursesByCategory();
+  }
+  createCourse() {
+    this.editMode = !(this.editMode);
+  }
+  cancel() {
+    this.editMode = false;
+  }
+  editCourse() {
+    this.editClick = !(this.editClick);
+
+  }
+  openEdit() {
+    this.editMode = true;
   }
   getAllCourses() {
     const course_id = localStorage.getItem('category_id');
