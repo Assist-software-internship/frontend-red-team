@@ -4,7 +4,7 @@
       "user_id": 1,
       "email": "john.doe1@assist.ro",
       "password": "assist12",
-       "firstName": "John1123",
+      "firstName": "John1123",
       "lastName": "Doe1",
       "active": 1,
       "role": 0
@@ -13,7 +13,7 @@
       "user_id": 3,
       "email": "john.doe3@assist.ro",
       "password": "assist3",
-       "firstName": "John3",
+      "firstName": "John3",
       "lastName": "Doe3",
       "active": 1,
       "role": 1
@@ -22,7 +22,7 @@
       "user_id": 4,
       "email": "john.doe4@assist.ro",
       "password": "assist4",
-       "firstName": "John4",
+      "firstName": "John4",
       "lastName": "Doe4",
       "active": 1,
       "role": 0
@@ -30,7 +30,7 @@
     {
       "email": "rosu@stefan.com",
       "password": "parola123",
-       "firstName": "Rosu Stefan",
+      "firstName": "Rosu Stefan",
       "lastName": "stefan",
       "user_id": 5,
       "role": 0,
@@ -39,7 +39,7 @@
     },
     {
       "active": 0,
-       "firstName": "test",
+      "firstName": "test",
       "lastName": "test2",
       "email": "test@test.com",
       "password": "test",
