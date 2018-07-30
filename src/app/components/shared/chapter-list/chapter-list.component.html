@@ -24,8 +24,8 @@
             <i class="far fa-trash-alt"></i>Delete</div>
         </div>
       </div>
-    </div>
-    <div id="notification" *ngIf="notification.visible==true" [ngStyle]="{'border-color': notification.color}">{{notification.Message}}</div>
+     </div>
+    <div id="notification" *ngIf="notification.visible==true" [ngStyle]="{'border-color': notification.color,'color':notification.color}">{{notification.Message}}</div>
     <div id="curriculum" class="create" *ngIf="createVisible">
       <i>Chapter :
         <input type="text" style="width:20px;" [(ngModel)]="live_chapter">
@@ -64,6 +64,16 @@
         <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
       </div>
 
+<<<<<<< HEAD
+    <div class="editChapter" [hidden]="editEnabled==false" >
+      <i class="iedit">Chapter <input  (keyup)="onKey($event,'chapter',item)" type="text" style="width:20px;" class="edit" value="{{item.chapter}}" ></i>
+      <h1 style="margin-top: 6px;"><input (keyup)="onKey($event,'title',item)" type="text" class="edit" value="{{item.title}}" placeholder="Title"></h1>
+      <p>
+          <textarea class="pedit" rows="4" cols="50" maxlength="100" placeholder="Description" (keyup)="onKey($event,'desc',item)" l>{{item.shortdesc}}</textarea>
+      </p>
+      <div class="startbtn" (click)="editCh(item)">Save</div>
+    </div>
+=======
       <div class="editChapter" [hidden]="editEnabled==false">
         <i class="iedit">Chapter
           <input (click)="live_chapter = item.chapter" type="text" style="width:20px;" class="edit" value="{{item.chapter}}"
@@ -77,6 +87,7 @@
         </p>
         <div class="startbtn" (click)="editCh(item)">Edit</div>
       </div>
+>>>>>>> 6709d607e90f45f4b09705083d940531bdae4bd5
 
     </div>
 
