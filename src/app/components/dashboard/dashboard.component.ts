@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     { title: 'Sports', id: 18 }
   ];
 
-  public category: Category = new Category();
+  public category: Category[];
   public admin_role = true;
   public filteredStatus = '';
   public editMode = false;
@@ -45,8 +45,9 @@ export class DashboardComponent implements OnInit {
     this.categorySubtitle = 'Pick the one you like and start learning';
   }
   ngOnInit() {
-    console.log('length of categories', this.listCategory.length)
     this.getAllCategories();
+    // console.log('length of categories', this.listCategory.length)
+    console.log('length of categories', this.category)
   }
   createMenu() {
     this.createMode = !(this.createMode);
@@ -90,6 +91,7 @@ export class DashboardComponent implements OnInit {
   getAllCategories() {
     this.dataCategory.getAllCategories().subscribe(res => {
       console.log('category list=  ', res);
+      this.category = res;
     })
   }
 }

@@ -54,6 +54,7 @@ export class MyAccountComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('success_message');
     this.router.navigate(['/login']);
+    window.location.reload();
   }
 
   getUserProfile(): void {
