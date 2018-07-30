@@ -18,6 +18,13 @@
   width: 50%;
   padding-top: 7px;
 }
+.error_message_pass{
+  color: white;
+  width: 50%;
+  padding-top: 7px;
+  display: flex;
+  margin-bottom: 5px;
+}
 .display_terms{
   display: inline;
   padding: 27px;
