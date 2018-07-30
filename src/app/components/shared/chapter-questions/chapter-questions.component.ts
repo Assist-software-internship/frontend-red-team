@@ -37,6 +37,7 @@ export class ChapterQuestionsComponent implements OnInit {
   public account_role = 1;
   public current_chapter = 1;
 
+
   public live_answer1;
   public live_answer2;
   public live_answer3;
@@ -47,15 +48,17 @@ export class ChapterQuestionsComponent implements OnInit {
   public deleteEnabled = false;
   public checkedContent = false;
 
-  public answer: string;
-  public question: string;
+  public category: string;
+  public chapterTitle: string;
   public questions = [];
 
   public notification = { visible: false, Message: "", color: 0 };
 
   constructor() {
-    this.answer = 'Internet Banner Advertising Most Reliable Forms Of Web Advertising';
-    this.question = 'There is a lof of exciting stuff going on in the stars above us that make astromy so much fun.';
+
+    this.category = "CHAPTER " + this.current_chapter;
+    this.chapterTitle = 'Internet Banner Advertising Most Reliable Forms Of Web Advertising';
+
   }
 
   ngOnInit() {
@@ -151,7 +154,26 @@ export class ChapterQuestionsComponent implements OnInit {
     return this.questions;
   }
   nextChapter() {
+    this.current_chapter++;
+    this.category = "CHAPTER " + this.current_chapter;
+  }
 
+  prevChapter() {
+    this.current_chapter--;
+    this.category = "CHAPTER " + this.current_chapter;
+  }
+
+  getChapters() {
+
+    let chapters = [];
+    for (let index = 0; index < this.listCategory.length; index++) {
+      const element = this.listCategory[index].chapter_id;
+
+      if (!chapters.includes(element)) {
+        chapters.push(element)
+      }
+    }
+    return chapters.length
   }
 
   notificationPush(msg, color) {
