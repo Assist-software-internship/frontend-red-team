@@ -132,7 +132,6 @@ export class ChapterListComponent implements OnInit {
 
     for (let index = 0; index < this.listCategory.length; index++) {
       const element = this.listCategory[index];
-<<<<<<< HEAD
       if(element.id==item.id){
        
         if(this.live_chapter!='' || this.live_desc!=''){
@@ -152,12 +151,6 @@ export class ChapterListComponent implements OnInit {
         
 
                 // console.log(this.live_chapter)
-=======
-      if (element.id == item.id) {
-        console.log(item.chapter + " :" + this.live_chapter);
-        // this.listCategory[index] =  { category: item.category, id: item.id, cat_id:item.cat_id,chapter:this.live_chapter, title : this.live_title, shortdesc :  this.live_desc  };
-        // console.log(this.live_chapter)
->>>>>>> 6709d607e90f45f4b09705083d940531bdae4bd5
         // this.listCategory.splice(this.listCategory.indexOf(element), 1);
       }
     }
