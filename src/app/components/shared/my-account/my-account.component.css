@@ -85,7 +85,7 @@
     }
     .img-profile{
       border-radius: 5px;
-      margin-left: 0px;
+      margin: 0px;
     }
     .upload-file{ 
       height: 29px;	
@@ -361,29 +361,35 @@
   .container-account{
     background-color: white;
     padding-top: 30px;
-    padding-left: 80px;
     margin: 0 auto;
+    height: 250px;
   }
   .container-account p {
     color: #AEB5BB;
     margin-top: 10px;
   }
+  .container-logout{
+    max-width: 720px;
+    margin: 0 auto;
+  }
   #logout{
-    height: 35px;
-    margin-top: 10px;
-    width: 94px;
-    font-size: 17px;
+    height: 29px;	
+    width: 85px;
+    margin-top: 35px;
+    font-size: 15px;
     cursor: pointer;
     text-align: center;
     outline: none;
     border: none;
     color: white;
     border-radius: 5px;
-    background-color: #006FFF;    
+    background-color: #006FFF;   
   }
   /* Container account informations */
   .container-info {
-    padding-left: 80px;
+    margin: 0 auto;
+    padding-top: 30px;
+    max-width: 720px;
   }
   .container-info h2{
     height: 38px;	
@@ -392,4 +398,584 @@
     font-weight: bold;	
     line-height: 38px;
   }
+  .container-profile-picture{
+    max-width: 140px; 
+    float: left;
+    margin-top: 10px;
+  }
+  .img-profile{
+    border-radius: 5px;
+    margin: 0;
+  }
+  .upload-file{ 
+    height: 29px;	
+    width: 96px;
+    margin-top: 10px;
+    margin-left: 22px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #006FFF;
+    color: #006FFF;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+  }
+  .upload-file:hover{
+    border-radius: 5px;
+    background-color: lightcyan;
+  }
+  .info-change-profile-picture{
+    height: 92px;	
+    max-width: 256px;	
+    color: #AEB5BB;	
+    font-size: 14px;	
+    line-height: 23px;
+    margin-top:30px;
+    float: left;
+    margin-left: 20px;
+  }
+  .container-user-save-change{
+    max-width: 670px;
+    margin: 0px 140px;
+  }
+  .account-modifications span{
+    padding-top: 10px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: #AEB5BB;
+  }
+  .account-modifications{
+    width: 300px;
+    margin-bottom: 62px;
+    margin-left: 280px;
+  }
+  #username{
+    height: 45px;
+    margin-top: 10px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    line-height: 21px;
+    font-size: 18px;
+    padding-left: 20px;
+    color: #AEB5BB;
+    padding-right:20px; 
+  }
+  input.ng-invalid.ng-touched{
+    border: 1px solid red;
+  }
+  .password{
+    position: relative;
+  }
+  .showPassword{
+    background: transparent;
+    border: 0px;
+    outline: 0px;
+    position: absolute;
+    margin-left: 264px;
+    margin-top: -32px;
+    font-size: 18px;
+    color: #AEB5BB;
+  }
+  #password{
+    height: 45px;
+    width: 300px;
+    margin-top: 13px;
+    padding-left: 20px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    line-height: 21px;
+    color: #AEB5BB;
+    font-size: 18px;
+    padding-right:45px; 
+    outline: none;
+  }
+  #email{
+    height: 45px;
+    width: 300px;
+    margin-top: 13px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    line-height: 21px;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #AEB5BB;
+  }
+  #save{
+    text-align: center;
+    position: relative;
+    margin-left: 164px;
+    margin-top: 55px;
+    height: 29px;
+    width: 55px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    color: white;
+    background-color: #006FFF;
+    border-radius: 5px;
+    float: left;
+  }
+  #save:hover{
+    background-color: #5fa5ff;
+  }
+  #cancel{
+    height: 29px;
+    width: 69px;
+    margin-top: 55px;
+    margin-left: 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    color: #006FFF;
+    background-color: white;
+    border-radius: 5px;
+    border:1px solid #006FFF;
+    text-align: center;
+  }
+  #cancel:hover{
+    background-color: lightcyan;
+  }
+  #cancel:active{
+    background-color: lightcyan;
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+  }
+  .line{
+    border: 0;
+    height: 0;
+    max-width: 720px;
+    margin-left: 0px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .container-head-courses h2{
+    height: 38px;	
+    margin: auto;
+    margin-top: 43px;	
+    font-size: 24px;	
+    font-weight: bold;	
+    line-height: 38px;
+    margin-bottom: 46px;
+  }
+  .container-course-progress{
+    height: 174px;
+    width: 720px;
+    background-color: white;
+    justify-content: space-between;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-bottom: 44px;
+  }
+  .container-course-progress:hover{
+    border: 1px solid lightgrey;  
+  }
+  .container-started-courses:hover .cancel-course{
+    display: block !important;
+  }
+  .container-started-courses{
+    position: relative;
+  }
+  .cancel-course{
+    height: 19px;
+    width: 19px;
+    background-color: #FA3466;
+    margin-left: 680px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    position: absolute;
+    font-weight: bold;
+    padding: 0px;
+    outline: none;
+    text-align: center;
+  }
+  .cancel-course:hover{
+    background-color: indianred;
+  }
+
+  .container-redirect-to-courses{
+    width: 700px;
+    margin-top: 37px;
+    float: left;
+    outline: none;
+  }
+  img{
+    float: left;
+    outline: none;
+    margin-left: 37px;
+  }
+  .small-description{
+    margin-top: 22px;
+    margin-left: 160px;
+    height: 16px;	
+    max-width: 460px;	
+    color: #06102B;	
+    font-size: 14px;	
+    font-weight: bold;
+    line-height: 16px;
+    outline: none;
+  }
+  .long-description{
+    margin-top: 8px;
+    margin-left: 160px;
+    height: 32px;	
+    width: 431px;	
+    color: #AEB5BB;		
+    font-size: 10px;	
+    line-height: 16px;
+    outline: none;
+  }
+  .info-cours{
+    width: 550px;
+  }
+  .container-progress-points{
+    margin-top: 60px;
+    margin-left: 620px;
+    outline: none;
+    position: absolute;
+    height: 42px;	
+    width: 50px;	
+    color: #006FFF;		
+    font-size: 18px;	
+    line-height: 21px;	
+    text-align: center;
+  }
+  
+  .progress-bar{
+    height: 2px;
+    float: left;
+    max-width: 780px;
+    margin-top: 37px;
+    background: linear-gradient(-90deg, #ff9999, yellow, lightgreen,lightcyan, lightblue);
+    outline: none;
+  }
 } 
+@media only screen and (max-width: 899px) {
+  .container_myacc{
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .container-account{
+    background-color: white;
+    margin: 0 auto;
+  }
+  .container-logout{
+    max-width: 750px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  .container-account h2 {	
+    font-size: 24px;	
+    color: #06102B;
+    font-weight: bold;	
+    line-height: 38px;
+    margin: 0 auto;
+  }
+  .container-account p {
+    margin-top: 14px;
+    max-width: 699px;
+    color: #AEB5BB;
+    font-size: 14px;
+    line-height: 23px;
+  }
+  #logout{
+    height: 29px;	
+    width: 85px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #006FFF;
+  }
+  .container-info {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 750px;
+  }
+  .container-info h2{
+    height: 38px;	
+    margin: auto;	
+    font-size: 24px;	
+    font-weight: bold;	
+    line-height: 38px;
+  }
+  .container-profile-picture{
+    max-width: 140px; 
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .img-profile{
+    border-radius: 5px;
+    margin: 0;
+  }
+  .upload-file{ 
+    height: 29px;	
+    width: 96px;
+    margin-top: 10px;
+    margin-left: 22px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #006FFF;
+    color: #006FFF;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+  }
+  .upload-file:hover{
+    border-radius: 5px;
+    background-color: lightcyan;
+  }
+  .info-change-profile-picture{	
+    max-width: 256px;	
+    color: #AEB5BB;	
+    font-size: 14px;	
+    line-height: 23px;
+    margin-top:30px;
+    float: left;
+    margin-left: 20px;
+  }
+  .container-user-save-change{
+    max-width: 670px;
+  }
+  .account-modifications span{
+    padding-top: 10px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: #AEB5BB;
+  }
+  .account-modifications{
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  #username{
+    height: 45px;
+    margin-top: 10px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    line-height: 21px;
+    font-size: 18px;
+    padding-left: 20px;
+    color: #AEB5BB;
+    padding-right:20px; 
+  }
+  input.ng-invalid.ng-touched{
+    border: 1px solid red;
+  }
+  .password{
+    position: relative;
+  }
+  .showPassword{
+    background: transparent;
+    border: 0px;
+    outline: 0px;
+    position: absolute;
+    margin-left: 264px;
+    margin-top: -32px;
+    font-size: 18px;
+    color: #AEB5BB;
+  }
+  #password{
+    height: 45px;
+    width: 300px;
+    margin-top: 13px;
+    padding-left: 20px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    line-height: 21px;
+    color: #AEB5BB;
+    font-size: 18px;
+    padding-right:45px; 
+    outline: none;
+  }
+  #email{
+    height: 45px;
+    width: 300px;
+    margin-top: 13px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    line-height: 21px;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #AEB5BB;
+  }
+  #save{
+    text-align: center;
+    position: relative;
+    margin-left: 164px;
+    margin-top: 25px;
+    height: 29px;
+    width: 55px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    color: white;
+    background-color: #006FFF;
+    border-radius: 5px;
+    float: left;
+  }
+  #save:hover{
+    background-color: #5fa5ff;
+  }
+  #cancel{
+    height: 29px;
+    width: 69px;
+    margin-top: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    color: #006FFF;
+    background-color: white;
+    border-radius: 5px;
+    border:1px solid #006FFF;
+    text-align: center;
+  }
+  #cancel:hover{
+    background-color: lightcyan;
+  }
+  #cancel:active{
+    background-color: lightcyan;
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+  }
+  .line{
+    border: 0;
+    height: 0;
+    max-width: 720px;
+    margin-left: 0px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .container-head-courses h2{
+    height: 38px;	
+    margin: auto;
+    margin-top: 43px;	
+    font-size: 24px;	
+    font-weight: bold;	
+    line-height: 38px;
+    margin-bottom: 46px;
+  }
+  .container-course-progress{
+    min-height: 173px;
+    max-width: 720px;
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-bottom: 44px;
+  }
+  .container-course-progress:hover{
+    border: 1px solid lightgrey;  
+  }
+  .container-started-courses:hover .cancel-course{
+    display: block !important;
+  }
+  .container-started-courses{
+    position: relative;
+  }
+  .cancel-course{
+    height: 19px;
+    width: 19px;
+    background-color: #FA3466;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px;
+    outline: none;
+    text-align: center;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  .cancel-course:hover{
+    background-color: indianred;
+  }
+
+  .container-redirect-to-courses{
+    padding-top: 30px;
+    outline: none;
+  }
+  img{
+    outline: none;
+    margin-left: 20px;
+    float: left;
+  }
+  .small-description{
+    margin-top: 30px;
+    margin-left: 10px;
+    height: 16px;
+    max-width: 460px;
+    color: #06102B;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    outline: none;
+    float: left;
+  }
+  .long-description{
+    margin-top: 62px;
+    margin-left: 130px;
+    height: 32px;
+    max-width: 200px;
+    color: #AEB5BB;
+    font-size: 10px;
+    line-height: 16px;
+    outline: none;
+  }
+  .info-cours{
+    max-width: 550px;
+  }
+  .container-progress-points{
+    outline: none;
+    height: 42px;
+    width: 50px;
+    color: #006FFF;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    float: right;
+    margin-top: -60px;
+    margin-right: 20px;
+  }
+  
+  .progress-bar{
+    height: 2px;
+    float: left;
+    max-width: 780px;
+    margin-top: 37px;
+    background: linear-gradient(-90deg, #ff9999, yellow, lightgreen,lightcyan, lightblue);
+    outline: none;
+  }
+}
+@media only screen and (max-width: 500px){
+  .info-change-profile-picture{
+    height: 92px;	
+    max-width: 256px;	
+    color: #AEB5BB;	
+    font-size: 14px;	
+    line-height: 23px;
+    float: left;
+
+  }
+}
