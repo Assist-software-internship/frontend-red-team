@@ -14,14 +14,14 @@ export class LoginComponent implements OnInit {
   @ViewChild('reset') resetForm: NgForm;
   @ViewChild('create') createForm: NgForm;
 
-  showHide = true;
-  showConfirmPassword = true;
+  public showHide = true;
+  public showConfirmPassword = true;
   public myUserData: User = new User();
   public logUser: User = new User();
   public resetUser: User = new User();
   public message: String;
-  password_message = '';
-  confirm_password = '';
+  public password_message = '';
+  public confirm_password = '';
 
   constructor(
     private dataService: ApiConnectionService,
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         console.log('tip', typeof success_message);
         console.log('token ', token);
         if (success_message === 'false') {
-          this.password_message = 'Your password is invalid, try again!'
+          this.password_message = 'Your email or password is invalid, try again!'
           this.router.navigate(['/login']);
         }
         else {
@@ -75,6 +75,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('email', this.logUser.email.toString());
           localStorage.setItem('success_message', success_message);
           this.router.navigate(['/dashboard']);
+          window.location.reload();
+          this.password_message = '';
         }
 
       }, (err) => {

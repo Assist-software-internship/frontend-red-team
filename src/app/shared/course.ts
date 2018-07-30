@@ -1,10 +1,10 @@
 export class Course {
-    id?: Number;
-    small_description: String;
-    long_description: String;
-    tags: String;
-    points: Number;
-    images: String;
-    constructor(){}
-  }
-  
+  id?: Number;
+  title: String
+  smallDescription: String;
+  longDescription: String;
+  tags: String;
+  images: String;
+  categoryId: Number;
+  constructor() { }
+}

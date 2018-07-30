@@ -9,28 +9,28 @@ import { ApiConnectionService } from '../../services/api-connection/api-connecti
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  listCategory = [
-    { title: 'Astrology', id: 1, tags: 'Science' },
-    { title: 'Finance', id: 2 },
-    { title: 'Grammar', id: 3 },
-    { title: 'Fun Facts', id: 4 },
-    { title: 'Jokes', id: 5 },
-    { title: 'Life Hacks', id: 6 },
-    { title: 'Computers', id: 7 },
-    { title: 'Math', id: 8 },
-    { title: 'Economy', id: 9 },
-    { title: 'Math 1', id: 10 },
-    { title: 'Economy 2', id: 11 },
-    { title: 'Math 4 ', id: 12 },
-    { title: 'Economy 4', id: 13 },
-    { title: 'Math 5', id: 14 },
-    { title: 'Economy 5', id: 15 },
-    { title: 'Math 6', id: 16 },
-    { title: 'Economy 7', id: 17 },
-    { title: 'Sports', id: 18 }
-  ];
+  // listCategory = [
+  //   { title: 'Math 1', id: 18, tags: 'Science' },
+  //   { title: 'Economy 2', id: 17, tags: 'Science' },
+  //   { title: 'Math 4 ', id: 16, tags: 'Science' },
+  //   { title: 'Economy 4', id: 15, tags: 'Science' },
+  //   { title: 'Math 5', id: 14, tags: 'Science' },
+  //   { title: 'Economy 5', id: 13, tags: 'Science' },
+  //   { title: 'Math 6', id: 12, tags: 'Science' },
+  //   { title: 'Economy 7', id: 11, tags: 'Science' },
+  //   { title: 'Sports', id: 10, tags: 'Science' },
+  //   { title: 'Astrology', id: 9, tags: 'Science' },
+  //   { title: 'Finance', id: 8, tags: 'Science' },
+  //   { title: 'Grammar', id: 7, tags: 'Science' },
+  //   { title: 'Fun Facts', id: 6, tags: 'Science' },
+  //   { title: 'Jokes', id: 5, tags: 'Science' },
+  //   { title: 'Life Hacks', id: 4, tags: 'Science' },
+  //   { title: 'Computers', id: 3, tags: 'Science' },
+  //   { title: 'Math', id: 2, tags: 'Science' },
+  //   { title: 'Economy', id: 1, tags: 'Science' },
+  // ];
 
-  public category: Category = new Category();
+  public categoriesList: any[] = [];
   public admin_role = true;
   public filteredStatus = '';
   public editMode = false;
@@ -40,17 +40,20 @@ export class DashboardComponent implements OnInit {
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
+  public title = '';
+  public tag = '';
+  public newCategory: Category = new Category();
   constructor(private router: Router, private dataCategory: ApiConnectionService) {
     this.categoryTitle = 'Browse through best learning courses for Alexa';
     this.categorySubtitle = 'Pick the one you like and start learning';
   }
   ngOnInit() {
-    console.log('length of categories', this.listCategory.length)
     this.getAllCategories();
   }
   createMenu() {
     this.createMode = !(this.createMode);
-    this.category = null;
+    this.title = '';
+    this.tag = '';
   }
   editMenu() {
 
@@ -61,12 +64,33 @@ export class DashboardComponent implements OnInit {
     this.deleteClick = !(this.deleteClick);
     this.editClick = false;
   }
+
+  newCat() {
+    // this.listCategory.push({
+    //   id: this.listCategory.length + 1, title: this.title, tags: this.tag
+    // });
+    // this.createMode = false;
+    this.dataCategory.createCategory(this.newCategory).subscribe(res => {
+      this.createMode = false;
+      this.categoriesList.push(this.newCategory);
+    });
+
+  }
   saveCat() {
+    this.editMode = false;
+  }
+  openDelete(item) {
+    // for (let index = 0; index < this.listCategory.length; index++) {
+    //   const element = this.listCategory[index];
+    //   if (element.id == item.id) {
+    //     this.listCategory.splice(this.listCategory.indexOf(element), 1);
+    //   }
+    // }
   }
   openEdit(item) {
     this.editMode = true;
     console.log(item);
-    this.category = item;
+    this.newCategory = item;
   }
   cancel() {
     this.editMode = false;
@@ -88,8 +112,9 @@ export class DashboardComponent implements OnInit {
     console.log('selected id=', id)
   }
   getAllCategories() {
-    this.dataCategory.getAllCategories().subscribe(res => {
-      console.log('category list=  ', res);
+    this.dataCategory.getAllCategories().subscribe((res: any) => {
+      console.log('category list=  ', res.objects);
+      this.categoriesList = res.objects;
     })
   }
 }
