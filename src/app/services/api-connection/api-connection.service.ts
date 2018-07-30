@@ -22,7 +22,7 @@ const Api = {
   login: 'login',
   reset: 'reset',
   changepass: 'changepass?',
-  userById: 'user?id=',
+  userById: 'change/user?id=',
   categories: 'categories?token=',
   createCategory: 'create/category?token=',
   coursesByCategoryId: 'courses?category=',

@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { ApiConnectionService } from '../../../services/api-connection/api-connection.service';
 import { Router } from '@angular/router';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-
+import {NgForm} from '@angular/forms';
+import { elementEnd } from '@angular/core/src/render3/instructions';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ export class ChapterListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
   }
 
   fullCuriculum(): void {
@@ -79,9 +80,10 @@ export class ChapterListComponent implements OnInit {
     }
   }
 
-  createNewCourse() {
-    if (this.live_title.length > 0 || this.live_chapter.length > 0 || this.live_desc.length > 0) {
-      this.listCategory.push({ category: 'Astrology', id: this.listCategory.length + 1, cat_id: this.course_id, chapter: this.live_chapter, title: this.live_title, shortdesc: this.live_desc });
+  createNewCourse(){
+    if (this.live_title.length>0 || this.live_chapter.length>0  || this.live_desc.length>0 ){
+      this.listCategory.push({ category: 'Astrology', id: this.listCategory.length+1,cat_id:this.course_id, chapter:this.live_chapter, title : this.live_title, shortdesc : this.live_desc});
+      this.notificationPush("Chapter " + this.live_chapter + " created! " ,"#006FFF")
       this.reset();
     }
   }
@@ -124,19 +126,41 @@ export class ChapterListComponent implements OnInit {
         this.notificationPush("Chapter " + element.chapter + " was deleted", "red")
       }
     }
-    // this.toggledeleteChapters();
   }
 
   editCh(item) {
 
     for (let index = 0; index < this.listCategory.length; index++) {
       const element = this.listCategory[index];
+<<<<<<< HEAD
+      if(element.id==item.id){
+       
+        if(this.live_chapter!='' || this.live_desc!=''){
+        let text = "";
+        if(this.live_chapter !=element.chapter){
+          text += "Chapter \"" + element.chapter+ "\" was renamed to \"" +this.live_chapter+"\"\n";
+        }
+        if(this.live_title !=element.title){
+          text += "Title \"" +element.title + "\" changed to \"" + this.live_title+"\"\n";
+        }
+        if(this.live_desc !=element.shortdesc){
+          text +="Description \""+element.shortdesc+ "\" edited to \"" + this.live_desc+"\"";
+        }
+        this.notificationPush(text,"green")
+        this.listCategory[index] =  { category: item.category, id: item.id, cat_id:item.cat_id,chapter:this.live_chapter, title : this.live_title, shortdesc :  this.live_desc  };
+        this.reset();
+        
+
+                // console.log(this.live_chapter)
+=======
       if (element.id == item.id) {
         console.log(item.chapter + " :" + this.live_chapter);
         // this.listCategory[index] =  { category: item.category, id: item.id, cat_id:item.cat_id,chapter:this.live_chapter, title : this.live_title, shortdesc :  this.live_desc  };
         // console.log(this.live_chapter)
+>>>>>>> 6709d607e90f45f4b09705083d940531bdae4bd5
         // this.listCategory.splice(this.listCategory.indexOf(element), 1);
       }
+    }
     }
 
 
@@ -160,9 +184,24 @@ export class ChapterListComponent implements OnInit {
     this.notification.color = color;
     var x = this;
 
+<<<<<<< HEAD
+      setTimeout(function() {
+        x.notification.visible=false;
+      }, 4000);
+=======
     setTimeout(function () {
       x.notification.visible = false;
     }, 3000);
+>>>>>>> 6709d607e90f45f4b09705083d940531bdae4bd5
   }
-
+  
+  onKey(event: any,target,i) {
+    this.live_chapter = target=="chapter"?event.target.value:(this.live_chapter=='')?i.chapter:this.live_chapter;
+    this.live_title = target=="title"?event.target.value:(this.live_title=='')?i.title:this.live_title;
+    this.live_desc = target=="desc"?event.target.value:(this.live_desc=='')?i.shortdesc:this.live_desc;
+  }
+  
 }
+
+
+

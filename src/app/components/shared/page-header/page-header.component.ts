@@ -71,7 +71,7 @@ export class PageHeaderComponent implements OnInit {
 
   getUserProfile(): void {
     this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe((res: any) => {
-      console.log('res ', res)
+      console.log('res ', res);
       this.user = res.objects[0];
       this.wholeName = this.user.firstName + ' ' + this.user.lastName;
       console.log('Users::: ' + this.user.firstName + this.user.lastName);

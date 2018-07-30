@@ -25,9 +25,9 @@
 }
 
 
-.startbtn:hover,.savebtn:hover,.cancelbtn:hover,.deletebtn:hover{
-    background: #006FFF;
-    color:#fff;
+.startbtn:hover,.savebtn:hover,.cancelbtn:hover{
+    background: white;
+    color:#006FFF;
 }
 .deletebtn:hover{
     background: red;
@@ -59,24 +59,36 @@
 }
 
 .startbtn{
-    height: 29px;	
+    height: 29px;
     width: 55px;
-    border: 1px solid #006FFF;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color:#006FFF;
+    background-color: #006fff;
+    color: #ffffff;
     padding-top: 3px;
-    float:left;
-    margin-left: 33px;
+    float: right;
     font-size: 16px;
     cursor: pointer;
     background: transparent;
+    margin: 19px;
 }
 .deletebtn{
+    height: 29px;
+    width: 55px;
     border: 1px solid red;
     color: red;
+    float: right;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    background: transparent;
+    margin: 19px;
 }
 #fullbtn{
     height: 29px;	width: 204px;
@@ -112,6 +124,7 @@
         float:left;
         min-width: 699px;
     }
+
     
 
 }
@@ -128,6 +141,7 @@
     #curriculum i {
         text-align: center;
     }
+    
 
 }
 
@@ -210,7 +224,7 @@
     border: 1px solid #006FFF;
     border-radius: 5px;
     padding: 20px;
-    border-bottom: 1px solid #006FFF !important;
+    /* border-bottom: 1px solid #006FFF !important; */
 }
 .create h1{
     color: #000;
@@ -239,7 +253,7 @@
 input[type=text]{
     outline: none;
     border: 0;
-    border-bottom: 1px solid #006FFF;
+    /* border-bottom: 1px solid #006FFF; */
     background-color:#F6FAFC;
     height: 24px;
     width: 100%;
@@ -325,10 +339,22 @@ textarea{
     border-radius: 5px;	
     background-color: #006FFF;
     margin: 0;
-
-
   color: #FFFFFF;	font-size: 18px;	font-weight: bold;	line-height: 21px;
 
+}
+.editChapter{
+    max-width: 780px;
+    min-height: 272px;
+    padding: 0px;
+    list-style: none;
+}
+.editChapter h1{
+    line-height: 70px !important;
+    max-width: 780px;	
+    border-radius: 5px;	
+    background-color: #006FFF;
+    margin: 0 auto;
+    color: #FFFFFF;	font-size: 18px;	font-weight: bold;	line-height: 21px;
 }
 .answersList{
     min-height: 191px;
@@ -355,7 +381,10 @@ hr{
     margin-left: 25px;
 }
 
-
+.editChapter span {
+    margin-right: 1.6%;
+    margin-left: 25px;
+}
 
 
 
@@ -415,4 +444,30 @@ input:checked {
 .live_question{
     font-size: 25px;
     max-width: 680px;
+}
+.prev-next{
+    max-width: 780px;
+    margin: 0 auto;
+    width: 90%
+}
+.nextChapter{
+    height: 29px;	width: 114px;	border: 1px solid #006FFF;	border-radius: 5px;
+    background-color: white;
+    color: #006fff;
+}
+.prevChapter{
+    height: 29px;
+    width: 140px;
+    border: 1px solid #006FFF;
+    border-radius: 5px;
+    margin-right: 7px;
+    background-color: white;
+    color: #006fff;
+}
+.nextChapter:hover, .prevChapter:hover{
+    background-color: #006fff;
+    color: white;
+}
+.set-prev-next{
+    float: right;
 }
