@@ -12,7 +12,7 @@
 
   <div class="container_chapterlist">
 
-    <app-hero id="chapterQuestions" [chapter]="chapter" [chapterTitle]="chapterTitle"></app-hero>
+    <app-hero id="banner" [category]="category" [title]="chapterTitle"></app-hero>
 
     <div *ngIf="account_role" id="ctrl_admin">
       <div id="right">
@@ -59,7 +59,7 @@
           <span>Q:</span>{{live_question}}</h1>
         <div class="answersList">
           <li class="answer">
-            <input type="checkbox" class="chooseAnswer">
+            <input type="checkbox" class="chooseAnswer" disabled>
             <span> {{live_answer1}}</span>
             <hr>
           </li>
@@ -134,8 +134,9 @@
     </div>
     <div class="prev-next">
       <div class="set-prev-next">
-        <button class="prevChapter">Previous Chapter</button>
-        <button class="nextChapter">Next Chapter</button>
+        <button class="prevChapter" (click)="prevChapter()" *ngIf="current_chapter <= getChapters() && current_chapter>1">Previous Chapter</button>
+        <button class="nextChapter" (click)="nextChapter()" *ngIf="current_chapter <getChapters()">Next Chapter</button>
+        <button class="nextChapter" *ngIf="current_chapter ==getChapters()">Finish</button>
       </div>
     </div>
     <!-- <div class="editChapter" [hidden]="editEnabled==false">

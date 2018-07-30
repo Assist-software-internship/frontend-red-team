@@ -27,10 +27,19 @@ export class HeroComponent implements OnInit {
     } else {
       this.isCourseIDPage = false;
     }
+    this.isChapterQuestion()
   }
 
 
   ngOnInit() {
   }
 
+  isChapterQuestion() {
+    var paths = this.currentRoute.split('/');
+    if (paths[1] == "courses" && paths.length == 4) {
+      return true;
+    }
+
+
+  }
 }
