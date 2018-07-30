@@ -19,14 +19,16 @@
         <div class="btn_create" (click)="toggleCreate()">
           <i class="far fa-plus-square" style="margin-top: 8px;"></i>Create
         </div>
-        <div id="editdelete">
-          <div id="edit">
+        <div id="editdelete" *ngIf="listCategory.length>0">
+          <div id="edit" (click)="toggleeditChapters()" [ngClass]="{'activeopt': editEnabled==true}">
             <i class="far fa-edit"></i>Edit</div>
-          <div id="delete">
+          <div id="delete" (click)="toggledeleteChapters()" [ngClass]="{'activeoptdelete': deleteEnabled==true}">
             <i class="far fa-trash-alt"></i>Delete</div>
         </div>
       </div>
     </div>
+
+    <div id="notification" *ngIf="notification.visible==true" [ngStyle]="{'border-color': notification.color}">{{notification.Message}} </div>
 
     <div id="curriculum" class="create" *ngIf="createVisible">
       <h1>Q :
@@ -43,11 +45,15 @@
           <input type="text" class="live_answer" [(ngModel)]="live_answer3">
         </li>
       </ul>
-      <div class="savebtn" (click)="createNewCourse()">Save</div>
+      <div style="width: 100%;display: flex;">
+        <button class="savebtn" [disabled]="live_question.length<=0 || live_answer1.length<=0  || live_answer2.length<=0  || live_answer3.length<=0 "
+          (click)="createNewCourse()" (click)="createNewCourse()">Save</button>
+        <button class="cancelbtn" (click)="cancel()">Cancel</button>
+      </div>
     </div>
 
 
-    <div id="curriculum" *ngIf="createVisible">
+    <div id="curriculum" *ngIf="createVisible && (live_question ||live_answer1 || live_answer2 || live_answer3 )">
       <ul class="chapter-question">
         <h1>
           <span>Q:</span>{{live_question}}</h1>
@@ -74,7 +80,7 @@
 
     <div id="curriculum" *ngFor="let item of listCategory.slice().reverse() | slice:0:[max]  ">
 
-      <ul class="chapter-question">
+      <ul class="chapter-question" [hidden]="editEnabled==true">
         <h1>
           <span>Q:</span>{{item.question}}</h1>
         <div class="answersList">
@@ -95,10 +101,49 @@
             <span> {{item.answer3}}</span>
           </li>
         </div>
+        <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+      </ul>
+
+      <ul class="editChapter" [hidden]="editEnabled == false">
+        <h1 style="margin-top: 6px;">
+          <span>Q:</span>
+          <input type="text" value="{{item.question}}" placeholder="Question" [(ngModel)]="item.question">
+        </h1>
+        <div class="answersList">
+          <li class="answer">
+            <input type="text" class="chooseAnswer" value="{{item.answer1}}" placeholder="Answer 1" [(ngModel)]="item.answer1">
+            <hr>
+          </li>
+          <li class="answer">
+            <input type="text" class="chooseAnswer" value="{{item.answer2}}" placeholder="Answer 2" [(ngModel)]="item.answer2">
+            <hr>
+          </li>
+          <li class="answer">
+            <input type="text" class="chooseAnswer" value="{{item.answer3}}" placeholder="Answer 3" [(ngModel)]="item.answer3">
+            <hr>
+          </li>
+        </div>
+        <div class="startbtn" (click)="editCh(item)">Edit</div>
       </ul>
 
     </div>
-
+    <!-- <div class="editChapter" [hidden]="editEnabled==false">
+      <h1 style="margin-top: 6px;">
+        <input type="text" class="edit" value="{{item.question}}" placeholder="Title" [(ngModel)]="item.question">
+      </h1>
+      <ul>
+        <li><div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+          <input type="text" class="live_answer" placeholder="Answer 1" [(ngModel)]="item.answer1">
+        </li>
+        <li>
+          <input type="text" class="live_answer" placeholder="Answer 2" [(ngModel)<div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>]="item.answer2">
+        </li><div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+        <li>
+          <input type="text" class="live_answer" placeholder="Answer 3" [(ngModel)]="item.answer3">
+        </li>
+      </ul>
+      <div class="startbtn" (click)="editCh(item)">Edit</div>
+    </div> -->
 
   </div>
 

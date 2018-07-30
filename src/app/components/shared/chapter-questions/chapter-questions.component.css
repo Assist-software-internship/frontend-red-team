@@ -25,8 +25,12 @@
 }
 
 
-.startbtn:hover,.savebtn:hover{
+.startbtn:hover,.savebtn:hover,.cancelbtn:hover,.deletebtn:hover{
     background: #006FFF;
+    color:#fff;
+}
+.deletebtn:hover{
+    background: red;
     color:#fff;
 }
 
@@ -68,8 +72,12 @@
     margin-left: 33px;
     font-size: 16px;
     cursor: pointer;
+    background: transparent;
 }
-
+.deletebtn{
+    border: 1px solid red;
+    color: red;
+}
 #fullbtn{
     height: 29px;	width: 204px;
     border: 1px solid #006FFF;
@@ -93,6 +101,7 @@
 }
 
 @media only screen and (min-width: 910px) {    
+ 
     
     #curriculum p{
         height: 69px;	
@@ -109,6 +118,8 @@
 
 @media only screen and (max-width: 909px) {
 
+
+   
 
     .startbtn{
        margin-left: 0px;
@@ -201,8 +212,11 @@
     padding: 20px;
     border-bottom: 1px solid #006FFF !important;
 }
+.create h1{
+    color: #000;
+}
 
-.savebtn{
+.savebtn,.cancelbtn{
     height: 29px;
     width: 68px;
     border: 1px solid #006FFF;
@@ -216,7 +230,11 @@
     font-size: 16px;
     cursor: pointer;
     margin-top: 13px;
+    margin-bottom: -21px;
+    outline: none;
+    background-color:transparent;
 }
+.savebtn{margin-right:10px;}
 
 input[type=text]{
     outline: none;
@@ -226,7 +244,61 @@ input[type=text]{
     height: 24px;
     width: 100%;
 }
+savebtn:disabled,
+button[disabled],button[disabled]:hover{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  outline: none;
+  cursor: not-allowed;
+}
 
+
+h1 .edit{
+    max-width: 700px;
+    border-radius: 4px;
+    border: 1px dashed #b0b0b7;
+    padding: 19px 33px 15px 12px;
+}
+
+.iedit{
+    max-width: 700px;
+    border-radius: 4px;
+    border: 1px dashed #b0b0b7;
+    padding: 5px 33px 15px 12px;
+}
+
+.pedit{
+    border-radius: 4px;
+    border: 1px dashed #b0b0b7;
+    padding: 5px 33px 15px 12px;
+    
+}
+
+.activeopt{
+    background: #006fff;
+    color: #fff;
+}
+.activeoptdelete{
+    background: red;
+    color: #fff;
+}
+
+.del{
+    border:1px solid red !important
+}
+
+#notification{
+    max-width: 812px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+    line-height: 43px;
+    padding: 2px 2px 2px 22px;
+    color: #000;
+    border:1px solid;
+    /* background: #ec1f1f; */
+    border-radius: 6px;
+}
 textarea{
     background-color: #F6FAFC;
     outline: none;

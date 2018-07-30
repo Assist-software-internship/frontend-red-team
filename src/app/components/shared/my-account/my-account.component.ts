@@ -33,6 +33,13 @@ export class MyAccountComponent implements OnInit {
   showHide = true;
   public file: File;
 
+  coursesProgress = [
+    { id: 1, small_description: "This is one of the courses 1", long_description: "This is the long description for one of the courses", tags: "Assist1", points: 20, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
+    { id: 2, small_description: "This is one of the courses 2", long_description: "This is the long description for one of the courses", tags: "Assist2", points: 150, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
+    { id: 3, small_description: "This is one of the courses 3", long_description: "This is the long description for one of the courses", tags: "Assist3", points: 100, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
+    { id: 4, small_description: "This is one of the courses 4", long_description: "This is the long description for one of the courses", tags: "Assist4", points: 120, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" }
+  ];
+
   constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
   }
 
@@ -54,6 +61,7 @@ export class MyAccountComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('success_message');
     this.router.navigate(['/login']);
+    window.location.reload();
   }
 
   getUserProfile(): void {
@@ -81,12 +89,20 @@ export class MyAccountComponent implements OnInit {
     this.showHide = !(this.showHide);
   }
 
-  updateCourseProgress(item: Course) {
-    item.points = 0;
-    console.log('item ', item)
-    this.dataService.updateCourseProgress(item.id, item).subscribe(res => {
-      console.log('points updated , res');
-    });
+  updateCourseProgress(item) {
+    console.log(item);
+    // this.coursesProgress[index].points = 0;
+    for (let i = 0; i < this.coursesProgress.length; i++) {
+      const element = this.coursesProgress[i];
+      if (element.id == item.id) {
+        this.coursesProgress[i].points = 0;
+      }
+    }
+    // item.points = 0;
+    // console.log('item ', item)
+    // this.dataService.updateCourseProgress(item.id, item).subscribe(res => {
+    //   console.log('points updated , res');
+    // });
   }
 
   updateUserProfile(): void {
