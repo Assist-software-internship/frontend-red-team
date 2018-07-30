@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../shared/user interface/user';
 import { Course } from '../../shared/course';
 import { Category } from '../../shared/category';
-
+const Token = localStorage.getItem('token');
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -23,11 +23,11 @@ const Api = {
   reset: 'reset',
   changepass: 'changepass?',
   userById: 'user?id=',
-  categories: 'categories',
-  createCategory: 'create/category',
+  categories: 'categories?token=',
+  createCategory: 'create/category?token=',
   coursesByCategoryId: 'courses?category=',
   courseById: 'courses?id=',
-  createCourse: 'create/course',
+  createCourse: 'create/course?token=',
   chaptersByCourseId: 'chapters?course=',
   chapterById: 'chapter?id=',
   createChapter: 'create/chapter',
@@ -89,20 +89,20 @@ export class ApiConnectionService {
   //   return this.http.put<User>(Api.base + Api.userById + id);
   // }
   getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(Api.base + Api.categories, httpOptions);
+    return this.http.get<Category[]>(Api.base + Api.categories + Token, httpOptions);
   }
-  // createCategory(): Observable<Category[]> {
-  //   return this.http.post<Category[]>(Api.base + Api.createCategory, httpOptions);
-  // }
+  createCategory(dataCategory: Category): Observable<Category> {
+    return this.http.post<Category>(Api.base + Api.createCategory + Token, dataCategory, httpOptions);
+  }
   // getCoursesByCategory(id: Number): Observable<Course[]> {
   // return this.http.get<Course[]>(Api.base + Api.coursesByCategoryId + id), httpOptions;
   // }
   // getCourseById(id: Number): Observable<Course[]> {
   // return this.http.get<Course[]>(Api.base + Api.courseById + id, httpOptions);
   // }
-  // createCourse(courseData: Course): Observable<Course> {
-  // return this.http.post<Course>(Api.base + Api.createCourse, httpOptions);
-  // }
+  createCourse(courseData: Course): Observable<Course> {
+    return this.http.post<Course>(Api.base + Api.createCourse + Token, courseData, httpOptions);
+  }
   // getChaptersByCourseId(id: Number): Observable<Chapter[]> {
   // return this.http.get<Chapter[]>(Api.base + Api.chaptersByCourseId + id, httpOptions);
   // }
@@ -154,7 +154,7 @@ export class ApiConnectionService {
   }
 
   getCoursesByCategory(id: Number): Observable<Course[]> {
-    return this.http.get<Course[]>('http://localhost:3000/course?id=' + id);
+    return this.http.get<Course[]>(Api.base + Api.coursesByCategoryId + id + '&token=' + Token);
   }
 
 }

@@ -18,8 +18,8 @@
       <div class="row">
         <div class="col-md-9">
           <input type="text"
-                 name=""
-                 id=""
+                 name="filteredStatus"
+                 id="filteredStatus"
                  class="search_input"
                  placeholder="search here..."
                  [(ngModel)]="filteredStatus">
@@ -65,13 +65,13 @@
                        name=""
                        id=""
                        class="form-control"
-                       [(ngModel)]="category.title">
+                       [(ngModel)]="newCategory.title">
                 <h5 class="card-title">TAGS</h5>
                 <input type="text"
                        name=""
                        id=""
                        class="form-control"
-                       [(ngModel)]="category.tags">
+                       [(ngModel)]="newCategory.tags">
                 <div class="card_buttons">
                   <div class="space-edit-delete"
                        id="save"
@@ -96,16 +96,16 @@
               <div class="card-body">
                 <h5 class="card-title">CATEGORY TITLE</h5>
                 <input type="text"
-                       name=""
-                       id=""
+                       name="title"
+                       id="title"
                        class="form-control"
-                       [(ngModel)]="title">
+                       [(ngModel)]="newCategory.title">
                 <h5 class="card-title">TAGS</h5>
                 <input type="text"
-                       name=""
-                       id=""
+                       name="tags"
+                       id="tags"
                        class="form-control"
-                       [(ngModel)]="tag">
+                       [(ngModel)]="newCategory.tags">
                 <div class="card_buttons">
                   <div class="space-edit-delete"
                        id="save"
@@ -125,7 +125,7 @@
       </div>
       <div class="margin-thumbnail">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
-             *ngFor="let item of listCategory.slice().reverse() | search:filteredStatus:'title' | slice:0:[max]  ">
+             *ngFor="let item of categoriesList | search:filteredStatus:'title' | slice:0:[max]">
           <div class="list_item"
                *ngIf="!admin_role"
                (click)="toCourses(item.id)"
@@ -149,7 +149,7 @@
     </div>
     <div class="row">
       <div class="col-md-12 discover_section">
-        <button *ngIf="max < listCategory.length"
+        <button *ngIf="max < 8"
                 type="submit"
                 class="btn-discover"
                 (click)="discoverMore()">Discover more</button>
