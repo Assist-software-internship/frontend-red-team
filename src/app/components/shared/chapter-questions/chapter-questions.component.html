@@ -78,36 +78,39 @@
       </ul>
     </div>
 
-    <div id="curriculum" *ngFor="let item of listCategory.slice().reverse() | slice:0:[max]  ">
+    <div id="curriculum" *ngFor="let item of getCoursesByCategory().slice() | slice:0:[max]  ">
 
       <ul class="chapter-question" [hidden]="editEnabled==true">
         <h1>
-          <span>Q:</span>{{item.question}}</h1>
+          <span>Q:</span>{{item.question}}
+          <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+        </h1>
         <div class="answersList">
           <li class="answer">
-            <input type="checkbox" class="chooseAnswer">
+            <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
             <span> {{item.answer1}}</span>
             <hr>
           </li>
 
           <li class="answer">
-            <input type="checkbox" class="chooseAnswer">
+            <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
             <span> {{item.answer2}}</span>
             <hr>
           </li>
 
           <li class="answer">
-            <input type="checkbox" class="chooseAnswer">
+            <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
             <span> {{item.answer3}}</span>
           </li>
         </div>
-        <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+
       </ul>
 
       <ul class="editChapter" [hidden]="editEnabled == false">
         <h1 style="margin-top: 6px;">
           <span>Q:</span>
-          <input type="text" value="{{item.question}}" placeholder="Question" [(ngModel)]="item.question">
+          <input type="text" value="{{item.question}}" placeholder="Question" [(ngModel)]="item.question" style="background-color: #006fff; max-width: 600px;">
+          <div class="startbtn" (click)="editCh(item)">Save</div>
         </h1>
         <div class="answersList">
           <li class="answer">
@@ -123,9 +126,17 @@
             <hr>
           </li>
         </div>
-        <div class="startbtn" (click)="editCh(item)">Edit</div>
+
       </ul>
 
+
+
+    </div>
+    <div class="prev-next">
+      <div class="set-prev-next">
+        <button class="prevChapter">Previous Chapter</button>
+        <button class="nextChapter">Next Chapter</button>
+      </div>
     </div>
     <!-- <div class="editChapter" [hidden]="editEnabled==false">
       <h1 style="margin-top: 6px;">
