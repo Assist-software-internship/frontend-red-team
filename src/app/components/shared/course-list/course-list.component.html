@@ -64,13 +64,13 @@
                      name=""
                      id=""
                      class="form-control"
-                     [(ngModel)]="newCourse.small_description">
+                     [(ngModel)]="course.title">
               <h5 class="card-title">IMAGE URL</h5>
               <input type="text"
                      name=""
                      id=""
                      class="form-control"
-                     [(ngModel)]="newCourse.images">
+                     [(ngModel)]="course.images">
               <img src="{{newCourse.images}}"
                    alt=""
                    width="310px"
@@ -84,7 +84,7 @@
                         id="shortDescription"
                         cols="5"
                         rows="5"
-                        [(ngModel)]="newCourse.smallDescription"></textarea>
+                        [(ngModel)]="course.smallDescription"></textarea>
               <h5 class="card-title">LONG DESCRIPTION</h5>
               <textarea class="form-control"
                         style="resize: none;"
@@ -92,12 +92,13 @@
                         id="longDescription"
                         cols="5"
                         rows="2"
-                        [(ngModel)]="newCourse.longDescription"></textarea>
-              <input type="hidden"
-                     name=""
-                     id=""
-                     value="{{categoryId}}"
-                     ngModel>
+                        [(ngModel)]="course.longDescription"></textarea>
+              <h5 class="card-title">TAGS</h5>
+              <input type="text"
+                     name="tags"
+                     id="tags"
+                     class="form-control"
+                     [(ngModel)]="course.tags">
               <div class="card_buttons">
                 <div class="space-edit-delete"
                      id="save"
@@ -125,7 +126,7 @@
                      name=""
                      id=""
                      class="form-control"
-                     [(ngModel)]="newCourse.small_description">
+                     [(ngModel)]="newCourse.title">
               <h5 class="card-title">IMAGE URL</h5>
               <input type="text"
                      name=""
@@ -154,11 +155,12 @@
                         cols="5"
                         rows="5"
                         [(ngModel)]="newCourse.longDescription"></textarea>
+              <h5 class="card-title">TAGS</h5>
               <input type="text"
-                     name="categoryId"
-                     id="categoryId"
-                     value="{{categoryId}}"
-                     ngModel>
+                     name="tags"
+                     id="tags"
+                     class="form-control"
+                     [(ngModel)]="newCourse.tags">
               <div class="card_buttons">
                 <div class="space-edit-delete"
                      id="save"
@@ -177,7 +179,7 @@
       </div>
       <div *ngIf="admin_role">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-             *ngFor="let item of course  | search:filteredStatus:'title' | slice:0:[max]">
+             *ngFor="let item of course  | search:filteredStatus:'title' ">
           <div class="thumbnail">
             <img src="{{item.images}}"
                  alt=""

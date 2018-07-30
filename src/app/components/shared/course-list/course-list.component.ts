@@ -20,23 +20,28 @@ export class CourseListComponent implements OnInit {
   public createMode = false;
   public editClick = false;
   public deleteClick = false;
-  public categoryId = localStorage.getItem('category_id').toString();
+  public categoryId = Number(localStorage.getItem('category_id'));
+
   constructor(private dataService: ApiConnectionService, private router: Router, private courseData: ApiConnectionService) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
   }
 
   ngOnInit() {
-    // this.getAllCourses();
+    this.getAllCourses();
     this.getCoursesByCategory();
     console.log('id-ul categoriei=', this.categoryId);
+    console.log(typeof this.categoryId);
   }
   createMenu() {
     this.createMode = !(this.createMode);
   }
   createCourse() {
-    this.courseData.createCategory(this.newCourse).subscribe(res => {
-      // this.createMode = false;
+    this.newCourse.categoryId = this.categoryId;
+    console.log(this.newCourse);
+    this.courseData.createCourse(this.newCourse).subscribe(res => {
+      this.createMode = false;
+      this.course.push(this.newCourse);
     });
   }
   cancel() {
