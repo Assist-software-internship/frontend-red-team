@@ -75,7 +75,7 @@
                 <div class="card_buttons">
                   <div class="space-edit-delete"
                        id="save"
-                       (click)="saveCat()">
+                       (click)="saveCat(item)">
                     <i style="padding-right: 5px;"
                        class="far fa-save"></i>Save</div>
                   <div class="space-edit-delete"
@@ -99,17 +99,17 @@
                        name=""
                        id=""
                        class="form-control"
-                       [(ngModel)]="category.title">
+                       [(ngModel)]="title">
                 <h5 class="card-title">TAGS</h5>
                 <input type="text"
                        name=""
                        id=""
                        class="form-control"
-                       [(ngModel)]="category.tags">
+                       [(ngModel)]="tag">
                 <div class="card_buttons">
                   <div class="space-edit-delete"
                        id="save"
-                       (click)="saveCat()">
+                       (click)="newCat()">
                     <i style="padding-right: 5px;"
                        class="far fa-save"></i>Create</div>
                   <div class="space-edit-delete"
@@ -125,7 +125,7 @@
       </div>
       <div class="margin-thumbnail">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-content-padding"
-             *ngFor="let item of listCategory | search:filteredStatus:'title' | slice:0:[max]  ">
+             *ngFor="let item of listCategory.slice().reverse() | search:filteredStatus:'title' | slice:0:[max]  ">
           <div class="list_item"
                *ngIf="!admin_role"
                (click)="toCourses(item.id)"
@@ -141,7 +141,8 @@
                class="edit_title"
                (click)="openEdit(item)">EDIT</p>
             <p *ngIf="deleteClick"
-               class="edit_title">DELETE</p>
+               class="edit_title"
+               (click)="openDelete(item)">DELETE</p>
           </div>
         </div>
       </div>

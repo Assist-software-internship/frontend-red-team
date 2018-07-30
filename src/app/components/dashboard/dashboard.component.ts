@@ -10,27 +10,27 @@ import { ApiConnectionService } from '../../services/api-connection/api-connecti
 })
 export class DashboardComponent implements OnInit {
   listCategory = [
-    { title: 'Astrology', id: 1, tags: 'Science' },
-    { title: 'Finance', id: 2 },
-    { title: 'Grammar', id: 3 },
-    { title: 'Fun Facts', id: 4 },
-    { title: 'Jokes', id: 5 },
-    { title: 'Life Hacks', id: 6 },
-    { title: 'Computers', id: 7 },
-    { title: 'Math', id: 8 },
-    { title: 'Economy', id: 9 },
-    { title: 'Math 1', id: 10 },
-    { title: 'Economy 2', id: 11 },
-    { title: 'Math 4 ', id: 12 },
-    { title: 'Economy 4', id: 13 },
+    { title: 'Math 1', id: 18 },
+    { title: 'Economy 2', id: 17 },
+    { title: 'Math 4 ', id: 16 },
+    { title: 'Economy 4', id: 15 },
     { title: 'Math 5', id: 14 },
-    { title: 'Economy 5', id: 15 },
-    { title: 'Math 6', id: 16 },
-    { title: 'Economy 7', id: 17 },
-    { title: 'Sports', id: 18 }
+    { title: 'Economy 5', id: 13 },
+    { title: 'Math 6', id: 12 },
+    { title: 'Economy 7', id: 11 },
+    { title: 'Sports', id: 10 },
+    { title: 'Astrology', id: 9, tags: 'Science' },
+    { title: 'Finance', id: 8 },
+    { title: 'Grammar', id: 7 },
+    { title: 'Fun Facts', id: 6 },
+    { title: 'Jokes', id: 5 },
+    { title: 'Life Hacks', id: 4 },
+    { title: 'Computers', id: 3 },
+    { title: 'Math', id: 2 },
+    { title: 'Economy', id: 1 },
   ];
 
-  public category: Category[];
+  public category: Category = new Category();
   public admin_role = true;
   public filteredStatus = '';
   public editMode = false;
@@ -40,18 +40,21 @@ export class DashboardComponent implements OnInit {
   max = 6;
   public categoryTitle: string;
   public categorySubtitle: string;
+  public title = '';
+  public tag = '';
   constructor(private router: Router, private dataCategory: ApiConnectionService) {
     this.categoryTitle = 'Browse through best learning courses for Alexa';
     this.categorySubtitle = 'Pick the one you like and start learning';
   }
   ngOnInit() {
-    this.getAllCategories();
+    // this.getAllCategories();
     // console.log('length of categories', this.listCategory.length)
     console.log('length of categories', this.category)
   }
   createMenu() {
     this.createMode = !(this.createMode);
-    this.category = null;
+    this.title = '';
+    this.tag = '';
   }
   editMenu() {
 
@@ -62,7 +65,24 @@ export class DashboardComponent implements OnInit {
     this.deleteClick = !(this.deleteClick);
     this.editClick = false;
   }
+
+  newCat() {
+    this.listCategory.push({
+      id: this.listCategory.length + 1, title: this.title, tags: this.tag
+    });
+    this.createMode = false;
+
+  }
   saveCat() {
+    this.editMode = false;
+  }
+  openDelete(item) {
+    for (let index = 0; index < this.listCategory.length; index++) {
+      const element = this.listCategory[index];
+      if (element.id == item.id) {
+        this.listCategory.splice(this.listCategory.indexOf(element), 1);
+      }
+    }
   }
   openEdit(item) {
     this.editMode = true;
@@ -88,10 +108,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/courses']);
     console.log('selected id=', id)
   }
-  getAllCategories() {
-    this.dataCategory.getAllCategories().subscribe(res => {
-      console.log('category list=  ', res);
-      this.category = res;
-    })
-  }
+  // getAllCategories() {
+  //   this.dataCategory.getAllCategories().subscribe(res => {
+  //     console.log('category list=  ', res);
+  //     this.category = res;
+  //   })
+  // }
 }
