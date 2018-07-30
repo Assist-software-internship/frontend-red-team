@@ -51,6 +51,8 @@ export class MyAccountComponent implements OnInit {
 
   onLogOut() {
     localStorage.removeItem('email');
+    localStorage.removeItem('token');
+    localStorage.removeItem('success_message');
     this.router.navigate(['/login']);
   }
 
