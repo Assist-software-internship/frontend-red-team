@@ -328,10 +328,12 @@ h1 .edit{
     max-width: 812px;
     margin: 0 auto;
     margin-bottom: 35px;
-    line-height: 43px;
-    padding: 2px 2px 2px 22px;
+    /* line-height: 43px; */
+    padding: 12px 2px 10px 22px;
     color: #000;
     border:1px solid;
     /* background: #ec1f1f; */
     border-radius: 6px;
+    white-space: pre-line;
+    line-height: 18px;
 }

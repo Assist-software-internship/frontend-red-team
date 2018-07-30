@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CourseListComponent implements OnInit {
   public course: Course[];
+  public newCourse: Course = new Course();
   public courseTitle: string;
   public courseSubtitle: string;
   max = 2;
@@ -19,7 +20,8 @@ export class CourseListComponent implements OnInit {
   public createMode = false;
   public editClick = false;
   public deleteClick = false;
-  constructor(private dataService: ApiConnectionService, private router: Router) {
+  public categoryId = localStorage.getItem('category_id').toString();
+  constructor(private dataService: ApiConnectionService, private router: Router, private courseData: ApiConnectionService) {
     this.courseTitle = 'Browse through all Finance courses for Alexa';
     this.courseSubtitle = 'Pick the one you like and start learning';
   }
@@ -27,9 +29,15 @@ export class CourseListComponent implements OnInit {
   ngOnInit() {
     // this.getAllCourses();
     this.getCoursesByCategory();
+    console.log('id-ul categoriei=', this.categoryId);
   }
   createMenu() {
     this.createMode = !(this.createMode);
+  }
+  createCourse() {
+    this.courseData.createCategory(this.newCourse).subscribe(res => {
+      // this.createMode = false;
+    });
   }
   cancel() {
     this.createMode = false;
@@ -63,9 +71,9 @@ export class CourseListComponent implements OnInit {
   }
   getCoursesByCategory() {
     const course_id = parseInt(localStorage.getItem('category_id'));
-    this.dataService.getCoursesByCategory(course_id).subscribe(res => {
-      this.course = res;
-      console.log(res);
+    this.dataService.getCoursesByCategory(course_id).subscribe((res: any) => {
+      this.course = res.objects;
+      console.log(res.objects);
     })
   }
   chapterByCourseId(id) {

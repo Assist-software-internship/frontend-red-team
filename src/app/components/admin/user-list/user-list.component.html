@@ -20,7 +20,7 @@
       
       <li id="user.user_id">
         <div  id="checkActive">  <span class="details">Active : </span><input type="checkbox" [ngModel]="user.active==1" (click)="changeActive(i)" ></div>
-        <img src= "https://scontent-otp1-1.xx.fbcdn.net/v/t1.0-1/c35.0.160.160/p160x160/33678442_1723748081045809_8440455711325945856_n.jpg?_nc_cat=0&oh=73788e56acc42911fa01c0e09d834c7a&oe=5BC6FAE5" class="profilePic">
+        <img src= {{user.image}} class="profilePic">
         <p class="name"> {{user.firstName}} {{user.lastName}} <span class="useremail"><span class="details">E-mail : </span>{{user.email}}</span></p>
         <span class="score"><span class="details">Total score : </span> 12,2500</span>
         <div id="tags">
@@ -30,7 +30,7 @@
         <span class="datecreated"><span class="details">Date created : </span>25-oct-2018</span>
 
         <ul class="minCtrl">
-          <li><i class="far fa-edit"></i>Edit</li>
+          <li (click)="popUp_visible=true"><i class="far fa-edit"></i>Edit</li>
           <li (click)="delUser(i)"><i class="far fa-trash-alt"></i>Delete</li>
           <span [hidden]="user.roles==1"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Make Admin</li></span> 
           <span [hidden]="user.roles==0"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Remove Admin</li></span> 
@@ -39,7 +39,7 @@
         <span class="opt"><a style="cursor: pointer;"><i class="fas fa-ellipsis-h"></i></a>
           <div [hidden]="false" class="editUser">
             <ul>
-              <li><i class="far fa-edit"></i>Edit</li>
+              <li (click)="popUp_visible=true"><i class="far fa-edit"></i>Edit</li>
               <li (click)="delUser(i)"><i class="far fa-trash-alt"></i>Delete</li>
              <span [hidden]="user.roles==1"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Make An Administrator</li></span> 
              <span [hidden]="user.roles==0"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Remove Administrator</li></span> 
@@ -51,5 +51,18 @@
     </ul>
   
   </div>
+
   <app-footer></app-footer>
+  </div>
+
+  <div id="popUp" *ngIf="popUp_visible">
+    <div id="content">
+        <i class="far fa-times-circle"  (click)="popUp_visible=false"></i>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+    </div>
   </div>

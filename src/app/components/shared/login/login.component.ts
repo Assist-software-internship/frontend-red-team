@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('email', this.logUser.email.toString());
           localStorage.setItem('success_message', success_message);
           this.router.navigate(['/dashboard']);
+          window.location.reload();
           this.password_message = '';
         }
 
