@@ -63,14 +63,19 @@ export class LoginComponent implements OnInit {
         console.log('res ', res);
 
         const token = res.message.split(':')[1];
-        const succes_message = res.success;
-        console.log('tip', typeof succes_message);
+        const success_message = res.success.toString();
+        console.log('tip', typeof success_message);
         console.log('token ', token);
-
-        localStorage.setItem('token', token);
-        localStorage.setItem('email', this.logUser.email.toString());
-        localStorage.setItem('succes_message', succes_message.toString());
-        this.router.navigate(['/dashboard']);
+        if (success_message === 'false') {
+          this.password_message = 'Your password is invalid, try again!'
+          this.router.navigate(['/login']);
+        }
+        else {
+          localStorage.setItem('token', token);
+          localStorage.setItem('email', this.logUser.email.toString());
+          localStorage.setItem('success_message', success_message);
+          this.router.navigate(['/dashboard']);
+        }
 
       }, (err) => {
         console.log(err);
