@@ -476,3 +476,30 @@ input:checked {
 .set-prev-next{
     float: right;
 }
+
+#backfinish{
+    margin: 0 auto;
+    margin-top: 200px;
+    text-align: center;
+}
+
+#backfinish h1{
+    font-size: 24px;	font-weight: bold;
+    color:#000;
+
+}
+
+#backfinish h3{
+color:#AEB5BB;
+font-size: 14px;	font-weight: bold;	line-height: 23px;
+}
+
+#backfinish button{
+    border:1px solid #006fff;
+    border-radius: 5px;
+    color:#006FFF;
+    padding:6px 16px 2px 16px;
+    background:transparent;
+    outline: none;
+    margin-top: 30px;
+}

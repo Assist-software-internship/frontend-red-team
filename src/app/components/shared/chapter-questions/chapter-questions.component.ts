@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class ChapterQuestionsComponent implements OnInit {
   max = 6;
   public account_role = 1;
   public current_chapter = 1;
-
+  public isFinish = false;
 
   public live_answer1;
   public live_answer2;
@@ -54,7 +54,7 @@ export class ChapterQuestionsComponent implements OnInit {
 
   public notification = { visible: false, Message: "", color: 0 };
 
-  constructor() {
+  constructor(private router: Router) {
 
     this.category = "CHAPTER " + this.current_chapter;
     this.chapterTitle = 'Internet Banner Advertising Most Reliable Forms Of Web Advertising';
@@ -80,7 +80,7 @@ export class ChapterQuestionsComponent implements OnInit {
 
   createNewCourse() {
     if (this.live_question.length > 0 || this.live_answer1.length > 0 || this.live_answer2.length > 0 || this.live_answer3.length > 0) {
-      this.listCategory.push({ id: this.listCategory.length + 1, chapter_id: this.course_id, question: this.live_question, answer1: this.live_answer1, answer2: this.live_answer2, answer3: this.live_answer3 });
+      this.listCategory.push({ id: this.listCategory.length + 1, chapter_id: this.current_chapter, question: this.live_question, answer1: this.live_answer1, answer2: this.live_answer2, answer3: this.live_answer3 });
       this.reset();
     }
 
@@ -194,4 +194,8 @@ export class ChapterQuestionsComponent implements OnInit {
     }
   }
 
+  finishRedirect() {
+    this.isFinish = false;
+    this.router.navigate(['/dashboard']);
+  }
 }
