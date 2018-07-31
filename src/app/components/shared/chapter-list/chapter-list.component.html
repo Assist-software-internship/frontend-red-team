@@ -64,7 +64,6 @@
         <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
       </div>
 
-<<<<<<< HEAD
     <div class="editChapter" [hidden]="editEnabled==false" >
       <i class="iedit">Chapter <input  (keyup)="onKey($event,'chapter',item)" type="text" style="width:20px;" class="edit" value="{{item.chapter}}" ></i>
       <h1 style="margin-top: 6px;"><input (keyup)="onKey($event,'title',item)" type="text" class="edit" value="{{item.title}}" placeholder="Title"></h1>
@@ -73,8 +72,7 @@
       </p>
       <div class="startbtn" (click)="editCh(item)">Save</div>
     </div>
-=======
-      <div class="editChapter" [hidden]="editEnabled==false">
+      <!-- <div class="editChapter" [hidden]="editEnabled==false">
         <i class="iedit">Chapter
           <input (click)="live_chapter = item.chapter" type="text" style="width:20px;" class="edit" value="{{item.chapter}}"
             [(ngModel)]="item.chapter">
@@ -86,8 +84,7 @@
           <textarea class="pedit" rows="4" cols="50" maxlength="100" placeholder="Description" [(ngModel)]="item.shortdesc">{{item.shortdesc}}</textarea>
         </p>
         <div class="startbtn" (click)="editCh(item)">Edit</div>
-      </div>
->>>>>>> 6709d607e90f45f4b09705083d940531bdae4bd5
+      </div> -->
 
     </div>
 

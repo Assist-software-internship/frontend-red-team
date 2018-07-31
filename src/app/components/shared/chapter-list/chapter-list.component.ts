@@ -177,15 +177,9 @@ export class ChapterListComponent implements OnInit {
     this.notification.color = color;
     var x = this;
 
-<<<<<<< HEAD
       setTimeout(function() {
         x.notification.visible=false;
       }, 4000);
-=======
-    setTimeout(function () {
-      x.notification.visible = false;
-    }, 3000);
->>>>>>> 6709d607e90f45f4b09705083d940531bdae4bd5
   }
   
   onKey(event: any,target,i) {

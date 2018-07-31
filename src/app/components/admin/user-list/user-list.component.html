@@ -30,7 +30,7 @@
         <span class="datecreated"><span class="details">Date created : </span>25-oct-2018</span>
 
         <ul class="minCtrl">
-          <li (click)="popUp_visible=true"><i class="far fa-edit"></i>Edit</li>
+          <li (click)="popUpToggle(user)"><i class="far fa-edit"></i>Edit</li>
           <li (click)="delUser(i)"><i class="far fa-trash-alt"></i>Delete</li>
           <span [hidden]="user.roles==1"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Make Admin</li></span> 
           <span [hidden]="user.roles==0"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Remove Admin</li></span> 
@@ -39,7 +39,7 @@
         <span class="opt"><a style="cursor: pointer;"><i class="fas fa-ellipsis-h"></i></a>
           <div [hidden]="false" class="editUser">
             <ul>
-              <li (click)="popUp_visible=true"><i class="far fa-edit"></i>Edit</li>
+              <li (click)="popUpToggle(user)"><i class="far fa-edit"></i>Edit</li>
               <li (click)="delUser(i)"><i class="far fa-trash-alt"></i>Delete</li>
              <span [hidden]="user.roles==1"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Make An Administrator</li></span> 
              <span [hidden]="user.roles==0"><li (click)="changeRole(i)"><i class="fas fa-key"></i>Remove Administrator</li></span> 
@@ -59,10 +59,14 @@
     <div id="content">
         <i class="far fa-times-circle"  (click)="popUp_visible=false"></i>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            <img src={{editUser[0].image}} class="profile">
+           <br> <span>Profile Picture </span><input type="text" value={{editUser[0].image}} >
+          </li>
+          <li><span>First Name </span> <input type="text" value={{editUser[0].firstName}}></li>
+          <li> <span>Last Name </span> <input type="text" value={{editUser[0].lastName}}> </li>
+          <li> <span>Email </span> <input type="text" value={{local_users[0].email}} ></li>
         </ul>
+        <button class="save" (click)="saveUser()">Save</button>
     </div>
   </div>

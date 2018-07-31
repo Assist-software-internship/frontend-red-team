@@ -417,7 +417,65 @@ input[type=checkbox]:checked:after {
     color: #151212;
     background: #fff;
     justify-content: space-between;
-    width: 90%;
+    width: 90%;    min-width: 284px;
 }
 
 #content i {float: right;cursor: pointer;}
+
+#popUp #content li {
+    text-decoration: none;
+    list-style: none;
+}
+
+#popUp .profile{
+    width:100px;
+    margin: 0 auto;
+}
+
+#popUp button{
+    background: transparent;
+    outline: 0;
+    border: 1px solid #319eff;
+    border-radius: 5px;
+    padding: 5px 8px 2px 8px;
+}
+
+#popUp button:hover{
+    background: #319eff;
+    color:#fff;
+    border: 1px solid #319eff;
+}
+
+#popUp input[type="text"]{
+    border:1px solid #b9a5a5;
+    border-radius: 5px;
+    padding: 5px 8px 2px 8px;
+    outline: none;
+}
+
+#popUp input[type="text"]:focus{
+    border: 1px solid #319eff;
+    border-radius: 5px;
+    padding: 5px 8px 2px 8px;
+    outline: none;
+}
+
+#popUp ul{
+    margin: 0 auto;
+    padding: 0;
+    max-width: 500px;
+
+}
+
+#popUp li{
+    display: grid;
+    max-width: 525px;
+    margin-bottom: 10px;
+    width: 100%
+}
+
+.save{
+    margin: 0 auto;
+    width: 85px;
+    display: block
+}
