@@ -3,24 +3,31 @@
   should be displayed on all pages, except for the login ones and should conditionally
   display certain links according to the logged in user role (admin / user).
 -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
-  crossorigin="anonymous">
+<link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+      crossorigin="anonymous">
 
 <div id="navbar">
-  <a (click)="toggle()" class="menubtn">
+  <a (click)="toggle()"
+     class="menubtn">
     <i class="fas fa-bars"></i>
   </a>
   <span class="imgP">
-    <a routerLink="/courses" class="navbar-brand">
-      <img src="assets/logo.svg" class="logoPic">
+    <a routerLink="/courses"
+       class="navbar-brand">
+      <img src="assets/logo.svg"
+           class="logoPic">
     </a>
 
   </span>
   <div id="right">
 
-    <span class="menuOpt" [hidden]="currentRoute != '/users'">
+    <span class="menuOpt"
+          [hidden]="currentRoute != '/users'">
       <ul class="pages">
-        <a routerLink="/courses" id="minProf">
+        <a routerLink="/courses"
+           id="minProf">
           <li [ngClass]="{'active': currentRoute=='/profile'}">Profile</li>
         </a>
         <a routerLink="/courses">
@@ -32,32 +39,36 @@
       </ul>
     </span>
 
-    <span class="menuOpt" [hidden]="currentRoute == '/users'">
+    <span class="menuOpt"
+          [hidden]="currentRoute == '/users'">
       <ul class="pages">
-        <a routerLink="/courses" id="minProf">
+        <a routerLink="/courses"
+           id="minProf">
           <li ng-class="active:currentRoute=='/profile'">Profile</li>
         </a>
         <a routerLink="/courses">
           <li [ngClass]="{'active': currentRoute =='/dashboard'||'courses'}">Courses</li>
         </a>
-        <a routerLink="/courses" style="margin-right: 0px !important;">
-          <li style="width:auto;">What's new</li>
+        <a routerLink="/users"
+           style="margin-right: 0px !important;">
+          <li style="width:auto;">Users</li>
         </a>
-        <a>
-          <li [ngClass]="{'active': currentRoute=='/about'}">About</li>
-        </a>
+
       </ul>
     </span>
 
     <ul class="profile">
       <li>
         <a routerLink="/account">
-          <img src="./assets/default.jpg" class="profilePic">
+          <img src="./assets/default.jpg"
+               class="profilePic">
         </a>
       </li>
       <!-- <li><a routerLink="/account" class="username" style="font-size:12px;" [(ngModel)]="user.name">{{user.name}}</a><span class="points">1234</span></li> -->
       <li style="display: grid;">
-        <a routerLink="/account" class="username" style="font-size:12px;">{{wholeName}}</a>
+        <a routerLink="/account"
+           class="username"
+           style="font-size:12px;">{{wholeName}}</a>
         <span class="points">1234</span>
       </li>
     </ul>
