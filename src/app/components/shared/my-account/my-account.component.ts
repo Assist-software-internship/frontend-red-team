@@ -116,6 +116,8 @@ export class MyAccountComponent implements OnInit {
     let splitLength = false;
     this.user.firstName = this.wholeName.split(' ')[0];
     this.user.lastName = this.wholeName.split(' ')[1];
+    console.log(this.user.email);
+    localStorage.setItem('email', this.user.email.toString());
     if (this.wholeName.split.length < 1 && this.wholeName.split.length > 2) {
       splitLength = true;
     }
@@ -124,6 +126,7 @@ export class MyAccountComponent implements OnInit {
       console.log('updated');
     });
     this.updatePassword();
+    window.location.reload();
   }
   updatePassword(): void {
     this.dataService.resetPassword(this.user).subscribe(res => {

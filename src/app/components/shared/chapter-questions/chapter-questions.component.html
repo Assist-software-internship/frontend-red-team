@@ -11,152 +11,142 @@
     crossorigin="anonymous">
 
   <div class="container_chapterlist">
+    <div id="backfinish" *ngIf="isFinish">
+      <h3>CONGRATS</h3>
+      <H1>You have finished the course.</H1>
+      <button (click)="finishRedirect()">Go to courses page</button>
+    </div>
+    <div id="cont" *ngIf="!isFinish">
 
-    <app-hero id="banner" [category]="category" [title]="chapterTitle"></app-hero>
+      <app-hero id="banner" [category]="category" [title]="chapterTitle"></app-hero>
 
-    <div *ngIf="account_role" id="ctrl_admin">
-      <div id="right">
-        <div class="btn_create" (click)="toggleCreate()">
-          <i class="far fa-plus-square" style="margin-top: 8px;"></i>Create
-        </div>
-        <div id="editdelete" *ngIf="listCategory.length>0">
-          <div id="edit" (click)="toggleeditChapters()" [ngClass]="{'activeopt': editEnabled==true}">
-            <i class="far fa-edit"></i>Edit</div>
-          <div id="delete" (click)="toggledeleteChapters()" [ngClass]="{'activeoptdelete': deleteEnabled==true}">
-            <i class="far fa-trash-alt"></i>Delete</div>
+      <div *ngIf="account_role" id="ctrl_admin">
+        <div id="right">
+          <div class="btn_create" (click)="toggleCreate()">
+            <i class="far fa-plus-square" style="margin-top: 8px;"></i>Create
+          </div>
+          <div id="editdelete" *ngIf="listCategory.length>0">
+            <div id="edit" (click)="toggleeditChapters()" [ngClass]="{'activeopt': editEnabled==true}">
+              <i class="far fa-edit"></i>Edit</div>
+            <div id="delete" (click)="toggledeleteChapters()" [ngClass]="{'activeoptdelete': deleteEnabled==true}">
+              <i class="far fa-trash-alt"></i>Delete</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div id="notification" *ngIf="notification.visible==true" [ngStyle]="{'border-color': notification.color}">{{notification.Message}} </div>
+      <div id="notification" *ngIf="notification.visible==true" [ngStyle]="{'border-color': notification.color}">{{notification.Message}} </div>
 
-    <div id="curriculum" class="create" *ngIf="createVisible">
-      <h1>Q :
-        <input type="text" class="live_question" [(ngModel)]="live_question">
-      </h1>
-      <ul>
-        <li>
-          <input type="text" class="live_answer" [(ngModel)]="live_answer1">
-        </li>
-        <li>
-          <input type="text" class="live_answer" [(ngModel)]="live_answer2">
-        </li>
-        <li>
-          <input type="text" class="live_answer" [(ngModel)]="live_answer3">
-        </li>
-      </ul>
-      <div style="width: 100%;display: flex;">
-        <button class="savebtn" [disabled]="live_question.length<=0 || live_answer1.length<=0  || live_answer2.length<=0  || live_answer3.length<=0 "
-          (click)="createNewCourse()" (click)="createNewCourse()">Save</button>
-        <button class="cancelbtn" (click)="cancel()">Cancel</button>
-      </div>
-    </div>
-
-
-    <div id="curriculum" *ngIf="createVisible && (live_question ||live_answer1 || live_answer2 || live_answer3 )">
-      <ul class="chapter-question">
-        <h1>
-          <span>Q:</span>{{live_question}}</h1>
-        <div class="answersList">
-          <li class="answer">
-            <input type="checkbox" class="chooseAnswer" disabled>
-            <span> {{live_answer1}}</span>
-            <hr>
-          </li>
-
-          <li class="answer">
-            <input type="checkbox" class="chooseAnswer">
-            <span> {{live_answer2}}</span>
-            <hr>
-          </li>
-
-          <li class="answer">
-            <input type="checkbox" class="chooseAnswer">
-            <span> {{live_answer3}}</span>
-          </li>
-        </div>
-      </ul>
-    </div>
-
-    <div id="curriculum" *ngFor="let item of getCoursesByCategory().slice() | slice:0:[max]  ">
-
-      <ul class="chapter-question" [hidden]="editEnabled==true">
-        <h1>
-          <span>Q:</span>{{item.question}}
-          <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+      <div id="curriculum" class="create" *ngIf="createVisible">
+        <h1>Q :
+          <input type="text" class="live_question" [(ngModel)]="live_question">
         </h1>
-        <div class="answersList">
-          <li class="answer">
-            <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
-            <span> {{item.answer1}}</span>
-            <hr>
+        <ul>
+          <li>
+            <input type="text" class="live_answer" [(ngModel)]="live_answer1">
           </li>
-
-          <li class="answer">
-            <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
-            <span> {{item.answer2}}</span>
-            <hr>
+          <li>
+            <input type="text" class="live_answer" [(ngModel)]="live_answer2">
           </li>
-
-          <li class="answer">
-            <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
-            <span> {{item.answer3}}</span>
+          <li>
+            <input type="text" class="live_answer" [(ngModel)]="live_answer3">
           </li>
+        </ul>
+        <div style="width: 100%;display: flex;">
+          <button class="savebtn" [disabled]="live_question.length<=0 || live_answer1.length<=0  || live_answer2.length<=0  || live_answer3.length<=0 "
+            (click)="createNewCourse()" (click)="createNewCourse()">Save</button>
+          <button class="cancelbtn" (click)="cancel()">Cancel</button>
         </div>
-
-      </ul>
-
-      <ul class="editChapter" [hidden]="editEnabled == false">
-        <h1 style="margin-top: 6px;">
-          <span>Q:</span>
-          <input type="text" value="{{item.question}}" placeholder="Question" [(ngModel)]="item.question" style="background-color: #006fff; max-width: 600px;">
-          <div class="startbtn" (click)="editCh(item)">Save</div>
-        </h1>
-        <div class="answersList">
-          <li class="answer">
-            <input type="text" class="chooseAnswer" value="{{item.answer1}}" placeholder="Answer 1" [(ngModel)]="item.answer1">
-            <hr>
-          </li>
-          <li class="answer">
-            <input type="text" class="chooseAnswer" value="{{item.answer2}}" placeholder="Answer 2" [(ngModel)]="item.answer2">
-            <hr>
-          </li>
-          <li class="answer">
-            <input type="text" class="chooseAnswer" value="{{item.answer3}}" placeholder="Answer 3" [(ngModel)]="item.answer3">
-            <hr>
-          </li>
-        </div>
-
-      </ul>
-
-
-
-    </div>
-    <div class="prev-next">
-      <div class="set-prev-next">
-        <button class="prevChapter" (click)="prevChapter()" *ngIf="current_chapter <= getChapters() && current_chapter>1">Previous Chapter</button>
-        <button class="nextChapter" (click)="nextChapter()" *ngIf="current_chapter <getChapters()">Next Chapter</button>
-        <button class="nextChapter" *ngIf="current_chapter ==getChapters()">Finish</button>
       </div>
-    </div>
-    <!-- <div class="editChapter" [hidden]="editEnabled==false">
-      <h1 style="margin-top: 6px;">
-        <input type="text" class="edit" value="{{item.question}}" placeholder="Title" [(ngModel)]="item.question">
-      </h1>
-      <ul>
-        <li><div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
-          <input type="text" class="live_answer" placeholder="Answer 1" [(ngModel)]="item.answer1">
-        </li>
-        <li>
-          <input type="text" class="live_answer" placeholder="Answer 2" [(ngModel)<div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>]="item.answer2">
-        </li><div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
-        <li>
-          <input type="text" class="live_answer" placeholder="Answer 3" [(ngModel)]="item.answer3">
-        </li>
-      </ul>
-      <div class="startbtn" (click)="editCh(item)">Edit</div>
-    </div> -->
 
+
+      <div id="curriculum" *ngIf="createVisible && (live_question ||live_answer1 || live_answer2 || live_answer3 )">
+        <ul class="chapter-question">
+          <h1>
+            <span>Q:</span>{{live_question}}</h1>
+          <div class="answersList">
+            <li class="answer">
+              <input type="checkbox" class="chooseAnswer" disabled>
+              <span> {{live_answer1}}</span>
+              <hr>
+            </li>
+
+            <li class="answer">
+              <input type="checkbox" class="chooseAnswer">
+              <span> {{live_answer2}}</span>
+              <hr>
+            </li>
+
+            <li class="answer">
+              <input type="checkbox" class="chooseAnswer">
+              <span> {{live_answer3}}</span>
+            </li>
+          </div>
+        </ul>
+      </div>
+
+      <div id="curriculum" *ngFor="let item of getCoursesByCategory().slice() | slice:0:[max]  ">
+
+        <ul class="chapter-question" [hidden]="editEnabled==true">
+          <h1>
+            <span>Q:</span>{{item.question}}
+            <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
+          </h1>
+          <div class="answersList">
+            <li class="answer">
+              <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
+              <span> {{item.answer1}}</span>
+              <hr>
+            </li>
+
+            <li class="answer">
+              <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
+              <span> {{item.answer2}}</span>
+              <hr>
+            </li>
+
+            <li class="answer">
+              <input type="checkbox" class="chooseAnswer" (change)="updateSelections($event)">
+              <span> {{item.answer3}}</span>
+            </li>
+          </div>
+
+        </ul>
+
+        <ul class="editChapter" [hidden]="editEnabled == false">
+          <h1 style="margin-top: 6px;">
+            <span>Q:</span>
+            <input type="text" value="{{item.question}}" placeholder="Question" [(ngModel)]="item.question" style="background-color: #006fff; max-width: 600px;">
+            <div class="startbtn" (click)="editCh(item)">Save</div>
+          </h1>
+          <div class="answersList">
+            <li class="answer">
+              <input type="text" class="chooseAnswer" value="{{item.answer1}}" placeholder="Answer 1" [(ngModel)]="item.answer1">
+              <hr>
+            </li>
+            <li class="answer">
+              <input type="text" class="chooseAnswer" value="{{item.answer2}}" placeholder="Answer 2" [(ngModel)]="item.answer2">
+              <hr>
+            </li>
+            <li class="answer">
+              <input type="text" class="chooseAnswer" value="{{item.answer3}}" placeholder="Answer 3" [(ngModel)]="item.answer3">
+              <hr>
+            </li>
+          </div>
+
+        </ul>
+
+
+
+      </div>
+      <div class="prev-next">
+        <div class="set-prev-next">
+          <button class="prevChapter" (click)="prevChapter()" *ngIf="current_chapter <= getChapters() && current_chapter>1">Previous Chapter</button>
+          <button class="nextChapter" (click)="nextChapter()" *ngIf="current_chapter <getChapters()">Next Chapter</button>
+          <button class="nextChapter" (click)="isFinish=true" *ngIf="current_chapter ==getChapters()">Finish</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <app-footer></app-footer>
