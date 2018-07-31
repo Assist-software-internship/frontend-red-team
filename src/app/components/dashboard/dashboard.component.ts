@@ -53,8 +53,10 @@ export class DashboardComponent implements OnInit {
     if (this.role_id === 1) {
       this.admin_role = true
     }
-    else
+    else if (this.role_id === 2) {
+
       this.admin_role = false;
+    }
   }
   createMenu() {
     this.createMode = !(this.createMode);
