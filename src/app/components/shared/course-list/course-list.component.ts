@@ -56,6 +56,9 @@ export class CourseListComponent implements OnInit {
     this.createMode = false;
     this.editMode = false;
   }
+  saveCourse() {
+    this.editMode = false;
+  }
   editMenu() {
     this.editClick = !(this.editClick);
     this.deleteClick = false;
@@ -63,6 +66,7 @@ export class CourseListComponent implements OnInit {
   openEdit(item) {
     this.editMode = true;
     this.course = item;
+
   }
   deleteMenu() {
     this.deleteClick = !(this.deleteClick);
