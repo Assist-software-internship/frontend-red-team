@@ -25,20 +25,20 @@ import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'account', component: MyAccountComponent },
-  { path: 'users', component: UserListComponent },
-  { path: 'users/:id', component: UserComponent },
+  { path: 'account', component: MyAccountComponent, canActivate: [AuthGuard] },
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
+  { path: 'users/:id', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
   { path: 'courses', component: CourseListComponent, canActivate: [AuthGuard] },
 
   {
     path: 'courses/:courseId',
-    component: ChapterListComponent
+    component: ChapterListComponent, canActivate: [AuthGuard]
   },
   {
     path: 'courses/:courseId/:chapterId',
-    component: ChapterQuestionsComponent
+    component: ChapterQuestionsComponent, canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'login' }
 ];

@@ -226,8 +226,12 @@
     padding: 20px;
     /* border-bottom: 1px solid #006FFF !important; */
 }
+.create li{
+    border-bottom: 1px solid #006fff;
+}
 .create h1{
     color: #000;
+    border-bottom: 1px solid #006fff;
 }
 
 .savebtn,.cancelbtn{
@@ -363,6 +367,7 @@ textarea{
     border-radius: 5px;	
     padding-left: 21px;
     overflow: hidden;
+    border-bottom: 1px solid #006fff;
 }
 .answer{
     line-height: 64px;

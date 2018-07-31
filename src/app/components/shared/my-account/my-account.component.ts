@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { EventEmitter } from 'events';
 import { isNgTemplate } from '@angular/compiler';
 import { userInfo } from 'os';
+import { assertPreviousIsParent } from '@angular/core/src/render3/instructions';
 // import { base64textString } from 'angular-base64-download';
 
 @Component({
@@ -34,10 +35,14 @@ export class MyAccountComponent implements OnInit {
   public file: File;
 
   coursesProgress = [
-    { id: 1, small_description: "This is one of the courses 1", long_description: "This is the long description for one of the courses", tags: "Assist1", points: 20, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
-    { id: 2, small_description: "This is one of the courses 2", long_description: "This is the long description for one of the courses", tags: "Assist2", points: 150, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
-    { id: 3, small_description: "This is one of the courses 3", long_description: "This is the long description for one of the courses", tags: "Assist3", points: 100, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
-    { id: 4, small_description: "This is one of the courses 4", long_description: "This is the long description for one of the courses", tags: "Assist4", points: 120, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" }
+    { id: 1, small_description: "This is one of the courses (1)", long_description: "This is the long description for one of the courses (1)", tags: "Assist1", points: 20, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
+    { id: 2, small_description: "This is one of the courses (2)", long_description: "This is the long description for one of the courses (2)", tags: "Assist2", points: 150, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
+    { id: 3, small_description: "This is one of the courses (3)", long_description: "This is the long description for one of the courses (3)", tags: "Assist3", points: 100, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" },
+    { id: 4, small_description: "This is one of the courses (4)", long_description: "This is the long description for one of the courses (4)", tags: "Assist4", points: 120, images: "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png" }
+  ];
+
+  userProfile = [
+    { user_id: 1, email: "intern.marius.petrovici@assist.ro", password: "Parola123!", firstName: "Marius", lastName: "Petrovici", active: 1, role: 1 }
   ];
 
   constructor(private dataService: ApiConnectionService, private router: Router, private http: HttpClient) {
@@ -65,6 +70,8 @@ export class MyAccountComponent implements OnInit {
   }
 
   getUserProfile(): void {
+    // this.wholeName = this.userProfile[0].firstName + ' ' + this.userProfile[0].lastName;
+
     this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe((res: any) => {
       console.log('res ', res)
       this.user = res.objects[0];
@@ -109,17 +116,17 @@ export class MyAccountComponent implements OnInit {
     let splitLength = false;
     this.user.firstName = this.wholeName.split(' ')[0];
     this.user.lastName = this.wholeName.split(' ')[1];
-    if (this.wholeName.split.length > 2) {
+    if (this.wholeName.split.length < 1 && this.wholeName.split.length > 2) {
       splitLength = true;
     }
     console.log(this.user);
     this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
       console.log('updated');
     });
-    // this.updatePassword();
+    this.updatePassword();
   }
   updatePassword(): void {
-    this.dataService.updatePassword(this.user.password, this.user).subscribe(res => {
+    this.dataService.resetPassword(this.user).subscribe(res => {
       console.log('password updated');
     })
   }

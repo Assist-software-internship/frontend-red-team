@@ -28,6 +28,11 @@ export class PageHeaderComponent implements OnInit {
   @Output()
   public user: User = new User();
 
+  userProfile = [
+    { user_id: 1, email: "intern.marius.petrovici@assist.ro", password: "Parola123!", firstName: "Marius", lastName: "Petrovici", active: 1, role: 1 }
+  ];
+
+
   constructor(router: Router, private dataService: ApiConnectionService) {
     router.events.subscribe((url: any) => console.log(url));
     this.currentRoute = router.url;
@@ -76,6 +81,7 @@ export class PageHeaderComponent implements OnInit {
       this.wholeName = this.user.firstName + ' ' + this.user.lastName;
       console.log('Users::: ' + this.user.firstName + this.user.lastName);
     });
+    // this.wholeName = this.userProfile[0].firstName + ' ' + this.userProfile[0].lastName;
   }
   onFileSelected(event) {
     console.log(event.srcElement.value);

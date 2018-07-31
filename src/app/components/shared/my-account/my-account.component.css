@@ -12,6 +12,15 @@
   background-color: #5fa5ff;
 }
 
+#save:disabled,
+button[disabled],button[disabled]:hover{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  outline: none;
+  cursor: not-allowed;
+}
+
 /* Container My Account & Logout */
 @media only screen and (min-width: 1020px) {
     .container_myacc{
