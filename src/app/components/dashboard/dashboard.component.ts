@@ -50,11 +50,13 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     this.getAllCategories();
-    if (this.role_id === 1) {
+    if (this.role_id === 2) {
       this.admin_role = true
     }
-    else
+    else if (this.role_id === 1) {
+
       this.admin_role = false;
+    }
   }
   createMenu() {
     this.createMode = !(this.createMode);
