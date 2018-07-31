@@ -30,7 +30,27 @@ export class UserListComponent implements OnInit {
     {user_id:6,email:"user@assist.ro", firstName: 'Laura', lastName:'Anghel',password:'assist',active:1,resetToken:null,token:null,roles:[0],image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdrgvG-YyZu13VOTNhKSvr-xy2C5nO0zpJF_KAUEl7hc5rCjeE"},
 
   ];
+  public roles = 0;
+
+  public courses: Course[];
+
+  private wholeName: string;
+ 
+
+  public showPassword = false;
+  public logUser: User = new User();
+  // public uploader: FileUploader;
+  private hasDragOver = false;
+  selectedFile = null;
+  public firstload = true;
+  showHide = true;
+  public file: File;
   
+  public editFirstName = ""
+  public editLastName = ""
+  public editPicture = ""
+  public editEmail = ""
+
   public editUser = [] ;
   ngOnInit() {
     this.getAllUsers();
@@ -44,6 +64,10 @@ export class UserListComponent implements OnInit {
     this.dataService.getAllUsers().subscribe((res: any) => {
       this.local_users = res.objects;
       this.users = this.local_users;
+      for (let index = 0; index < this.users.length; index++) {
+        const element = this.users[index];
+        this.users[index].roles = []
+      }
     });
 
 
@@ -66,10 +90,7 @@ export class UserListComponent implements OnInit {
     // });
   }
 
-  updateUserProfile(): void {
-    // this.dataService.updateUser(this.user.user_id, this.user).subscribe(res => {
-    // });
-  }
+
 
   updateUser() {
     this.dataService
@@ -97,6 +118,7 @@ export class UserListComponent implements OnInit {
   }
 
   popUpToggle(x){
+  
     this.popUp_visible = this.popUp_visible==false? this.popUp_visible=true:this.popUp_visible=false;
     this.editUser = [];
     
@@ -121,4 +143,23 @@ export class UserListComponent implements OnInit {
     }
  
 }
+
+updateUserProfile(): void {
+ 
+
+
+  this.editUser[0].firstName=this.editFirstName
+  this.editUser[0].lastName=this.editLastName
+  this.editUser[0].email=this.editEmail
+  // this.editUser[0].roles = [{}]
+
+  this.dataService.updateUser(this.editUser[0].user_id, this.editUser[0]).subscribe(res => {
+    console.log(this.editUser[0].firstName)
+    window.location.reload()
+  
+  });
+ 
+
+}
+
 }
