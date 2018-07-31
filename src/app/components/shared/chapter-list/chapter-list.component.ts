@@ -177,10 +177,19 @@ export class ChapterListComponent implements OnInit {
     this.notification.color = color;
     var x = this;
 
-    setTimeout(function () {
-      x.notification.visible = false;
-    }, 4000);
+      setTimeout(function() {
+        x.notification.visible=false;
+      }, 4000);
   }
+  
+  // onKey(event: any,target,i) {
+  //   this.live_chapter = target=="chapter"?event.target.value:(this.live_chapter=='')?i.chapter:this.live_chapter;
+  //   this.live_title = target=="title"?event.target.value:(this.live_title=='')?i.title:this.live_title;
+  //   this.live_desc = target=="desc"?event.target.value:(this.live_desc=='')?i.shortdesc:this.live_desc;
+  //   setTimeout(function () {
+  //     x.notification.visible = false;
+  //   }, 4000);
+  // }
 
   onKey(event: any, target, i) {
     this.live_chapter = target == "chapter" ? event.target.value : (this.live_chapter == '') ? i.chapter : this.live_chapter;
