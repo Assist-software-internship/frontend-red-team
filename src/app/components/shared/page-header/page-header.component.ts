@@ -78,9 +78,9 @@ export class PageHeaderComponent implements OnInit {
     this.dataService.getUserByEmail(localStorage.getItem('email')).subscribe((res: any) => {
       console.log('res ', res);
       this.user = res.objects[0];
-      const role_id = res.objects[0].roles[0].role_id;
-      // console.log('user data role ', res.objects[0].roles[0].role_id)
-      localStorage.setItem('role_id', role_id);
+      // const role_id = res.objects[0].roles[0].role_id;
+      // // console.log('user data role ', res.objects[0].roles[0].role_id)
+      // localStorage.setItem('role_id', role_id);
       this.wholeName = this.user.firstName + ' ' + this.user.lastName;
       console.log('Users::: ' + this.user.firstName + this.user.lastName);
     });

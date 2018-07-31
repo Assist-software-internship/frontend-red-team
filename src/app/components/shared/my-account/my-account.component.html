@@ -47,7 +47,7 @@
                         <!-- ////////////// -->
                         <div class="password">
                             <input type="{{showHide ? 'password' : 'text'}}" name="password_log" class="form-control" id="password" placeholder="••••••••••"
-                                [(ngModel)]="logUser.password" required #password="ngModel" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
+                                [(ngModel)]="user.password" required #password="ngModel" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$&!%*#?,.+_|/]).{8,30}$">
                             <button type="button" (mousedown)="showMyPass()" class="showPassword">
                                 <i class="fa {{ showHide ? 'fa-eye-slash' : 'fa-eye'}} style-eye"></i>
                             </button>
