@@ -40,11 +40,12 @@ export class UserListComponent implements OnInit {
     // this.dataService.getAllUsers().subscribe((res:any) => {
     //   this.users = res.objects;
     // });
+    
     this.dataService.getAllUsers().subscribe((res: any) => {
-      // this.users = this.local_users;
+      this.users = this.local_users;
     });
 
-    // this.users = this.local_users;
+    this.users = this.local_users;
   }
 
   registerUser() {
@@ -94,22 +95,19 @@ export class UserListComponent implements OnInit {
     this.updateUserProfile();
   }
 
-  popUpToggle(user){
+  popUpToggle(x){
     this.popUp_visible = this.popUp_visible==false? this.popUp_visible=true:this.popUp_visible=false;
     this.editUser = [];
     
     // this.editUser.push({user_id:user.user_id,profile:user.image,fName:user.firstName,lName:user.lastName,email:user.email})
 
 
-    this.editUser.push({user_id:user.user_id,email:user.email, firstName: user.firstName, lastName:user.lastName,password:user.password,active:user.active,resetToken:null,token:null,roles:user.roles,image:user.image},
+    this.editUser.push({user_id:x.user_id,email:x.email, firstName: x.firstName, lastName:x.lastName,password:x.password,active:x.active,resetToken:null,token:null,roles:x.roles,image:x.image},
   )
 
   }
 
   saveUser(){
-   
- 
-
     for (let index = 0; index < this.local_users.length; index++) {
       const element = this.local_users[index];
       if (element.user_id == this.editUser[0].user_id) {
