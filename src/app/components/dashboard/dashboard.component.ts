@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   // ];
 
   public categoriesList: any[] = [];
-  public admin_role = true;
+  public admin_role: boolean;
   public filteredStatus = '';
   public editMode = false;
   public createMode = false;
@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
   public categorySubtitle: string;
   public title = '';
   public tag = '';
+  public role_id = parseInt(localStorage.getItem('role_id'));
   public newCategory: Category = new Category();
   constructor(private router: Router, private dataCategory: ApiConnectionService) {
     this.categoryTitle = 'Browse through best learning courses for Alexa';
@@ -49,6 +50,11 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     this.getAllCategories();
+    if (this.role_id === 1) {
+      this.admin_role = true
+    }
+    else
+      this.admin_role = false;
   }
   createMenu() {
     this.createMode = !(this.createMode);
@@ -80,12 +86,12 @@ export class DashboardComponent implements OnInit {
     this.editMode = false;
   }
   openDelete(item) {
-    // for (let index = 0; index < this.listCategory.length; index++) {
-    //   const element = this.listCategory[index];
-    //   if (element.id == item.id) {
-    //     this.listCategory.splice(this.listCategory.indexOf(element), 1);
-    //   }
-    // }
+    for (let index = 0; index < this.categoriesList.length; index++) {
+      const element = this.categoriesList[index];
+      if (element.id == item.id) {
+        this.categoriesList.splice(this.categoriesList.indexOf(element), 1);
+      }
+    }
   }
   openEdit(item) {
     this.editMode = true;
