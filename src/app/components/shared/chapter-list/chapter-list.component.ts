@@ -23,16 +23,16 @@ import { elementEnd } from '@angular/core/src/render3/instructions';
 export class ChapterListComponent implements OnInit {
   desc = " While saying goodbye means accepting that a part of our life is over, it also ... of that reality had started to creepinto my psyche weeks ago, when I was being fitted ... We journeyed together, watching each other grow through the innocence of "
   listCategory = [
-    { category: 'Astrology', id: 1, cat_id: 1, chapter: "I", title: 'Welcome Ioan', shortdesc: this.desc },
-    { category: 'Astrology', id: 2, cat_id: 2, chapter: "II", title: 'Welcome to blablabla', shortdesc: "desc2" },
-    { category: 'Astrology', id: 3, cat_id: 2, chapter: "III", title: 'Welcome to blablabla', shortdesc: this.desc },
-    { category: 'Economy', id: 4, cat_id: 14, chapter: "IV", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 5, cat_id: 100, chapter: "V", title: 'Welcome to blablabla', shortdesc: this.desc },
-    { category: 'Astrology', id: 6, cat_id: 74, chapter: "VI", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 7, cat_id: 97, chapter: "VII", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Sport', id: 8, cat_id: 22, chapter: "VIII", title: 'Welcome to blablabla', shortdesc: this.desc },
-    { category: 'Economy', id: 9, cat_id: 21, chapter: "IX", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Finance', id: 10, cat_id: 13, chapter: "X", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 1, cat_id: 1, chapter: "I", title: 'The Spirit Set You Free', shortdesc: this.desc },
+    { category: 'Astrology', id: 2, cat_id: 2, chapter: "II", title: 'God Sent his Own Son', shortdesc: this.desc },
+    { category: 'Astrology', id: 3, cat_id: 2, chapter: "III", title: 'Love Fulffils the Law', shortdesc: this.desc },
+    { category: 'Economy', id: 4, cat_id: 14, chapter: "IV", title: 'What the Law Could Not Do', shortdesc: this.desc },
+    { category: 'Astrology', id: 5, cat_id: 100, chapter: "V", title: 'Set your Mind on the Spirit', shortdesc: this.desc },
+    { category: 'Astrology', id: 6, cat_id: 74, chapter: "VI", title: 'The Spirit Lives in You', shortdesc: this.desc },
+    { category: 'Astrology', id: 7, cat_id: 97, chapter: "VII", title: 'You Are Not Your Own', shortdesc: this.desc },
+    { category: 'Sport', id: 8, cat_id: 22, chapter: "VIII", title: 'The Redemption Of Our Bodies', shortdesc: this.desc },
+    { category: 'Economy', id: 9, cat_id: 21, chapter: "IX", title: 'Who Can Be Against Us?', shortdesc: this.desc },
+    { category: 'Finance', id: 10, cat_id: 13, chapter: "X", title: 'We Are More Than Conquerors', shortdesc: this.desc },
   ];
   public course_id = parseInt(localStorage.getItem('course_id'))
   filteredStatus = '';

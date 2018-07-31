@@ -20,7 +20,7 @@
       
       <li id="user.user_id">
         <div  id="checkActive">  <span class="details">Active : </span><input type="checkbox" [ngModel]="user.active==1" (click)="changeActive(i)" ></div>
-        <img src= {{user.image}} class="profilePic">
+        <img src= "assets/default.jpg" class="profilePic">
         <p class="name"> {{user.firstName}} {{user.lastName}} <span class="useremail"><span class="details">E-mail : </span>{{user.email}}</span></p>
         <span class="score"><span class="details">Total score : </span> 12,2500</span>
         <div id="tags">
@@ -63,10 +63,10 @@
             <img src={{editUser[0].image}} class="profile">
            <br> <span>Profile Picture </span><input type="text" value={{editUser[0].image}} >
           </li>
-          <li><span>First Name </span> <input type="text" value={{editUser[0].firstName}}></li>
-          <li><span>Last Name </span> <input type="text" value={{editUser[0].lastName}}> </li>
-          <li><span>Email </span> <input type="text" value={{local_users[0].email}} ></li>
+          <li><span>First Name </span> <input type="text" value={{editUser[0].firstName}} [(ngModel)]="editFirstName"></li>
+          <li><span>Last Name </span> <input type="text" value={{editUser[0].lastName}} [(ngModel)]="editLastName"> </li>
+          <li><span>Email </span> <input type="text" value={{local_users[0].email}} [(ngModel)]="editEmail" ></li>
         </ul>
-        <button class="save" (click)="saveUser()">Save</button>
+        <button class="save" (click)="updateUserProfile()">Save</button>
     </div>
   </div>
