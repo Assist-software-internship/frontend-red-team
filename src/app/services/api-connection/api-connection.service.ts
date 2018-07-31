@@ -16,6 +16,8 @@ const httpOptions = {
 
 const Api = {
   base: 'http://192.168.210.116:8080/',
+  base1: 'http://localhost:3000/',
+  userByEmail1: 'users',
   users: 'Users',
   userByEmail: 'user?email=',
   register: 'create/user',

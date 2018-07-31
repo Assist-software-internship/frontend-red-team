@@ -41,10 +41,10 @@ export class UserListComponent implements OnInit {
     //   this.users = res.objects;
     // });
     this.dataService.getAllUsers().subscribe((res: any) => {
-      this.users = this.local_users;
+      // this.users = this.local_users;
     });
 
-    this.users = this.local_users;
+    // this.users = this.local_users;
   }
 
   registerUser() {
