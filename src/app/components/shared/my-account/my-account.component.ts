@@ -117,6 +117,7 @@ export class MyAccountComponent implements OnInit {
     this.user.firstName = this.wholeName.split(' ')[0];
     this.user.lastName = this.wholeName.split(' ')[1];
     console.log(this.user.email);
+    
     localStorage.setItem('email', this.user.email.toString());
     if (this.wholeName.split.length < 1 && this.wholeName.split.length > 2) {
       splitLength = true;
