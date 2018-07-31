@@ -64,8 +64,10 @@ export class LoginComponent implements OnInit {
 
         const token = res.message.split(':')[1];
         const success_message = res.success.toString();
+        // const isAdmin = res.roles.name.toString();
         console.log('tip', typeof success_message);
         console.log('token ', token);
+        // console.log('is admin= ', isAdmin);
         if (success_message === 'false') {
           this.password_message = 'Your email or password is invalid, try again!'
           this.router.navigate(['/login']);
@@ -97,6 +99,9 @@ export class LoginComponent implements OnInit {
           this.manageForms(true, false, false)
         });
     }
+
+  }
+  getUserByEmail() {
 
   }
 }

@@ -127,7 +127,7 @@ export class ApiConnectionService {
   }
 
   getUserByEmail(email: String): Observable<User[]> {
-    return this.http.get<User[]>(Api.base + Api.userByEmail + `${email}`);
+    return this.http.get<User[]>(Api.base + Api.userByEmail + email, httpOptions);
   }
   updateImage(id: Number, userData: User): Observable<User> {
     return this.http.put<User>(Api.base + Api.course + `/${id}`, userData, httpOptions);

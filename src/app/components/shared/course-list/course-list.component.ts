@@ -13,7 +13,7 @@ export class CourseListComponent implements OnInit {
   public newCourse: Course = new Course();
   public courseTitle: string;
   public courseSubtitle: string;
-  max = 2;
+  public max = 2;
   public admin_role = true;
   public image_url = '';
   public editMode = false;
@@ -43,6 +43,14 @@ export class CourseListComponent implements OnInit {
       this.createMode = false;
       this.course.push(this.newCourse);
     });
+  }
+  openDelete(item) {
+    for (let index = 0; index < this.course.length; index++) {
+      const element = this.course[index];
+      if (element.id == item.id) {
+        this.course.splice(this.course.indexOf(element), 1);
+      }
+    }
   }
   cancel() {
     this.createMode = false;
