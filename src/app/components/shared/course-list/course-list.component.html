@@ -12,8 +12,8 @@
             [subtitle]="courseSubtitle"></app-hero>
   <div class="container container_content"
        id="tourpackages-carousel">
-    <div class="col-md-8 col-md-offset-2 category_content"
-         *ngIf="!admin_role">
+    <div class="col-md-8 col-md-offset-2 category_content">
+      <!-- *ngIf="!admin_role" -->
       <div class="row ">
         <div class="col-md-9">
           <input type="text"
@@ -179,7 +179,7 @@
       </div>
       <div *ngIf="admin_role">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-             *ngFor="let item of course  | search:filteredStatus:'title' ">
+             *ngFor="let item of course  | search:filteredStatus:'longDescription' ">
           <div class="thumbnail">
             <img src="{{item.images}}"
                  alt=""
@@ -199,7 +199,7 @@
                 <a class="course_btn"
                    *ngIf="deleteClick"
                    role="button"
-                   (click)="openDelete()"> DELETE </a>
+                   (click)="openDelete(item)"> DELETE </a>
               </p>
             </div>
           </div>
@@ -209,11 +209,11 @@
     </div>
     <div class="row">
       <div class="col-md-12 discover_section">
-        <button *ngIf="max == 2"
+        <button *ngIf="max < 3"
                 type="submit"
                 class="btn-discover"
                 (click)="discoverMore()">Discover more</button>
-        <button *ngIf="max > 2"
+        <button *ngIf="max > 3"
                 type="submit"
                 class="btn-discover"
                 (click)=" displayLess()">Display less</button>
