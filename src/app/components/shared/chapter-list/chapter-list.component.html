@@ -49,7 +49,7 @@
       <p>
         {{live_desc}}
       </p>
-      <div class="startbtn">Start</div>
+      <div class="startbtn" (click)="questionByChapterId(item.cat_id)">Start</div>
     </div>
 
     <div id="curriculum" *ngFor="let item of getCoursesByCategory().slice().reverse() | slice:0:[max] let i = index">
@@ -60,7 +60,7 @@
         <p>
           {{item.shortdesc}}
         </p>
-        <div class="startbtn" *ngIf="!deleteEnabled">Start</div>
+        <div class="startbtn" *ngIf="!deleteEnabled" (click)="questionByChapterId(item.cat_id)">Start</div>
         <div class="deletebtn" *ngIf="deleteEnabled" (click)="deletech(item)">Delete</div>
       </div>
 

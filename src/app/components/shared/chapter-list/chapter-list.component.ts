@@ -26,13 +26,13 @@ export class ChapterListComponent implements OnInit {
     { category: 'Astrology', id: 1, cat_id: 1, chapter: "I", title: 'Welcome Ioan', shortdesc: this.desc },
     { category: 'Astrology', id: 2, cat_id: 2, chapter: "II", title: 'Welcome to blablabla', shortdesc: "desc2" },
     { category: 'Astrology', id: 3, cat_id: 2, chapter: "III", title: 'Welcome to blablabla', shortdesc: this.desc },
-    { category: 'Astrology', id: 4, cat_id: 1, chapter: "IV", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 5, cat_id: 2, chapter: "V", title: 'Welcome to blablabla', shortdesc: this.desc },
-    { category: 'Astrology', id: 6, cat_id: 1, chapter: "VI", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 7, cat_id: 2, chapter: "VII", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 8, cat_id: 2, chapter: "VIII", title: 'Welcome to blablabla', shortdesc: this.desc },
-    { category: 'Astrology', id: 9, cat_id: 1, chapter: "IX", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
-    { category: 'Astrology', id: 10, cat_id: 1, chapter: "X", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
+    { category: 'Economy', id: 4, cat_id: 14, chapter: "IV", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 5, cat_id: 100, chapter: "V", title: 'Welcome to blablabla', shortdesc: this.desc },
+    { category: 'Astrology', id: 6, cat_id: 74, chapter: "VI", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
+    { category: 'Astrology', id: 7, cat_id: 97, chapter: "VII", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
+    { category: 'Sport', id: 8, cat_id: 22, chapter: "VIII", title: 'Welcome to blablabla', shortdesc: this.desc },
+    { category: 'Economy', id: 9, cat_id: 21, chapter: "IX", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
+    { category: 'Finance', id: 10, cat_id: 13, chapter: "X", title: 'Welcome to blablabla', shortdesc: "asdasdasdasdasdasd123123123" },
   ];
   public course_id = parseInt(localStorage.getItem('course_id'))
   filteredStatus = '';
@@ -55,7 +55,7 @@ export class ChapterListComponent implements OnInit {
 
   public notification = { visible: false, Message: "", color: 0 };
 
-  constructor() {
+  constructor(private router:Router) {
     this.category = "finance";
     this.categoryTitle = 'Internet Banner Advertising Most Reliable Forms Of Web Advertising';
     this.categorySubtitle = 'There is a lof of exciting stuff going on in the stars above us that make astromy so much fun.';
@@ -195,6 +195,12 @@ export class ChapterListComponent implements OnInit {
     this.live_chapter = target == "chapter" ? event.target.value : (this.live_chapter == '') ? i.chapter : this.live_chapter;
     this.live_title = target == "title" ? event.target.value : (this.live_title == '') ? i.title : this.live_title;
     this.live_desc = target == "desc" ? event.target.value : (this.live_desc == '') ? i.shortdesc : this.live_desc;
+  }
+
+  questionByChapterId(id){
+    const courseId= parseInt(localStorage.getItem('course_id'));
+    localStorage.setItem('chapter_id',id.toString());
+    this.router.navigate(['courses/'+courseId +"/",id])
   }
 
 }

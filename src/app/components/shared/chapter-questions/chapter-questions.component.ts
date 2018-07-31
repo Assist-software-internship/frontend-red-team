@@ -24,13 +24,13 @@ export class ChapterQuestionsComponent implements OnInit {
     { id: 9, chapter_id: 3, question: 'This is a question 10', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
     { id: 10, chapter_id: 3, question: 'This is a question 11', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
     { id: 12, chapter_id: 4, question: 'This is a question 12', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
-    { id: 13, chapter_id: 4, question: 'This is a question 13', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
-    { id: 14, chapter_id: 5, question: 'This is a question 14', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
-    { id: 15, chapter_id: 5, question: 'This is a question 15', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' }
+    { id: 13, chapter_id: 100, question: 'This is a question 13', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
+    { id: 14, chapter_id: 101, question: 'This is a question 14', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' },
+    { id: 15, chapter_id: 101, question: 'This is a question 15', answer1: 'answer1', answer2: 'answer2', answer3: 'answer3' }
 
   ];
 
-  public course_id = parseInt(localStorage.getItem('course_id'));
+  public course_id = parseInt(localStorage.getItem('chapter_id'));
 
   filteredStatus = '';
   max = 6;
@@ -147,7 +147,7 @@ export class ChapterQuestionsComponent implements OnInit {
     this.questions = [];
     for (let index = 0; index < this.listCategory.length; index++) {
       const element = this.listCategory[index];
-      if (this.current_chapter == element.chapter_id) {
+      if (this.current_chapter == element.chapter_id)  {
         this.questions.push(element);
       }
     }
