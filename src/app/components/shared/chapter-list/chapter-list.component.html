@@ -24,7 +24,7 @@
             <i class="far fa-trash-alt"></i>Delete</div>
         </div>
       </div>
-     </div>
+    </div>
     <div id="notification" *ngIf="notification.visible==true" [ngStyle]="{'border-color': notification.color,'color':notification.color}">{{notification.Message}}</div>
     <div id="curriculum" class="create" *ngIf="createVisible">
       <i>Chapter :
@@ -74,8 +74,7 @@
     </div>
       <!-- <div class="editChapter" [hidden]="editEnabled==false">
         <i class="iedit">Chapter
-          <input (click)="live_chapter = item.chapter" type="text" style="width:20px;" class="edit" value="{{item.chapter}}"
-            [(ngModel)]="item.chapter">
+          <input (click)="live_chapter = item.chapter" type="text" style="width:20px;" class="edit" value="{{item.chapter}}" [(ngModel)]="item.chapter">
         </i>
         <h1 style="margin-top: 6px;">
           <input type="text" class="edit" value="{{item.title}}" placeholder="Title" [(ngModel)]="item.title">

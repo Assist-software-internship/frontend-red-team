@@ -40,13 +40,13 @@ export class UserListComponent implements OnInit {
     // this.dataService.getAllUsers().subscribe((res:any) => {
     //   this.users = res.objects;
     // });
-    this.dataService.getAllUsers().subscribe((res:any) => {
+    this.dataService.getAllUsers().subscribe((res: any) => {
       this.users = this.local_users;
     });
 
     this.users = this.local_users;
   }
-  
+
   registerUser() {
     this.dataService
       .registerUser(this.myUserData)
@@ -55,13 +55,13 @@ export class UserListComponent implements OnInit {
 
   deleteUser(id, i) {
     this.dataService
-      // .deleteUser(id)
-      // .subscribe(res => {
-        // var t = this.users.indexOf(this.users[i]);
-        // this.users.splice(t, 1);
-        var t = this.local_users.indexOf(this.local_users[i]);
-        this.local_users.splice(t, 1);
-      // });
+    // .deleteUser(id)
+    // .subscribe(res => {
+    // var t = this.users.indexOf(this.users[i]);
+    // this.users.splice(t, 1);
+    var t = this.local_users.indexOf(this.local_users[i]);
+    this.local_users.splice(t, 1);
+    // });
   }
 
   updateUserProfile(): void {
@@ -120,7 +120,6 @@ export class UserListComponent implements OnInit {
         // this.notificationPush("Chapter " + element.chapter + " was deleted", "red")
       }
     }
-  }
-
+ 
 }
-
+}
